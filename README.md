@@ -1,13 +1,5 @@
 ﻿# Front-end_Tic18
 
-OBJETIVO:
-Desenvolvimento de um site da web básico, estruturando oconteúdo das páginas utlizando as tags HTML vistas em sala de aula, 
-como headings, navegação entre páginas, listas, parágrafos, quebra 
-de linhas, mudanças temáƟcas de conteúdo. Publicar o site na 
-Internet (repositório github) para que fique disponível para todo o 
-mundo.
-2H
-
 DESCRIÇÃO:
 
 Criação de uma carta de apresentação para ser entregue na empresa em busca de um 
