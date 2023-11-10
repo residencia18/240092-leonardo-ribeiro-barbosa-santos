@@ -25,7 +25,7 @@ empresa e por fim, despedida e assinatura;
 c. Um link para uma outra página (porƟfolio.html) onde será apresentado 
 todas as suas páginas web que foram criadas durante o período em sala 
 de aula com seus respecƟvos links.
-4. UƟlize as tags HTML aprendidas em sala para formatar o seu conteúdo (<p>, 
+4. Utilize as tags HTML aprendidas em sala para formatar o seu conteúdo (<p>, 
 <h1>a<h6>, <hr/>, <br/>, <ul>, <ol>, <a>, <img>, etc);
 5. Teste seu site em pelo menos dois navegadores web para verificar se está tudo 
 correto;
