@@ -20,5 +20,5 @@ de aula com seus respecƟvos links.
 4. Utilize as tags HTML aprendidas em sala para formatar o seu conteúdo.
 5. Teste seu site em pelo menos dois navegadores web para verificar se está tudo 
 correto;
-6. Publique seu site no repositório github (hƩps://github.com/) e disponibilize o 
+6. Publique seu site no repositório github (https://github.com/) e disponibilize o 
 endereço.
