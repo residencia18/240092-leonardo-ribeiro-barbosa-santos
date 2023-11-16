@@ -1,0 +1,18 @@
+2. Declaração de Variáveis e Tipos de Dados Primitivos:
+
+Em Java, você declara uma variável usando a sintaxe:
+
+tipoDaVariavel nomeDaVariavel;
+
+
+Os tipos de dados primitivos mais comuns em Java são int, double, char, boolean, etc.
+
+Paralelo com C++:
+
+// Exemplo em C++
+int idade;
+double altura;
+
+// Exemplo em Java
+int idade;
+double altura;

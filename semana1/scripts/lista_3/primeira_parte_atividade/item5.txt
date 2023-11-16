@@ -1,0 +1,29 @@
+5. Quando é apropriado criar suas próprias exceções personalizadas em Java e como você pode fazer isso? Dê um 
+exemplo de quando e por que você criaria uma exceção personalizada.
+
+É apropriado criar exceções personalizadas quando as exceções existentes em Java não são suficientes para expressar 
+a natureza específica de um problema em seu domínio de aplicação. Para criar uma exceção personalizada, você pode 
+estender a classe Exception ou suas subclasses.
+
+Exemplo:
+
+public class ValorNegativoException extends Exception {
+    public ValorNegativoException(String mensagem) {
+        super(mensagem);
+    }
+}
+
+public class ContaBancaria {
+    private double saldo;
+
+    public void depositar(double valor) throws ValorNegativoException {
+        if (valor < 0) {
+            throw new ValorNegativoException("Não é possível depositar um valor negativo");
+        }
+        saldo += valor;
+    }
+}
+
+
+Neste exemplo, a classe ValorNegativoException é uma exceção personalizada que pode ser lançada quando alguém tenta depositar 
+um valor negativo em uma conta bancária. Isso ajuda a criar um tratamento mais específico para esse tipo de situação no código.

@@ -1,0 +1,10 @@
+4. O que é o bloco "try-catch" em Java? Como ele funciona e por que é importante usá-lo ao lidar com exceções?
+
+O bloco try-catch em Java é utilizado para envolver um trecho de código que pode gerar exceções, permitindo que 
+o programa trate essas exceções de maneira controlada. O bloco try contém o código que pode lançar uma exceção, 
+e o bloco catch contém o código que será executado se a exceção especificada ocorrer.
+
+É importante usar o try-catch para garantir que o programa não seja interrompido abruptamente por uma exceção não 
+tratada. Isso ajuda na robustez do código, permitindo que o programa lide com exceções de maneira apropriada, 
+exibindo mensagens de erro, realizando ações alternativas ou encerrando o programa de maneira controlada.
+
