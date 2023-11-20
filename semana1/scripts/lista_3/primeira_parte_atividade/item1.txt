@@ -1,8 +1,0 @@
-1. O que é uma exceção em Java e qual é o propósito de usá-las em programas?
-
-Em Java, uma exceção é um evento anormal que ocorre durante a execução de um 
-programa, interrompendo o fluxo normal de instruções. As exceções podem ser 
-causadas por diversos motivos, como erros de programação, condições inesperadas 
-ou problemas durante a execução do programa. O propósito das exceções é fornecer 
-um mecanismo de tratamento para lidar com essas situações anormais de maneira 
-controlada, permitindo que o programa se recupere ou encerre de maneira apropriada.
