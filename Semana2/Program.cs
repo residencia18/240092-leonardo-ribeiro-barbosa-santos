@@ -130,7 +130,25 @@ static void MarcarTarefaConcluida()
         ListarTarefas(tarefasEncontradas);
     }
 
-    
+    static void ExibirEstatisticas()
+    {
+        int tarefasConcluidas = tarefas.Count(t => t.Concluida);
+        int tarefasPendentes = tarefas.Count(t => !t.Concluida);
+
+        if (tarefas.Any())
+        {
+            Tarefa tarefaMaisAntiga = tarefas.OrderBy(t => t.DataVencimento).First();
+            Tarefa tarefaMaisRecente = tarefas.OrderByDescending(t => t.DataVencimento).First();
+
+            Console.WriteLine($"Estatísticas:\nTarefas Concluídas: {tarefasConcluidas}\nTarefas Pendentes: {tarefasPendentes}\nTarefa Mais Antiga: {tarefaMaisAntiga}\nTarefa Mais Recente: {tarefaMaisRecente}");
+        }
+        else
+        {
+            Console.WriteLine("Nenhuma tarefa encontrada para exibir estatísticas.");
+        }
+    }
+
+
 
 
 class Tarefa
