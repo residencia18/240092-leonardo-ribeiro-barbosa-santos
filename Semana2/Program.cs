@@ -118,6 +118,18 @@ static void MarcarTarefaConcluida()
     }
 
 
+    static void PesquisarPorPalavraChave()
+    {
+        Console.Write("Digite a palavra-chave: ");
+        string palavraChave = Console.ReadLine().ToLower();
+
+        List<Tarefa> tarefasEncontradas = tarefas
+            .Where(t => t.Titulo.ToLower().Contains(palavraChave) || t.Descricao.ToLower().Contains(palavraChave))
+            .ToList();
+
+        ListarTarefas(tarefasEncontradas);
+    }
+
     
 
 
