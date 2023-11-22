@@ -42,3 +42,60 @@
         }
     }
 }
+
+static void CriarTarefa()
+    {
+        Console.WriteLine("Criar uma tarefa:");
+
+        Console.Write("Título: ");
+        string titulo = Console.ReadLine();
+
+        Console.Write("Descrição: ");
+        string descricao = Console.ReadLine();
+
+
+        DateTime data;
+        while (true)
+        {
+            Console.Write("Data de Vencimento (formato dd/mm/yyyy): ");
+            if (DateTime.TryParseExact(Console.ReadLine(), "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out data))
+            {
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Formato de data inválido. Tente novamente.");
+            }
+        }
+    
+
+        Tarefa novaTarefa = new Tarefa(titulo, descricao, data);
+        tarefas.Add(novaTarefa);
+        Console.WriteLine("Tarefa criada com sucesso!");
+    }
+
+
+
+
+
+
+class Tarefa
+{
+    public string Titulo {get ; set}
+    public string Descricao {get ; set}
+    public DateTime DataVencimento {get ; set}
+    public bool Concluida {get ; set}
+    
+    public Tarefa(string titulo, string descricao, DateTime dataVencimento)
+    {
+        Titulo = titulo;
+        Descricao = descricao;
+        DataVencimento = dataVencimento;
+        Concluida = false;
+    }
+
+    public override string ToString()
+    {
+        return $"{Titulo}, Descrição: {Descricao}, Data de Vencimento: {DataVencimento:dd/MM/yyyy}, {(Concluida ? "Concluída" : "Pendente")}";
+    }
+}
