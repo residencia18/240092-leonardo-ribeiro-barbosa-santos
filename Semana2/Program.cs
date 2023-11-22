@@ -101,6 +101,24 @@ static void MarcarTarefaConcluida()
         }
     }
 
+    static void ExcluirTarefa()
+    {
+        Console.Write("Digite o número da tarefa a ser excluída: ");
+        int numeroTarefa = int.Parse(Console.ReadLine());
+
+        if (numeroTarefa >= 1 && numeroTarefa <= tarefas.Count)
+        {
+            tarefas.RemoveAt(numeroTarefa - 1);
+            Console.WriteLine("Tarefa excluída com sucesso!");
+        }
+        else
+        {
+            Console.WriteLine("Opção inválida.");
+        }
+    }
+
+
+    
 
 
 class Tarefa
