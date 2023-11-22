@@ -85,7 +85,21 @@ static void ListarTarefas(List<Tarefa> listaTarefas)
         }
 }
 
+static void MarcarTarefaConcluida()
+    {
+        Console.Write("Digite o número da tarefa a ser marcada como concluída: ");
+        int numeroTarefa = int.Parse(Console.ReadLine());
 
+        if (numeroTarefa >= 1 && numeroTarefa <= tarefas.Count)
+        {
+            tarefas[numeroTarefa - 1].Concluida = true;
+            Console.WriteLine("Tarefa marcada como concluída!");
+        }
+        else
+        {
+            Console.WriteLine("Opção inválida.");
+        }
+    }
 
 
 
