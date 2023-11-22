@@ -75,6 +75,16 @@ static void CriarTarefa()
     }
 
 
+static void ListarTarefas(List<Tarefa> listaTarefas)
+{
+     Console.WriteLine("Lista de tarefas:");
+
+        for (int i = 0; i < listaTarefas.Count; i++)
+        {
+            Console.WriteLine($"Tarefa {i + 1}. {listaTarefas[i]}");
+        }
+}
+
 
 
 
