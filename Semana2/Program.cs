@@ -41,9 +41,9 @@
             }
         }
     }
-}
+    
 
-static void CriarTarefa()
+    static void CriarTarefa()
     {
         Console.WriteLine("Criar uma tarefa:");
 
@@ -75,31 +75,31 @@ static void CriarTarefa()
     }
 
 
-static void ListarTarefas(List<Tarefa> listaTarefas)
-{
-     Console.WriteLine("Lista de tarefas:");
-
-        for (int i = 0; i < listaTarefas.Count; i++)
-        {
-            Console.WriteLine($"Tarefa {i + 1}. {listaTarefas[i]}");
-        }
-}
-
-static void MarcarTarefaConcluida()
+    static void ListarTarefas(List<Tarefa> listaTarefas)
     {
-        Console.Write("Digite o número da tarefa a ser marcada como concluída: ");
-        int numeroTarefa = int.Parse(Console.ReadLine());
+        Console.WriteLine("Lista de tarefas:");
 
-        if (numeroTarefa >= 1 && numeroTarefa <= tarefas.Count)
-        {
-            tarefas[numeroTarefa - 1].Concluida = true;
-            Console.WriteLine("Tarefa marcada como concluída!");
-        }
-        else
-        {
-            Console.WriteLine("Opção inválida.");
-        }
+            for (int i = 0; i < listaTarefas.Count; i++)
+            {
+                Console.WriteLine($"Tarefa {i + 1}. {listaTarefas[i]}");
+            }
     }
+
+    static void MarcarTarefaConcluida()
+        {
+            Console.Write("Digite o número da tarefa a ser marcada como concluída: ");
+            int numeroTarefa = int.Parse(Console.ReadLine());
+
+            if (numeroTarefa >= 1 && numeroTarefa <= tarefas.Count)
+            {
+                tarefas[numeroTarefa - 1].Concluida = true;
+                Console.WriteLine("Tarefa marcada como concluída!");
+            }
+            else
+            {
+                Console.WriteLine("Opção inválida.");
+            }
+        }
 
     static void ExcluirTarefa()
     {
@@ -148,15 +148,15 @@ static void MarcarTarefaConcluida()
         }
     }
 
-
+}
 
 
 class Tarefa
 {
-    public string Titulo {get ; set}
-    public string Descricao {get ; set}
-    public DateTime DataVencimento {get ; set}
-    public bool Concluida {get ; set}
+    public string Titulo {get ; set;}
+    public string Descricao {get ; set;}
+    public DateTime DataVencimento {get ; set;}
+    public bool Concluida {get ; set;}
     
     public Tarefa(string titulo, string descricao, DateTime dataVencimento)
     {
@@ -171,3 +171,4 @@ class Tarefa
         return $"{Titulo}, Descrição: {Descricao}, Data de Vencimento: {DataVencimento:dd/MM/yyyy}, {(Concluida ? "Concluída" : "Pendente")}";
     }
 }
+
