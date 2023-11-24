@@ -11,7 +11,7 @@
 <h4 align="center">Repositorio central do Grupo</h4>
 
 ### Daniel Coutinho Neto - danielcoutinhoneto@outlook.com 
-### Leonardo Ribeiro Barbosa Santos ###
+### Leonardo Ribeiro Barbosa Santos leonardo65535@gmail.com
 ### Valber Francisco dos Santos - valberfrsantos@gmail.com
  
 #### | Repositório referente as atividades práticas, onde estará separado por branch do grupo e a individual dos colaboradores. 
