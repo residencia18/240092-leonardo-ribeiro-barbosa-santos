@@ -55,6 +55,7 @@ while True:
 
                 if descricao != "" or descricao != " ":
                     tarefas[index_tarefa] = (tarefas[index_tarefa][0], descricao, tarefas[index_tarefa][2])
+                    print("Tarefa editada com sucesso!")
                 else:
                     print("Digite uma descrição válida!")
             else:

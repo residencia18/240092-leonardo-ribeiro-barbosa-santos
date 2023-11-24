@@ -1,6 +1,17 @@
 tarefas = []
+linhas = []
 
-id = 0
+try:
+    with open('tarefas.txt', 'r') as arquivo:
+        linhas = arquivo.readlines()
+except:
+    pass
+
+if len(linhas) > 0:
+    for linha in linhas:
+        tarefas.append((linha.split()[0], linha.split()[1].rstrip('\n'), linha.split()[2]))
+
+id = len(tarefas)
 
 while True:
     print("O que deseja fazer?")
@@ -16,17 +27,10 @@ while True:
         case '1':
             descricao = input("Digite a descricao da tarefa: ")
             descricao = descricao.capitalize()
-            tarefas.append((id, descricao, '[]'))
+            tarefas.append((str(id) + ".", descricao, '[]'))
 
-            len(tarefas)
-            for i in range(len(tarefas)):
-                print("oioioioi")
-                print(str(tarefas[i][0]) + ". " + tarefas[i][1] + " " + tarefas[i][2])
-                if i < len(tarefas):
-                    with open('tarefas.txt', 'w') as f:
-                        f.write(str(tarefas[i][0]) + ". " + tarefas[i][1] + " " + tarefas[i][2])
-                else:
-                    print("Índice fora dos limites.")
+            with open('tarefas.txt', 'a') as f:
+                f.write(tarefas[-1][0] + " " + tarefas[-1][1] + " " + tarefas[-1][2] + "\n")
 
             print(f"Tarefa '{descricao}' registrada!!!")
 
@@ -35,19 +39,22 @@ while True:
             if len(tarefas) > 0:
                 print("Tarefas registradas:")
                 for i in range(len(tarefas)):
-                    print(str(tarefas[i][0]) + ". " + tarefas[i][1] + " " + tarefas[i][2])
+                    print(tarefas[i][0] + " " + tarefas[i][1] + " " + tarefas[i][2])
             else:
                 print("Nenhuma tarefa registrada!")
         case '3':
             print("Escolha a tarefa a ser concluída:")
             for i in range(len(tarefas)):
-                print(str(tarefas[i][0]) + ". " + tarefas[i][1] + " " + tarefas[i][2])
+                print(tarefas[i][0] + " " + tarefas[i][1] + " " + tarefas[i][2])
             index_tarefa = input("Digite o número referente a tarefa: ")
             index_tarefa = int(index_tarefa)
 
             if 0 <= index_tarefa < len(tarefas):
                 if tarefas[index_tarefa][2] == "[]":
                     tarefas[index_tarefa] = (tarefas[index_tarefa][0], tarefas[index_tarefa][1], "[x]")
+                    with open('tarefas.txt', 'w') as arquivo:
+                        for tarefa in tarefas:
+                            arquivo.write(tarefa[0] + " " + tarefa[1] + " " + tarefa[2] + "\n")
                     print(f"Tarefa {tarefas[index_tarefa][1]} concluída!")
                 else:
                     print("Tarefa já estava concluída!")
@@ -57,7 +64,7 @@ while True:
         case '4':
             print("Escolha a tarefa a ser editada:")
             for i in range(len(tarefas)):
-                print(str(tarefas[i][0]) + ". " + tarefas[i][1] + " " + tarefas[i][2])
+                print(tarefas[i][0] + " " + tarefas[i][1] + " " + tarefas[i][2])
             index_tarefa = input("Digite o número referente a tarefa: ")
             index_tarefa = int(index_tarefa)
 
@@ -67,6 +74,10 @@ while True:
 
                 if descricao != "" or descricao != " ":
                     tarefas[index_tarefa] = (tarefas[index_tarefa][0], descricao, tarefas[index_tarefa][2])
+                    with open('tarefas.txt', 'w') as arquivo:
+                        for tarefa in tarefas:
+                            arquivo.write(tarefa[0] + " " + tarefa[1] + " " + tarefa[2] + "\n")
+                    print("Tarefa editada com sucesso!")
                 else:
                     print("Digite uma descrição válida!")
             else:
