@@ -13,6 +13,7 @@
 ### Daniel Coutinho Neto - danielcoutinhoneto@outlook.com 
 ### Leonardo Ribeiro Barbosa Santos leonardo65535@gmail.com
 ### Valber Francisco dos Santos - valberfrsantos@gmail.com
+### Luann Firme Bomfim - luannfirme@gmail.com
  
 #### | Repositório referente as atividades práticas, onde estará separado por branch do grupo e a individual dos colaboradores. 
 
