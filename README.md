@@ -14,4 +14,5 @@
 ### Leonardo Ribeiro Barbosa Santos ###
 ### Valber Francisco dos Santos - valberfrsantos@gmail.com
  
-#### | Repositório referente as atividades práticas, onde estará separado por pastas as realizadas por semana. 
+#### | Repositório referente as atividades práticas, onde estará separado por branch do grupo e a individual dos colaboradores. 
+
