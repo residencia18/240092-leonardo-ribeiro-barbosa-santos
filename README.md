@@ -17,4 +17,3 @@
 ### Renata Chaves de Oliveira Moreno - renatachom.ads@gmail.com
  
 #### | Repositório referente as atividades práticas, onde estará separado por branch do grupo e a individual dos colaboradores. 
-
