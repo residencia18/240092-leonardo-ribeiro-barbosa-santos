@@ -139,7 +139,17 @@ public class Sessao {
 
 	public static void main(String[] args) {
 		
+		ArrayList<String> postagensUser1 = new ArrayList<String>();
+		ArrayList<String> postagensUser2 = new ArrayList<String>();
+		Usuario usuario1 = new Usuario("Teste1", "teste1@gmail.com", "12345678", postagensUser1);
+		Usuario usuario2 = new Usuario("Teste2", "teste2@gmail.com", "123456789", postagensUser2);
+		
 		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+		
+		usuarios.add(usuario1);
+		usuarios.add(usuario2);
+		
+		
 		
 		Sessao sessao = new Sessao();
 		
