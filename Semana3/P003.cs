@@ -1,95 +1,160 @@
-using System;
-using System.Collections.Generic;
 
-namespace ControleEstoque
-{
     class Program
     {
         static List<Produto> estoque = new List<Produto>();
 
         static void Main(string[] args)
         {
-            // Exemplo de uso
-            CadastrarProduto();
+            bool continuar = true;
 
-            // Consulta de produtos
+            while (continuar)
+            {
+                Console.WriteLine("Menu:");
+                Console.WriteLine("1. Cadastrar Produto");
+                Console.WriteLine("2. Consultar Produto por Código");
+                Console.WriteLine("3. Atualizar Estoque");
+                Console.WriteLine("4. Gerar Relatórios");
+                Console.WriteLine("5. Sair");
+                Console.Write("Escolha uma opção: ");
+
+                string opcao = Console.ReadLine();
+
+                switch (opcao)
+                {
+                    case "1":
+                        CadastrarProduto();
+                        break;
+                    case "2":
+                        ConsultarProdutoPorCodigoMenu();
+                        break;
+                    case "3":
+                        AtualizarEstoqueMenu();
+                        break;
+                    case "4":
+                        GerarRelatoriosMenu();
+                        break;
+                    case "5":
+                        continuar = false;
+                        Console.WriteLine("Saindo do programa.");
+                        break;
+                    default:
+                        Console.WriteLine("Opção inválida. Tente novamente.");
+                        break;
+                }
+            }
+        }
+
+        static void CadastrarProduto()
+        {
+            try
+            {
+                Console.WriteLine("Cadastro de Produto:");
+                Console.Write("Código: ");
+                int codigo = int.Parse(Console.ReadLine());
+
+                Console.Write("Nome: ");
+                string nome = Console.ReadLine();
+
+                Console.Write("Quantidade em Estoque: ");
+                int quantidade = int.Parse(Console.ReadLine());
+
+                Console.Write("Preço Unitário: ");
+                decimal preco = decimal.Parse(Console.ReadLine());
+
+                Produto novoProduto = new Produto
+                {
+                    Codigo = codigo,
+                    Nome = nome,
+                    QuantidadeEmEstoque = quantidade,
+                    PrecoUnitario = preco
+                };
+
+                estoque.Add(novoProduto);
+
+                Console.WriteLine("Produto cadastrado com sucesso!");
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine($"Erro durante o cadastro: {ex.Message}. Certifique-se de inserir um formato válido.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro inesperado: {ex.Message}");
+            }
+        }
+
+        static void ConsultarProdutoPorCodigoMenu()
+        {
             try
             {
                 Console.WriteLine("\nConsulta de Produto por Código:");
                 Console.Write("Digite o código do produto: ");
                 int codigoConsulta = int.Parse(Console.ReadLine());
-
                 var produtoConsultado = ConsultarProdutoPorCodigo(codigoConsulta);
-
-                Console.WriteLine($"Nome: {produtoConsultado.Nome}");
-                Console.WriteLine($"Quantidade em Estoque: {produtoConsultado.QuantidadeEmEstoque}");
-                Console.WriteLine($"Preço Unitário: {produtoConsultado.PrecoUnitario:C}");
+                ExibirProduto(produtoConsultado);
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine($"Erro: {ex.Message}. Certifique-se de inserir um formato válido.");
             }
             catch (ProdutoNaoEncontradoException ex)
             {
                 Console.WriteLine($"Erro: {ex.Message}");
             }
-            catch (FormatException)
-            {
-                Console.WriteLine("Erro: Entrada inválida. Certifique-se de inserir um código válido.");
-            }
             catch (Exception ex)
             {
                 Console.WriteLine($"Erro inesperado: {ex.Message}");
             }
+        }
 
-            // Atualização de Estoque
+        static void AtualizarEstoqueMenu()
+        {
             try
             {
                 Console.WriteLine("\nAtualização de Estoque:");
+                Console.Write("Digite o código do produto: ");
+                int codigoConsulta = int.Parse(Console.ReadLine());
+                var produtoConsultado = ConsultarProdutoPorCodigo(codigoConsulta);
+
                 Console.Write("Digite a quantidade a ser adicionada (negativa para saída): ");
                 int quantidadeAtualizacao = int.Parse(Console.ReadLine());
+                AtualizarEstoque(produtoConsultado, quantidadeAtualizacao);
 
-                AtualizarEstoque(estoque[0], quantidadeAtualizacao); // Atualizando o primeiro produto como exemplo
-                Console.WriteLine($"Estoque atualizado: {estoque[0].QuantidadeEmEstoque}");
+                Console.WriteLine($"Estoque atualizado: {produtoConsultado.QuantidadeEmEstoque}");
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine($"Erro: {ex.Message}. Certifique-se de inserir um formato válido.");
+            }
+            catch (ProdutoNaoEncontradoException ex)
+            {
+                Console.WriteLine($"Erro: {ex.Message}");
             }
             catch (QuantidadeInsuficienteException ex)
             {
                 Console.WriteLine($"Erro: {ex.Message}");
             }
-            catch (FormatException)
-            {
-                Console.WriteLine("Erro: Entrada inválida. Certifique-se de inserir um valor válido.");
-            }
             catch (Exception ex)
             {
                 Console.WriteLine($"Erro inesperado: {ex.Message}");
             }
         }
 
-        // Função para cadastrar produto
-        static void CadastrarProduto()
+        static void GerarRelatoriosMenu()
         {
-            Console.WriteLine("Cadastro de Produto:");
-            Console.Write("Código: ");
-            int codigo = int.Parse(Console.ReadLine());
-
-            Console.Write("Nome: ");
-            string nome = Console.ReadLine();
-
-            Console.Write("Quantidade em Estoque: ");
-            int quantidade = int.Parse(Console.ReadLine());
-
-            Console.Write("Preço Unitário: ");
-            decimal preco = decimal.Parse(Console.ReadLine());
-
-            Produto novoProduto = new Produto
+            try
             {
-                Codigo = codigo,
-                Nome = nome,
-                QuantidadeEmEstoque = quantidade,
-                PrecoUnitario = preco
-            };
-
-            estoque.Add(novoProduto);
+                // Implemente a lógica para gerar relatórios aqui
+                // Exemplo:
+                Console.WriteLine("\nGerando relatórios...");
+                Console.WriteLine("Relatórios gerados com sucesso!");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro inesperado ao gerar relatórios: {ex.Message}");
+            }
         }
 
-        // Função para consultar produto por código
         static Produto ConsultarProdutoPorCodigo(int codigo)
         {
             var produtoConsultado = estoque.Find(p => p.Codigo == codigo);
@@ -104,7 +169,6 @@ namespace ControleEstoque
             }
         }
 
-        // Função para atualizar o estoque
         static void AtualizarEstoque(Produto produto, int quantidade)
         {
             if (produto.QuantidadeEmEstoque + quantidade < 0)
@@ -114,9 +178,13 @@ namespace ControleEstoque
 
             produto.QuantidadeEmEstoque += quantidade;
         }
+
+        static void ExibirProduto(Produto produto)
+        {
+            Console.WriteLine($"Código: {produto.Codigo}, Nome: {produto.Nome}, Quantidade em Estoque: {produto.QuantidadeEmEstoque}, Preço Unitário: {produto.PrecoUnitario:C}");
+        }
     }
 
-    // Definição da estrutura da tupla
     public class Produto
     {
         public int Codigo { get; set; }
@@ -125,7 +193,13 @@ namespace ControleEstoque
         public decimal PrecoUnitario { get; set; }
     }
 
-    // Exceção personalizada para produto não encontrado
+    public class CadastroInvalidoException : Exception
+    {
+        public CadastroInvalidoException(string mensagem) : base(mensagem)
+        {
+        }
+    }
+
     public class ProdutoNaoEncontradoException : Exception
     {
         public ProdutoNaoEncontradoException(string mensagem) : base(mensagem)
@@ -133,11 +207,9 @@ namespace ControleEstoque
         }
     }
 
-    // Exceção personalizada para quantidade insuficiente em estoque
     public class QuantidadeInsuficienteException : Exception
     {
         public QuantidadeInsuficienteException(string mensagem) : base(mensagem)
         {
         }
     }
-}
