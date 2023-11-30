@@ -23,6 +23,7 @@ class Escritorio {
 
     public bool AdicionarAdvogado(Advogado advogado)
 {
+try{
     if (!advogados.Exists(a => a.CPF == advogado.CPF) && !advogados.Exists(a => a.CNA == advogado.CNA))
     {
         advogados.Add(advogado);
@@ -30,7 +31,7 @@ class Escritorio {
     }
     return false;
 }
-
+catch(Excepion)
 
     public void MostrarAdvogados()
         {
@@ -48,8 +49,7 @@ class Escritorio {
 
 
 
-static void Main() 
-{
+static void Main() {
 
  Escritorio escritorio = new Escritorio();
 
