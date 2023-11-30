@@ -19,7 +19,7 @@ class Cliente : Pessoa {
 
 class Escritorio {
     List<Advogado> advogados = new List<Advogado>();
-    //List<Cliente> clientes= new List<Cliente>();
+    List<Cliente> clientes= new List<Cliente>();
 
     public bool AdicionarAdvogado(Advogado advogado)
 {
@@ -32,14 +32,14 @@ class Escritorio {
 }
 
 
-public void MostrarAdvogados()
-    {
-        Console.WriteLine("Advogados no escritório:");
-        foreach (var advogado in advogados)
+    public void MostrarAdvogados()
         {
-            Console.WriteLine($"Nome: {advogado.Nome}, CPF: {advogado.CPF}, CNA: {advogado.CNA}");
+            Console.WriteLine("Advogados no escritório:");
+            foreach (var advogado in advogados)
+            {
+                Console.WriteLine($"Nome: {advogado.Nome}, CPF: {advogado.CPF}, CNA: {advogado.CNA}");
+            }
         }
-    }
 }
 
 
@@ -48,11 +48,12 @@ public void MostrarAdvogados()
 
 
 
-static void Main() {
+static void Main() 
+{
 
  Escritorio escritorio = new Escritorio();
 
-        Advogado advogado1 = new Advogado { Nome = "João", DataDeNascimento = new DateTime(1985, 5, 15), CPF = 123456789, CNA = 98765 };
+        Advogado advogado1 = new Advogado { Nome = "João", DataDeNascimento = new DateTimeTryParse(1985, 5, 15), CPF = 123456789, CNA = 98765 };
         escritorio.AdicionarAdvogado(advogado1);
 
         escritorio.MostrarAdvogados();
