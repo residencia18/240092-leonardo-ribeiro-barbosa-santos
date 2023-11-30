@@ -1,0 +1,5 @@
+/home/leonardo-barbosa-santos/Documentos/Dotnet_Tic18/ProvaIndividual/obj/Debug/net7.0/ProvaIndividual.csproj.AssemblyReference.cache
+/home/leonardo-barbosa-santos/Documentos/Dotnet_Tic18/ProvaIndividual/obj/Debug/net7.0/ProvaIndividual.GeneratedMSBuildEditorConfig.editorconfig
+/home/leonardo-barbosa-santos/Documentos/Dotnet_Tic18/ProvaIndividual/obj/Debug/net7.0/ProvaIndividual.AssemblyInfoInputs.cache
+/home/leonardo-barbosa-santos/Documentos/Dotnet_Tic18/ProvaIndividual/obj/Debug/net7.0/ProvaIndividual.AssemblyInfo.cs
+/home/leonardo-barbosa-santos/Documentos/Dotnet_Tic18/ProvaIndividual/obj/Debug/net7.0/ProvaIndividual.csproj.CoreCompileInputs.cache
