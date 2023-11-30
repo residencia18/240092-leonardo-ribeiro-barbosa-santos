@@ -19,7 +19,7 @@ class Cliente : Pessoa {
 
 class Escritorio {
     List<Advogado> advogados = new List<Advogado>();
-    List<Cliente> clientes= new List<Cliente>();
+    //List<Cliente> clientes= new List<Cliente>();
 
     public bool AdicionarAdvogado(Advogado advogado)
 {
@@ -31,6 +31,7 @@ class Escritorio {
     return false;
 }
 
+
 public void MostrarAdvogados()
     {
         Console.WriteLine("Advogados no escritório:");
@@ -39,9 +40,9 @@ public void MostrarAdvogados()
             Console.WriteLine($"Nome: {advogado.Nome}, CPF: {advogado.CPF}, CNA: {advogado.CNA}");
         }
     }
-
-
 }
+
+
 
 
 
