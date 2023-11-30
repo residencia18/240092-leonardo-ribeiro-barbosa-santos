@@ -3,3 +3,13 @@
 /home/leonardo-barbosa-santos/Documentos/Dotnet_Tic18/ProvaIndividual/obj/Debug/net7.0/ProvaIndividual.AssemblyInfoInputs.cache
 /home/leonardo-barbosa-santos/Documentos/Dotnet_Tic18/ProvaIndividual/obj/Debug/net7.0/ProvaIndividual.AssemblyInfo.cs
 /home/leonardo-barbosa-santos/Documentos/Dotnet_Tic18/ProvaIndividual/obj/Debug/net7.0/ProvaIndividual.csproj.CoreCompileInputs.cache
+/home/leonardo-barbosa-santos/Documentos/Dotnet_Tic18/ProvaIndividual/bin/Debug/net7.0/ProvaIndividual
+/home/leonardo-barbosa-santos/Documentos/Dotnet_Tic18/ProvaIndividual/bin/Debug/net7.0/ProvaIndividual.deps.json
+/home/leonardo-barbosa-santos/Documentos/Dotnet_Tic18/ProvaIndividual/bin/Debug/net7.0/ProvaIndividual.runtimeconfig.json
+/home/leonardo-barbosa-santos/Documentos/Dotnet_Tic18/ProvaIndividual/bin/Debug/net7.0/ProvaIndividual.dll
+/home/leonardo-barbosa-santos/Documentos/Dotnet_Tic18/ProvaIndividual/bin/Debug/net7.0/ProvaIndividual.pdb
+/home/leonardo-barbosa-santos/Documentos/Dotnet_Tic18/ProvaIndividual/obj/Debug/net7.0/ProvaIndividual.dll
+/home/leonardo-barbosa-santos/Documentos/Dotnet_Tic18/ProvaIndividual/obj/Debug/net7.0/refint/ProvaIndividual.dll
+/home/leonardo-barbosa-santos/Documentos/Dotnet_Tic18/ProvaIndividual/obj/Debug/net7.0/ProvaIndividual.pdb
+/home/leonardo-barbosa-santos/Documentos/Dotnet_Tic18/ProvaIndividual/obj/Debug/net7.0/ProvaIndividual.genruntimeconfig.cache
+/home/leonardo-barbosa-santos/Documentos/Dotnet_Tic18/ProvaIndividual/obj/Debug/net7.0/ref/ProvaIndividual.dll
