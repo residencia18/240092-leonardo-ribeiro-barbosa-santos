@@ -5,19 +5,32 @@ class Pessoa {
     public int cpf {get;set;}
 
 class Advogado:Pessoa {
-    private int cna{get;set:}
+    public int cna{get;set:}
 
 }
 
 
 Cliente : Pessoa {
-    private string estadoCivil{get;set;}
+    public string estadoCivil{get;set;}
 }
 
 
 Escritorio {
     List<Advogado> advogados = new List<Advogado>();
     List<Cliente> clientes= new List<Cliente>();
+
+    public bool adicionarAdvogado(Advogado advogado)
+{
+    if (!advogados.Exists(a => a.CPF == advogado.CPF) && !advogados.Exists(a => a.CNA == advogado.CNA))
+    {
+        advogados.Add(advogado);
+        return true;
+    }
+    return false;
+}
+
+
+
 }
 
 
@@ -28,7 +41,8 @@ Escritorio {
 
 static void main {
 
-
+Escritorio escritorio = new Escritorio();
+escritorio.adicionarAdvogado();
 
 
 
