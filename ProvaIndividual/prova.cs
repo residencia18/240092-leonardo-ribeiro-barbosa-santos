@@ -1,21 +1,23 @@
 class Pessoa {
 
-    public string nome {get;set;}
-    public DateTime dataDeNascismento {get;set;}
+    public string Nome {get;set;}
+    public DateTime DataDeNascismento {get;set;}
     public int CPF {get;set;}
 }
 class Advogado : Pessoa {
-    public int CNA{get;set:}
+    public int CNA{get;set;}
 
 }
 
 
-Cliente : Pessoa {
-    public string estadoCivil{get;set;}
+class Cliente : Pessoa {
+    public string EstadoCivil{get;set;}
 }
 
 
-Escritorio {
+
+
+class Escritorio {
     List<Advogado> advogados = new List<Advogado>();
     List<Cliente> clientes= new List<Cliente>();
 
@@ -45,12 +47,11 @@ public void MostrarAdvogados()
 
 
 
-
-static void main {
+static void Main() {
 
  Escritorio escritorio = new Escritorio();
 
-        Advogado advogado1 = new Advogado { nome = "João", dataDeNascimento = new DateTime(1985, 5, 15), CPF = 123456789, CNA = 98765 };
+        Advogado advogado1 = new Advogado { Nome = "João", DataDeNascimento = new DateTime(1985, 5, 15), CPF = 123456789, CNA = 98765 };
         escritorio.AdicionarAdvogado(advogado1);
 
         escritorio.MostrarAdvogados();
