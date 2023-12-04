@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="semana1/scripts/lista_1/calculadora_simples/src"/>
+	<classpathentry kind="src" path="semana1/scripts/lista_1/conversor_de_temperatura/src"/>
+	<classpathentry kind="src" path="semana2/P002/adivinhacao/src"/>
+	<classpathentry kind="src" path="semana2/P002/conversordemoedas/src"/>
+	<classpathentry kind="src" path="semana2/P002/manipulaarray/src"/>
+	<classpathentry kind="src" path="semana3/atividade_aula/RedeSocial/src"/>
+	<classpathentry kind="src" path="semana3/P003"/>
+	<classpathentry kind="output" path="semana1/scripts/lista_1/calculadora_simples/bin"/>
+</classpath>
