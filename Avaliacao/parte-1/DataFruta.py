@@ -171,7 +171,7 @@ class ListaDatas(AnaliseDados):
         pass
     
     def __str__(self):
-        pass
+        return f"Lista de Datas: {', '.join(map(str, self.__lista))}"
 
 class ListaSalarios(AnaliseDados):
 
@@ -258,6 +258,7 @@ def main():
         lista.mostraMediana()
         lista.mostraMenor()
         lista.mostraMaior()
+        print(lista)
         print("___________________")
 
     print("Fim do teste!!!")
