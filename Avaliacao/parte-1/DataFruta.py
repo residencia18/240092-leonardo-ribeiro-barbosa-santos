@@ -131,7 +131,7 @@ class ListaNomes(AnaliseDados):
                 print("Mediana: " + mediana1 + "," + mediana2)
                 
             else :
-                mediana = self.__lista[tamanho / 2]
+                mediana = self.__lista[tamanho // 2]
                 print("Mediana: " + mediana)
          
 
@@ -141,9 +141,8 @@ class ListaNomes(AnaliseDados):
         '''
         if len(self.__lista) == 0 :
             print("A lista está vazia. Não é possivel calcular o menor")
-        else:
-           
-            print(f"Menor nome em ordem alfabética:  {(min(self.__lista))}")
+        else :
+            print(f"Menor nome nessa lista:  {min(self.__lista,  key=len)}")
             
             
 
@@ -151,7 +150,10 @@ class ListaNomes(AnaliseDados):
         '''
         Este método retorna o maior elemento da lista
         '''
-        pass    
+        if len(self.__lista) == 0:
+            print("A lista está vazia. Não é possivel calcular o maior")
+        else :
+            print(f"Maior nome em ordem alfabética:  {(max(self.__lista, key=len))}")
 
     def __str__(self):
         pass
