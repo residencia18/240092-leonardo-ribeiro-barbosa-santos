@@ -139,30 +139,35 @@ class ListaDatas(AnaliseDados):
         self.__lista = []        
     
     def entradaDeDados(self):
-        '''
-        Este método pergunta ao usuários quantos
-        elementos vão existir na lista e depois
-        solicita a digitação de cada um deles
-        '''
+        quantidade = int(input("Digite a quantidade de elementos da lista de Datas: \n"))
+        for i in range(quantidade):
+            while True:
+                try:
+                    print(f"Data {i + 1}:")
+                    dia = int(input("Insira o dia: "))
+                    mes = int(input("Insira o mês: "))
+                    ano = int(input("Insira o ano: "))
+                    data = Data(dia, mes, ano)
+                    self.__lista.append(data)
+                    break
+                except Exception as e:
+                    print(f"Erro: {e}")
         pass
     
     def mostraMediana(self):
-        '''
-        Este método ordena a lista e mostra o
-        elemento que está na metade da lista
-        '''
-        pass    
+        lista_ordenada = sorted(self.__lista)
+        meio = len(lista_ordenada) // 2
+        if (len(lista_ordenada) % 2 == 0):
+            print(f"\nMediana das datas: {lista_ordenada[meio-1]}")
+        else:
+            print(f"Mediana das datas: {lista_ordenada[meio]}")
      
     def mostraMenor(self):
-        '''
-        Este método retorna o menos elemento da lista
-        '''
+        print(f"\nMenor data: {min(self.__lista)}")
         pass
     
     def mostraMaior(self):
-        '''
-        Este método retorna o maior elemento da lista
-        '''
+        print(f"Maior data: {max(self.__lista)}")
         pass
     
     def __str__(self):
