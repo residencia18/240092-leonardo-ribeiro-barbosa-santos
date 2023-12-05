@@ -163,8 +163,7 @@ class ListaNomes(AnaliseDados):
             print(f"Maior elemento na lista:  {(max(self.__lista, key=len))}")
 
     def __str__(self):
-        pass
-	
+        return f"Lista de nomes: {','.join(self.__lista)}"
 class ListaDatas(AnaliseDados):
         
     def __init__(self):
