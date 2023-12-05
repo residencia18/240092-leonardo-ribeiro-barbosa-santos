@@ -139,20 +139,24 @@ class ListaDatas(AnaliseDados):
         self.__lista = []        
     
     def entradaDeDados(self):
-        quantidade = int(input("Digite a quantidade de elementos da lista de Datas: \n"))
-        for i in range(quantidade):
-            while True:
-                try:
-                    print(f"Data {i + 1}:")
-                    dia = int(input("Insira o dia: "))
-                    mes = int(input("Insira o mês: "))
-                    ano = int(input("Insira o ano: "))
-                    data = Data(dia, mes, ano)
-                    self.__lista.append(data)
-                    break
-                except Exception as e:
-                    print(f"Erro: {e}")
-        pass
+        while True:
+            try:
+                quantidade = int(input("Insira a quantidade de elementos da lista de Datas: \n"))
+                for i in range(quantidade):
+                    while True:
+                        try:
+                            print(f"Data {i + 1}:")
+                            dia = int(input("Insira o dia: "))
+                            mes = int(input("Insira o mês: "))
+                            ano = int(input("Insira o ano: "))
+                            data = Data(dia, mes, ano)
+                            self.__lista.append(data)
+                            break
+                        except Exception as e:
+                            print(f"Erro: {e}")
+                break
+            except Exception as e:
+                print(f"Erro: {e}")
     
     def mostraMediana(self):
         lista_ordenada = sorted(self.__lista)
@@ -251,7 +255,7 @@ def main():
     salarios = ListaSalarios()
     idades = ListaIdades()
 
-    listaListas = [nomes, datas, salarios, idades]
+    listaListas = [datas]
 
     for lista in listaListas:
         lista.entradaDeDados()
