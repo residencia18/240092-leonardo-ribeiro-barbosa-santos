@@ -142,9 +142,9 @@ class ListaNomes(AnaliseDados):
         Este método retorna o menos elemento da lista
         '''
         if len(self.__lista) == 0 :
-            print("A lista está vazia. Não é possivel calcular o menor")
+            print("A lista está vazia. Não é possivel calcular o menor elemento")
         else :
-            print(f"Menor nome nessa lista:  {min(self.__lista,  key=len)}")
+            print(f"Menor elemento nessa lista:  {min(self.__lista,  key=len)}")
             
             
 
@@ -153,9 +153,9 @@ class ListaNomes(AnaliseDados):
         Este método retorna o maior elemento da lista
         '''
         if len(self.__lista) == 0:
-            print("A lista está vazia. Não é possivel calcular o maior")
+            print("A lista está vazia. Não é possivel calcular o maior elemento")
         else :
-            print(f"Maior nome na lista:  {(max(self.__lista, key=len))}")
+            print(f"Maior elemento na lista:  {(max(self.__lista, key=len))}")
 
     def __str__(self):
         pass
