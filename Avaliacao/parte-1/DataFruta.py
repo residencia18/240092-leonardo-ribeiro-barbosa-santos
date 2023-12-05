@@ -119,7 +119,21 @@ class ListaNomes(AnaliseDados):
         Este método ordena a lista e mostra o
         elemento que está na metade da lista
         '''
-        pass    
+        tamanho = self.__lista.__sizeof__()
+        if tamanho == 0 :
+            print("A lista está vazia. Não é possivel calcular a mediana")
+        else :
+            self.__lista.sort()
+            tamanho = len(self.__lista)
+            if tamanho % 2 == 0:
+                mediana1 = self.__lista[tamanho // 2 - 1]
+                mediana2 = self.__lista[tamanho // 2]
+                print("Mediana: " + mediana1 + "," + mediana2)
+                
+            else :
+                mediana = self.__lista[tamanho / 2]
+                print("Mediana: " + mediana)
+         
 
     def mostraMenor(self):
         '''
