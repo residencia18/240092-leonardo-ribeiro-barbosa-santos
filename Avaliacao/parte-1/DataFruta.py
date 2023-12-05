@@ -108,7 +108,11 @@ class ListaNomes(AnaliseDados):
         elementos vão existir na lista e depois
         solicita a digitação de cada um deles.
         '''
-        pass
+        nElementos= int(input("Quantos elementos vao existir na lista? "))
+        for elemento in range(nElementos):
+            elemento = input("Digite um nome: ")
+            self.__lista.append(elemento)
+            print(self.__lista)
 
     def mostraMediana(self):
         '''
