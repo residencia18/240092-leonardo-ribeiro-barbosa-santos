@@ -139,7 +139,13 @@ class ListaNomes(AnaliseDados):
         '''
         Este método retorna o menos elemento da lista
         '''
-        pass
+        if len(self.__lista) == 0 :
+            print("A lista está vazia. Não é possivel calcular o menor")
+        else:
+           
+            print(f"Menor nome em ordem alfabética:  {(min(self.__lista))}")
+            
+            
 
     def mostraMaior(self):
         '''
