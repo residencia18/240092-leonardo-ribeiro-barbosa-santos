@@ -172,37 +172,41 @@ class ListaSalarios(AnaliseDados):
 
     def __init__(self):
         super().__init__(type(float))
-        self.__lista = []        
+        self.__lista = []      
+
+    def getLista(self):
+        return self.__lista      
 
     def entradaDeDados(self):
-        '''
-        Este método pergunta ao usuários quantos
-        elementos vão existir na lista e depois
-        solicita a digitação de cada um deles
-        '''
-        pass
+        while True:
+            try:
+                quantidade = int(input("Insira a quantidade de elementos da lista de Salários: "))
+                for i in range(quantidade):
+                    salario = float(input("Digite o salario: "))
+                    self.__lista.append(salario)
+                break
+            except Exception as e:
+                print(f"Erro: {e}")
 
     def mostraMediana(self):
-        '''
-        Este método ordena a lista e mostra o
-        elemento que está na metade da lista
-        '''
-        pass    
+        lista_ordenada = sorted(self.__lista)
+        tamanho = len(lista_ordenada)
+        if len(lista_ordenada) % 2 == 0:
+            print(f"\nMediana dos salarios: {(lista_ordenada[tamanho // 2 - 1] + lista_ordenada[tamanho // 2]) / 2}")
+        else:
+            print(f"Mediana dos salarios: {lista_ordenada[tamanho // 2]}")
 
     def mostraMenor(self):
-        '''
-        Este método retorna o menos elemento da lista
-        '''
-        pass
+        print(f"\nMenor salario: {min(self.__lista)}")
 
     def mostraMaior(self):
-        '''
-        Este método retorna o maior elemento da lista
-        '''
-        pass
+        print(f"Maior salario: {max(self.__lista)}")
+
+    def listarEmOrdem(self):
+        print(f"Lista de salários ordenada: {sorted(self.__lista)}")
     
     def __str__(self):
-        pass
+        return f"Lista de salarios: {self.__lista}"
 
 class ListaIdades(AnaliseDados):
     
