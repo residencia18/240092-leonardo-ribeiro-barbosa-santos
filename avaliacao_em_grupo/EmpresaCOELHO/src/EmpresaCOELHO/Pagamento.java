@@ -21,7 +21,27 @@ public class Pagamento {
 	        return matriculaFatura;
 	    }
 
-	    public double getValorPago() {
+	    public ArrayList<Pagamento> getPagamentos() {
+			return pagamentos;
+		}
+
+		public void setPagamentos(ArrayList<Pagamento> pagamentos) {
+			this.pagamentos = pagamentos;
+		}
+
+		public void setMatriculaFatura(String matriculaFatura) {
+			this.matriculaFatura = matriculaFatura;
+		}
+
+		public void setValorPago(double valorPago) {
+			this.valorPago = valorPago;
+		}
+
+		public void setDataPagamento(LocalDate dataPagamento) {
+			this.dataPagamento = dataPagamento;
+		}
+
+		public double getValorPago() {
 	        return valorPago;
 	    }
 
@@ -39,4 +59,9 @@ public class Pagamento {
 	    public void registrarPagamento(Pagamento pagamento) {
 	        pagamentos.add(pagamento);
 	    }
+
+		public boolean isReembolso() {
+			// TODO Stub de método gerado automaticamente
+			return false;
+		}
 }

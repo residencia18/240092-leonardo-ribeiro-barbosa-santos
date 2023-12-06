@@ -15,4 +15,25 @@ public class Falha {
     public String getDescricao() {
         return descricao;
     }
+	public String getTipo() {
+		return tipo;
+	}
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+	public String getMatriculaImovelAssociado() {
+		return matriculaImovelAssociado;
+	}
+	public void setMatriculaImovelAssociado(String matriculaImovelAssociado) {
+		this.matriculaImovelAssociado = matriculaImovelAssociado;
+	}
+	public boolean isReportadaPorCliente() {
+		return reportadaPorCliente;
+	}
+	public void setReportadaPorCliente(boolean reportadaPorCliente) {
+		this.reportadaPorCliente = reportadaPorCliente;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 }

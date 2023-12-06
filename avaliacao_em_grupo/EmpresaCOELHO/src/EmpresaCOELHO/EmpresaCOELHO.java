@@ -22,7 +22,7 @@ public class EmpresaCOELHO {
     }
     
 	public static void main(String[] args) {
-		COELHO sistema = new COELHO();
+		EmpresaCOELHO sistema = new EmpresaCOELHO();
         Scanner scanner = new Scanner(System.in);
         int opcao = -1;
 
@@ -59,16 +59,16 @@ public class EmpresaCOELHO {
                         sistema.gestaoImoveis();
                         break;
                     case 3:
-                        sistema.gestaoFaturas();
+                       // sistema.gestaoFaturas();
                         break;
                     case 4:
-                        sistema.gestaoPagamentos();
+                       // sistema.gestaoPagamentos();
                         break;
                     case 5:
-                        sistema.gestaoFalhas();
+                      //  sistema.gestaoFalhas();
                         break;
                     case 6:
-                        sistema.gestaoReparos();
+                      //  sistema.gestaoReparos();
                         break;
                     case 7:
                         System.out.println("Saindo...");
@@ -247,7 +247,7 @@ public class EmpresaCOELHO {
         String endereco = scanner.nextLine();
 
         // Lógica para criar um novo imóvel e adicionar à lista
-        Imovel novoImovel = new Imovel(endereco);
+        Imovel novoImovel = new Imovel(endereco, 0, 0, endereco);
         imoveis.add(novoImovel);
         System.out.println("Imóvel adicionado com sucesso!");
     }
@@ -315,7 +315,10 @@ public class EmpresaCOELHO {
                 return;
             }
         }
-        System.out.println("Imóvel não encontrado!");
+    }
+}
+
+ /*       System.out.println("Imóvel não encontrado!");
     }
     public void gestaoFaturas() {
         Scanner scanner = new Scanner(System.in);
@@ -609,3 +612,4 @@ public class EmpresaCOELHO {
 	}
 
 }
+*/
