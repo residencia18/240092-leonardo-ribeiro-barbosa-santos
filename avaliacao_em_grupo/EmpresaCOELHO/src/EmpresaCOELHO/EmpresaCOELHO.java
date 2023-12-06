@@ -1,237 +1,18 @@
-package COELHO;
+package EmpresaCOELHO;
+
 import java.util.ArrayList;
-import java.util.Scanner;
-import java.time.LocalDate;
 import java.util.InputMismatchException;
+import java.util.Scanner;
 
-class Cliente {
-    private String nome;
-    private String cpf;
-
-    public Cliente(String nome, String cpf) {
-        this.nome = nome;
-        this.cpf = cpf;
-    }
-
-    // Getters e Setters
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-    
-    public String toString() {
-        return "Nome: " + nome + ", CPF: " + cpf;
-    }
-}
-
-class Imovel {
-    private String endereco;
-    private double consumoAtual;
-    private double consumoAnterior;
-    private String matricula;
-
-    public Imovel(String endereco, double consumoAtual, double consumoAnterior, String matricula) {
-        this.endereco = endereco;
-        this.consumoAtual = consumoAtual;
-        this.consumoAnterior = consumoAnterior;
-        this.matricula = matricula;
-    }
-
-    // Getters e Setters
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
-    public double getConsumoAtual() {
-        return consumoAtual;
-    }
-
-    public void setConsumoAtual(double consumoAtual) {
-        this.consumoAtual = consumoAtual;
-    }
-
-    public double getConsumoAnterior() {
-        return consumoAnterior;
-    }
-
-    public void setConsumoAnterior(double consumoAnterior) {
-        this.consumoAnterior = consumoAnterior;
-    }
-
-    public double calcularConsumoPeriodo() {
-        return consumoAtual - consumoAnterior;
-    }
-    public String getMatricula() {     
-        return matricula;
-    }
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
-    }
-}
-
-class Fatura {
-    private String matriculaImovel;
-    private double leituraAnterior;
-    private double leituraAtual;
-    private LocalDate dataEmissao;
-    private double valorCalculado;
-    private boolean estaQuitada;
-
-    public Fatura(String matriculaImovel, double leituraAnterior, double leituraAtual) {
-        this.matriculaImovel = matriculaImovel;
-        this.leituraAnterior = leituraAnterior;
-        this.leituraAtual = leituraAtual;
-        this.dataEmissao = LocalDate.now();
-        this.valorCalculado = calcularValorFatura();
-        this.estaQuitada = false;
-    }
-
-    public double calcularValorFatura() {
-        return (leituraAtual - leituraAnterior) * 10;
-    }
-
-    public void marcarComoQuitada() {
-        this.estaQuitada = true;
-    }
-
-    public boolean estaQuitada() {
-        return estaQuitada;
-    }
-    
-    public boolean isQuitada() {
-        return estaQuitada;
-    }
-
-    public void registrarPagamento(Pagamento pagamento) {
-
-    }
-
-    @Override
-    public String toString() {
-        return "Matrícula do Imóvel: " + matriculaImovel +
-               "\nData de Emissão: " + dataEmissao +
-               "\nLeitura Anterior: " + leituraAnterior +
-               "\nLeitura Atual: " + leituraAtual +
-               "\nValor Calculado: R$" + valorCalculado +
-               "\nQuitada: " + (estaQuitada ? "Sim" : "Não");
-    }
-}
-
-class Pagamento {
-    private String matriculaFatura;
-    private double valorPago;
-    private LocalDate dataPagamento;
-    
-    private ArrayList<Pagamento> pagamentos;
-
-    public Pagamento(String matriculaFatura, double valorPago) {
-        this.matriculaFatura = matriculaFatura;
-        this.valorPago = valorPago;
-        this.dataPagamento = LocalDate.now();
-        this.pagamentos = new ArrayList<>();
-    }
-
-    public String getMatriculaFatura() {
-        return matriculaFatura;
-    }
-
-    public double getValorPago() {
-        return valorPago;
-    }
-
-    public LocalDate getDataPagamento() {
-        return dataPagamento;
-    }
-
-    @Override
-    public String toString() {
-        return "Matrícula da Fatura: " + matriculaFatura +
-               "\nValor Pago: R$" + valorPago +
-               "\nData do Pagamento: " + dataPagamento;
-    }
-    
-    public void registrarPagamento(Pagamento pagamento) {
-        pagamentos.add(pagamento);
-    }
-}
-
-class Falha {
-    private String tipo;
-    private String matriculaImovelAssociado;
-    private boolean reportadaPorCliente;
-    private String descricao;
-    
-    public Falha(String tipo, String matriculaImovelAssociado, boolean reportadaPorCliente, String descricao) {
-        this.tipo = tipo;
-        this.matriculaImovelAssociado = matriculaImovelAssociado;
-        this.reportadaPorCliente = reportadaPorCliente;
-        this.descricao = descricao;
-    }
-    public String getDescricao() {
-        return descricao;
-    }
-}
-
-class Reparo {
-    private Falha falhaAssociada;
-    private String previsao;
-    private String dataInicio;
-    private String dataFim;
-    private boolean concluido;
-
-    public Reparo(Falha falhaAssociada, String previsao, String dataInicio) {
-        this.falhaAssociada = falhaAssociada;
-        this.previsao = previsao;
-        this.dataInicio = dataInicio;
-        this.concluido = false;
-    }
-
-    public boolean isConcluido() {
-        return concluido;
-    }
-
-    public void setConcluido(boolean concluido) {
-        this.concluido = concluido;
-    }
-
-    @Override
-    public String toString() {
-        return "Falha: " + falhaAssociada.getTipo() +
-               "\nDescrição: " + falhaAssociada.getDescricao() +
-               "\nPrevisão: " + previsao +
-               "\nData de Início: " + dataInicio +
-               "\nData de Fim: " + dataFim +
-               "\nConcluído: " + (concluido ? "Sim" : "Não");
-    }
-    public void setDataFinalizacao(String dataFinalizacao) {
-        this.dataFim = dataFinalizacao;
-    }
-}
-
-public class COELHO {
-    private ArrayList<Cliente> clientes;
+public class EmpresaCOELHO {
+	private ArrayList<Cliente> clientes;
     private ArrayList<Imovel> imoveis;
     private ArrayList<Fatura> faturas;
     private ArrayList<Pagamento> pagamentos;
     private ArrayList<Falha> falhas;
     private ArrayList<Reparo> reparos;
 
-    public COELHO() {
+    public EmpresaCOELHO() {
         clientes = new ArrayList<>();
         imoveis = new ArrayList<>();
         faturas = new ArrayList<>();
@@ -239,9 +20,9 @@ public class COELHO {
         falhas = new ArrayList<>();
         reparos = new ArrayList<>();
     }
-
-    public static void main(String[] args) {
-        COELHO sistema = new COELHO();
+    
+	public static void main(String[] args) {
+		COELHO sistema = new COELHO();
         Scanner scanner = new Scanner(System.in);
         int opcao = -1;
 
@@ -303,9 +84,10 @@ public class COELHO {
         } while (opcao != 7);
 
         scanner.close();
-    }
 
-    public void gestaoClientes() {
+	}
+	
+	public void gestaoClientes() {
         Scanner scanner = new Scanner(System.in);
         int opcaoCliente;
 
@@ -692,137 +474,138 @@ public class COELHO {
         return null;
     }
 
-public void gestaoFalhas() {
-    Scanner scanner = new Scanner(System.in);
-    int opcaoFalha;
+	public void gestaoFalhas() {
+	    Scanner scanner = new Scanner(System.in);
+	    int opcaoFalha;
+	
+	    do {
+	        System.out.println("=== GESTÃO DE FALHAS ===");
+	        System.out.println("1. Incluir Falha");
+	        System.out.println("2. Voltar");
+	        System.out.print("Escolha uma opção: ");
+	        opcaoFalha = scanner.nextInt();
+	
+	        switch (opcaoFalha) {
+	            case 1:
+	                incluirFalha(scanner);
+	                break;
+	            case 2:
+	                System.out.println("Voltando ao Menu Principal...");
+	                break;
+	            default:
+	                System.out.println("Opção inválida!");
+	                break;
+	        }
+	    } while (opcaoFalha != 2);
+	}
 
-    do {
-        System.out.println("=== GESTÃO DE FALHAS ===");
-        System.out.println("1. Incluir Falha");
-        System.out.println("2. Voltar");
-        System.out.print("Escolha uma opção: ");
-        opcaoFalha = scanner.nextInt();
+	private void incluirFalha(Scanner scanner) {
+	    System.out.println("Digite o tipo de falha (Geração ou Distribuição):");
+	    String tipoFalha = scanner.next();
+	    scanner.nextLine(); // Limpar o buffer
+	    System.out.println("Digite a descrição da falha:");
+	    String descricao = scanner.nextLine();
+	
+	    // Lógica para incluir a falha
+	    Falha novaFalha = new Falha(tipoFalha, descricao);
+	    falhas.add(novaFalha);
+	
+	    if (tipoFalha.equalsIgnoreCase("Distribuição")) {
+	        iniciarReparo(novaFalha, scanner);
+	    }
+	
+	    System.out.println("Falha registrada com sucesso!");
+	}
 
-        switch (opcaoFalha) {
-            case 1:
-                incluirFalha(scanner);
-                break;
-            case 2:
-                System.out.println("Voltando ao Menu Principal...");
-                break;
-            default:
-                System.out.println("Opção inválida!");
-                break;
-        }
-    } while (opcaoFalha != 2);
-}
+	private void iniciarReparo(Falha falha, Scanner scanner) {
+	    System.out.println("Digite a previsão inicial para o reparo:");
+	    String previsao = scanner.nextLine();
+	    System.out.println("Digite a data de início do reparo:");
+	    String dataInicio = scanner.nextLine();
+	
+	    // Lógica para iniciar o reparo
+	    Reparo novoReparo = new Reparo(falha, previsao, dataInicio);
+	    reparos.add(novoReparo);
+	    falha.setReparoAssociado(novoReparo);
+	    System.out.println("Reparo iniciado com sucesso!");
+	}
 
-private void incluirFalha(Scanner scanner) {
-    System.out.println("Digite o tipo de falha (Geração ou Distribuição):");
-    String tipoFalha = scanner.next();
-    scanner.nextLine(); // Limpar o buffer
-    System.out.println("Digite a descrição da falha:");
-    String descricao = scanner.nextLine();
+	public void listarReparosAbertos() {
+	    System.out.println("=== REPAROS EM ABERTO ===");
+	    for (Reparo reparo : reparos) {
+	        if (!reparo.isConcluido()) {
+	            System.out.println(reparo);
+	        }
+	    }
+	}
 
-    // Lógica para incluir a falha
-    Falha novaFalha = new Falha(tipoFalha, descricao);
-    falhas.add(novaFalha);
+	public void gestaoReparos() {
+	    Scanner scanner = new Scanner(System.in);
+	    int opcaoReparo;
+	
+	    do {
+	        System.out.println("=== GESTÃO DE REPAROS ===");
+	        System.out.println("1. Listar Reparos em Aberto");
+	        System.out.println("2. Encerrar Reparo");
+	        System.out.println("3. Voltar");
+	        System.out.print("Escolha uma opção: ");
+	        opcaoReparo = scanner.nextInt();
+	
+	        switch (opcaoReparo) {
+	            case 1:
+	                listarReparosAbertos();
+	                break;
+	            case 2:
+	                encerrarReparo(scanner);
+	                break;
+	            case 3:
+	                System.out.println("Voltando ao Menu Principal...");
+	                break;
+	            default:
+	                System.out.println("Opção inválida!");
+	                break;
+	        }
+	    } while (opcaoReparo != 3);
+	}
 
-    if (tipoFalha.equalsIgnoreCase("Distribuição")) {
-        iniciarReparo(novaFalha, scanner);
-    }
+	private void encerrarReparo(Scanner scanner) {
+	    System.out.println("Digite o ID do reparo a ser encerrado:");
+	    int idReparo = scanner.nextInt();
+	
+	    Reparo reparo = buscarReparoPorID(idReparo);
+	    if (reparo != null && !reparo.isConcluido()) {
+	        System.out.println("O reparo resolveu a falha? (s/n)");
+	        String resolveu = scanner.next();
+	
+	        if (resolveu.equalsIgnoreCase("s")) {
+	            reparo.setConcluido(true);
+	            reparo.setDataFinalizacao("data atual"); // Defina a data atual do sistema aqui
+	            System.out.println("Reparo encerrado com sucesso!");
+	        } else {
+	            iniciarNovoReparo(reparo, scanner);
+	        }
+	    } else {
+	        System.out.println("Reparo não encontrado ou já encerrado!");
+	    }
+	}
 
-    System.out.println("Falha registrada com sucesso!");
-}
+	private void iniciarNovoReparo(Reparo reparoAnterior, Scanner scanner) {
+	    System.out.println("Digite a descrição do novo reparo:");
+	    String descricao = scanner.next();
+	
+	    Reparo novoReparo = new Reparo(reparoAnterior.getFalha(), descricao);
+	    reparos.add(novoReparo);
+	    reparoAnterior.getFalha().setReparoAssociado(novoReparo);
+	    System.out.println("Novo reparo iniciado com sucesso!");
+	}
 
-private void iniciarReparo(Falha falha, Scanner scanner) {
-    System.out.println("Digite a previsão inicial para o reparo:");
-    String previsao = scanner.nextLine();
-    System.out.println("Digite a data de início do reparo:");
-    String dataInicio = scanner.nextLine();
+	public void listarReparosAbertos() {
+	    System.out.println("=== REPAROS EM ABERTO ===");
+	    for (Reparo reparo : reparos) {
+	        if (!reparo.isConcluido()) {
+	            System.out.println(reparo);
+	        }
+	    }
+	}
 
-    // Lógica para iniciar o reparo
-    Reparo novoReparo = new Reparo(falha, previsao, dataInicio);
-    reparos.add(novoReparo);
-    falha.setReparoAssociado(novoReparo);
-    System.out.println("Reparo iniciado com sucesso!");
-}
-
-public void listarReparosAbertos() {
-    System.out.println("=== REPAROS EM ABERTO ===");
-    for (Reparo reparo : reparos) {
-        if (!reparo.isConcluido()) {
-            System.out.println(reparo);
-        }
-    }
-}
-
-public void gestaoReparos() {
-    Scanner scanner = new Scanner(System.in);
-    int opcaoReparo;
-
-    do {
-        System.out.println("=== GESTÃO DE REPAROS ===");
-        System.out.println("1. Listar Reparos em Aberto");
-        System.out.println("2. Encerrar Reparo");
-        System.out.println("3. Voltar");
-        System.out.print("Escolha uma opção: ");
-        opcaoReparo = scanner.nextInt();
-
-        switch (opcaoReparo) {
-            case 1:
-                listarReparosAbertos();
-                break;
-            case 2:
-                encerrarReparo(scanner);
-                break;
-            case 3:
-                System.out.println("Voltando ao Menu Principal...");
-                break;
-            default:
-                System.out.println("Opção inválida!");
-                break;
-        }
-    } while (opcaoReparo != 3);
-}
-
-private void encerrarReparo(Scanner scanner) {
-    System.out.println("Digite o ID do reparo a ser encerrado:");
-    int idReparo = scanner.nextInt();
-
-    Reparo reparo = buscarReparoPorID(idReparo);
-    if (reparo != null && !reparo.isConcluido()) {
-        System.out.println("O reparo resolveu a falha? (s/n)");
-        String resolveu = scanner.next();
-
-        if (resolveu.equalsIgnoreCase("s")) {
-            reparo.setConcluido(true);
-            reparo.setDataFinalizacao("data atual"); // Defina a data atual do sistema aqui
-            System.out.println("Reparo encerrado com sucesso!");
-        } else {
-            iniciarNovoReparo(reparo, scanner);
-        }
-    } else {
-        System.out.println("Reparo não encontrado ou já encerrado!");
-    }
-}
-
-private void iniciarNovoReparo(Reparo reparoAnterior, Scanner scanner) {
-    System.out.println("Digite a descrição do novo reparo:");
-    String descricao = scanner.next();
-
-    Reparo novoReparo = new Reparo(reparoAnterior.getFalha(), descricao);
-    reparos.add(novoReparo);
-    reparoAnterior.getFalha().setReparoAssociado(novoReparo);
-    System.out.println("Novo reparo iniciado com sucesso!");
-}
-
-public void listarReparosAbertos() {
-    System.out.println("=== REPAROS EM ABERTO ===");
-    for (Reparo reparo : reparos) {
-        if (!reparo.isConcluido()) {
-            System.out.println(reparo);
-        }
-    }
-}
 }
