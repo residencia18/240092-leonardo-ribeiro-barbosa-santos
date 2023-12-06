@@ -49,14 +49,11 @@ img {
     text-align: center;
     font-size: 15px;
 }
-button {
-    
-}
 
 button:active {
     transform: scale(095%);
 }
-button:hover{
+button:hover {
     box-shadow: 5px 5px 5px yellowgreen;
     background-color: green;
 }
