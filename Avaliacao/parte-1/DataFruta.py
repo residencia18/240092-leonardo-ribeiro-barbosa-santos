@@ -108,30 +108,62 @@ class ListaNomes(AnaliseDados):
         elementos vão existir na lista e depois
         solicita a digitação de cada um deles.
         '''
-        pass
+        while True:
+            try:
+                nElementos = int(input("Quantos elementos vao existir na lista? "))
+                for elemento in range(nElementos):
+                    elemento = input("Digite um nome: ")
+                    self.__lista.append(elemento)
+                    print(self.__lista)
+                break
+            except Exception as e:
+                print(f"Erro: {e}")
 
     def mostraMediana(self):
         '''
         Este método ordena a lista e mostra o
         elemento que está na metade da lista
         '''
-        pass    
+        tamanho = len(self.__lista)
+        
+        if tamanho == 0 :
+            print("A lista está vazia. Não é possivel calcular a mediana")
+        else :
+            listaOrdenada = sorted(self.__lista, key=len)
+            tamanhoOrdenado = len(listaOrdenada)
+            
+            if tamanhoOrdenado % 2 == 0:
+                mediana1 = self.__lista[tamanhoOrdenado // 2 - 1]
+                mediana2 = self.__lista[tamanhoOrdenado // 2]
+                print("Mediana: " + mediana1 + "," + mediana2)
+                
+            else :
+                mediana = self.__lista[tamanho // 2]
+                print(f"Mediana:  {mediana}")
+         
 
     def mostraMenor(self):
         '''
         Este método retorna o menos elemento da lista
         '''
-        pass
+        if len(self.__lista) == 0 :
+            print("A lista está vazia. Não é possivel calcular o menor elemento")
+        else :
+            print(f"Menor elemento nessa lista:  {min(self.__lista,  key=len)}")
+            
+            
 
     def mostraMaior(self):
         '''
         Este método retorna o maior elemento da lista
         '''
-        pass    
+        if len(self.__lista) == 0:
+            print("A lista está vazia. Não é possivel calcular o maior elemento")
+        else :
+            print(f"Maior elemento na lista:  {(max(self.__lista, key=len))}")
 
     def __str__(self):
-        pass
-	
+        return f"Lista de nomes: {', '.join(self.__lista)}"
 class ListaDatas(AnaliseDados):
         
     def __init__(self):
