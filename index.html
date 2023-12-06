@@ -65,7 +65,11 @@
                         preco: preco,
                         inclusos:[]
                     };
+                    var inclusos = roteiroPai.querySelectorAll(".roteiro-incluso li");
+                    for (var j = 0; j < inclusos.length; j++) {
+                        pacoteTuristico.inclusos.push(inclusos[j].innerText);
 
+                    }
                     console.log(pacoteTuristico);
                 });
             
