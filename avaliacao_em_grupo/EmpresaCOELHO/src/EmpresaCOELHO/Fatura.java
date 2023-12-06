@@ -19,7 +19,11 @@ public class Fatura {
         this.estaQuitada = false;
     }
 
-    public double calcularValorFatura() {
+    public Fatura(Imovel imovel, double ultimaLeitura) {
+		// TODO Stub de construtor gerado automaticamente
+	}
+
+	public double calcularValorFatura() {
         return (leituraAtual - leituraAnterior) * 10;
     }
 
@@ -31,7 +35,55 @@ public class Fatura {
         return estaQuitada;
     }
     
-    public boolean isQuitada() {
+    public String getMatriculaImovel() {
+		return matriculaImovel;
+	}
+
+	public void setMatriculaImovel(String matriculaImovel) {
+		this.matriculaImovel = matriculaImovel;
+	}
+
+	public double getLeituraAnterior() {
+		return leituraAnterior;
+	}
+
+	public void setLeituraAnterior(double leituraAnterior) {
+		this.leituraAnterior = leituraAnterior;
+	}
+
+	public double getLeituraAtual() {
+		return leituraAtual;
+	}
+
+	public void setLeituraAtual(double leituraAtual) {
+		this.leituraAtual = leituraAtual;
+	}
+
+	public LocalDate getDataEmissao() {
+		return dataEmissao;
+	}
+
+	public void setDataEmissao(LocalDate dataEmissao) {
+		this.dataEmissao = dataEmissao;
+	}
+
+	public double getValorCalculado() {
+		return valorCalculado;
+	}
+
+	public void setValorCalculado(double valorCalculado) {
+		this.valorCalculado = valorCalculado;
+	}
+
+	public boolean isEstaQuitada() {
+		return estaQuitada;
+	}
+
+	public void setEstaQuitada(boolean estaQuitada) {
+		this.estaQuitada = estaQuitada;
+	}
+
+	public boolean isQuitada() {
         return estaQuitada;
     }
 

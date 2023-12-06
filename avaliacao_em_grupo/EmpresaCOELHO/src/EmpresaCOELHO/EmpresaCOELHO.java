@@ -59,7 +59,7 @@ public class EmpresaCOELHO {
                         sistema.gestaoImoveis();
                         break;
                     case 3:
-                       // sistema.gestaoFaturas();
+                        sistema.gestaoFaturas();
                         break;
                     case 4:
                        // sistema.gestaoPagamentos();
@@ -315,10 +315,10 @@ public class EmpresaCOELHO {
                 return;
             }
         }
-    }
-}
+    
 
- /*       System.out.println("Imóvel não encontrado!");
+
+        System.out.println("Imóvel não encontrado!");
     }
     public void gestaoFaturas() {
         Scanner scanner = new Scanner(System.in);
@@ -396,6 +396,8 @@ public class EmpresaCOELHO {
         return null;
     }
 
+
+    
     public void gestaoPagamentos() {
         Scanner scanner = new Scanner(System.in);
         int opcaoPagamento;
@@ -444,7 +446,7 @@ public class EmpresaCOELHO {
             pagamentos.add(novoPagamento);
 
             if (fatura.getValorRestante() <= 0) {
-                fatura.setQuitada(true);
+                fatura.setEstaQuitada(true);
                 System.out.println("Fatura quitada!");
             } else {
                 System.out.println("Pagamento registrado com sucesso!");
@@ -476,7 +478,8 @@ public class EmpresaCOELHO {
         // Lógica para buscar a fatura pelo número
         return null;
     }
-
+}
+    /*
 	public void gestaoFalhas() {
 	    Scanner scanner = new Scanner(System.in);
 	    int opcaoFalha;
