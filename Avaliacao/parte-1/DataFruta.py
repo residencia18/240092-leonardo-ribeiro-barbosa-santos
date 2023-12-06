@@ -110,11 +110,10 @@ class ListaNomes(AnaliseDados):
         '''
         while True:
             try:
-                nElementos = int(input("Quantos elementos vao existir na lista? "))
+                nElementos = int(input("Quantos elementos de nome vao existir na lista? "))
                 for elemento in range(nElementos):
                     elemento = input("Digite um nome: ")
                     self.__lista.append(elemento)
-                    print(self.__lista)
                 break
             except Exception as e:
                 print(f"Erro: {e}")
@@ -292,7 +291,7 @@ def main():
     salarios = ListaSalarios()
     idades = ListaIdades()
 
-    listaListas = [datas]
+    listaListas = [nomes, datas, salarios, idades]
 
     for lista in listaListas:
         lista.entradaDeDados()
