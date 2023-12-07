@@ -62,13 +62,13 @@ public class EmpresaCOELHO {
                         sistema.gestaoFaturas();
                         break;
                     case 4:
-                       // sistema.gestaoPagamentos();
+                    	sistema.gestaoPagamentos();
                         break;
                     case 5:
-                      //  sistema.gestaoFalhas();
+                        sistema.gestaoFalhas();
                         break;
                     case 6:
-                      //  sistema.gestaoReparos();
+                    	//sistema.gestaoReparos();
                         break;
                     case 7:
                         System.out.println("Saindo...");
@@ -441,11 +441,11 @@ public class EmpresaCOELHO {
             double valorPagamento = scanner.nextDouble();
 
             // Lógica para incluir pagamento
-            Pagamento novoPagamento = new Pagamento(fatura, valorPagamento);
+            Pagamento novoPagamento = new Pagamento(fatura.getMatriculaImovel(), valorPagamento);
             fatura.registrarPagamento(novoPagamento);
             pagamentos.add(novoPagamento);
 
-            if (fatura.getValorRestante() <= 0) {
+            if (fatura.getValorCalculado() <= 0) {
                 fatura.setEstaQuitada(true);
                 System.out.println("Fatura quitada!");
             } else {
@@ -478,8 +478,8 @@ public class EmpresaCOELHO {
         // Lógica para buscar a fatura pelo número
         return null;
     }
-}
-    /*
+
+    
 	public void gestaoFalhas() {
 	    Scanner scanner = new Scanner(System.in);
 	    int opcaoFalha;
@@ -511,18 +511,22 @@ public class EmpresaCOELHO {
 	    scanner.nextLine(); // Limpar o buffer
 	    System.out.println("Digite a descrição da falha:");
 	    String descricao = scanner.nextLine();
+	    System.out.println("Digite a matricula do imovel:");
+	    String getMatriculaImovel = scanner.nextLine();
+	  
 	
 	    // Lógica para incluir a falha
-	    Falha novaFalha = new Falha(tipoFalha, descricao);
+	    Falha novaFalha = new Falha(tipoFalha, descricao, true, getMatriculaImovel) ;
 	    falhas.add(novaFalha);
 	
 	    if (tipoFalha.equalsIgnoreCase("Distribuição")) {
-	        iniciarReparo(novaFalha, scanner);
+	        novaFalha.isReportadaPorCliente();
 	    }
 	
 	    System.out.println("Falha registrada com sucesso!");
 	}
 
+	
 	private void iniciarReparo(Falha falha, Scanner scanner) {
 	    System.out.println("Digite a previsão inicial para o reparo:");
 	    String previsao = scanner.nextLine();
@@ -532,11 +536,11 @@ public class EmpresaCOELHO {
 	    // Lógica para iniciar o reparo
 	    Reparo novoReparo = new Reparo(falha, previsao, dataInicio);
 	    reparos.add(novoReparo);
-	    falha.setReparoAssociado(novoReparo);
+	    novoReparo.setFalhaAssociada(falha);
 	    System.out.println("Reparo iniciado com sucesso!");
 	}
 
-	public void listarReparosAbertos() {
+	public void getlistarReparosAbertos() {
 	    System.out.println("=== REPAROS EM ABERTO ===");
 	    for (Reparo reparo : reparos) {
 	        if (!reparo.isConcluido()) {
@@ -544,7 +548,9 @@ public class EmpresaCOELHO {
 	        }
 	    }
 	}
-
+}
+	
+	/*
 	public void gestaoReparos() {
 	    Scanner scanner = new Scanner(System.in);
 	    int opcaoReparo;
@@ -573,12 +579,13 @@ public class EmpresaCOELHO {
 	        }
 	    } while (opcaoReparo != 3);
 	}
-
+	
+	
 	private void encerrarReparo(Scanner scanner) {
 	    System.out.println("Digite o ID do reparo a ser encerrado:");
 	    int idReparo = scanner.nextInt();
 	
-	    Reparo reparo = buscarReparoPorID(idReparo);
+	    Reparo reparo = (idReparo);
 	    if (reparo != null && !reparo.isConcluido()) {
 	        System.out.println("O reparo resolveu a falha? (s/n)");
 	        String resolveu = scanner.next();
