@@ -6,6 +6,7 @@ public class Reparo {
 	    private String dataInicio;
 	    private String dataFim;
 	    private boolean concluido;
+	    private int id;
 
 	    public Reparo(Falha falhaAssociada, String previsao, String dataInicio) {
 	        this.falhaAssociada = falhaAssociada;
@@ -66,4 +67,16 @@ public class Reparo {
 		public void setDataFinalizacao(String dataFinalizacao) {
 	        this.dataFim = dataFinalizacao;
 	    }
+
+		public int getId() {
+			return id;
+		}
+
+		public void setId(int id) {
+			this.id = id;
+		}
 }
+
+		
+
+		

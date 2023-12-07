@@ -68,7 +68,7 @@ public class EmpresaCOELHO {
                         sistema.gestaoFalhas();
                         break;
                     case 6:
-                    	//sistema.gestaoReparos();
+                    	sistema.gestaoReparos();
                         break;
                     case 7:
                         System.out.println("Saindo...");
@@ -512,11 +512,11 @@ public class EmpresaCOELHO {
 	    System.out.println("Digite a descrição da falha:");
 	    String descricao = scanner.nextLine();
 	    System.out.println("Digite a matricula do imovel:");
-	    String getMatriculaImovel = scanner.nextLine();
+	    String MatriculaImovel = scanner.nextLine();
 	  
 	
 	    // Lógica para incluir a falha
-	    Falha novaFalha = new Falha(tipoFalha, descricao, true, getMatriculaImovel) ;
+	    Falha novaFalha = new Falha(tipoFalha, descricao, true, MatriculaImovel) ;
 	    falhas.add(novaFalha);
 	
 	    if (tipoFalha.equalsIgnoreCase("Distribuição")) {
@@ -526,31 +526,11 @@ public class EmpresaCOELHO {
 	    System.out.println("Falha registrada com sucesso!");
 	}
 
-	
-	private void iniciarReparo(Falha falha, Scanner scanner) {
-	    System.out.println("Digite a previsão inicial para o reparo:");
-	    String previsao = scanner.nextLine();
-	    System.out.println("Digite a data de início do reparo:");
-	    String dataInicio = scanner.nextLine();
-	
-	    // Lógica para iniciar o reparo
-	    Reparo novoReparo = new Reparo(falha, previsao, dataInicio);
-	    reparos.add(novoReparo);
-	    novoReparo.setFalhaAssociada(falha);
-	    System.out.println("Reparo iniciado com sucesso!");
-	}
 
-	public void getlistarReparosAbertos() {
-	    System.out.println("=== REPAROS EM ABERTO ===");
-	    for (Reparo reparo : reparos) {
-	        if (!reparo.isConcluido()) {
-	            System.out.println(reparo);
-	        }
-	    }
-	}
-}
 	
-	/*
+	
+
+	
 	public void gestaoReparos() {
 	    Scanner scanner = new Scanner(System.in);
 	    int opcaoReparo;
@@ -580,12 +560,20 @@ public class EmpresaCOELHO {
 	    } while (opcaoReparo != 3);
 	}
 	
+	private Reparo buscarReparoPorId(int idReparo) {
+	    for (Reparo reparo : reparos) {
+	        if (reparo.getId() == idReparo) {
+	            return reparo;
+	        }
+	    }
+	    return null;
+	}
 	
 	private void encerrarReparo(Scanner scanner) {
 	    System.out.println("Digite o ID do reparo a ser encerrado:");
 	    int idReparo = scanner.nextInt();
 	
-	    Reparo reparo = (idReparo);
+	    Reparo reparo = buscarReparoPorId(idReparo);
 	    if (reparo != null && !reparo.isConcluido()) {
 	        System.out.println("O reparo resolveu a falha? (s/n)");
 	        String resolveu = scanner.next();
@@ -605,12 +593,13 @@ public class EmpresaCOELHO {
 	private void iniciarNovoReparo(Reparo reparoAnterior, Scanner scanner) {
 	    System.out.println("Digite a descrição do novo reparo:");
 	    String descricao = scanner.next();
-	
-	    Reparo novoReparo = new Reparo(reparoAnterior.getFalha(), descricao);
+	    
+	    Reparo novoReparo = new Reparo(reparoAnterior.getFalhaAssociada(), descricao, "dataInicio");
 	    reparos.add(novoReparo);
-	    reparoAnterior.getFalha().setReparoAssociado(novoReparo);
+
 	    System.out.println("Novo reparo iniciado com sucesso!");
 	}
+
 
 	public void listarReparosAbertos() {
 	    System.out.println("=== REPAROS EM ABERTO ===");
@@ -622,4 +611,3 @@ public class EmpresaCOELHO {
 	}
 
 }
-*/
