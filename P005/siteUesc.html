@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <title>Universidade Estadual de Santa Cruz</title>
+    <link rel="stylesheet" href="siteUesc.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital@1&family=Smooch&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="card" id="logo">
+            UESC - Universidade Estadual de Santa Cruz
+        </div>
+        <div id="menu">
+            <div class="header">
+                Menu
+                <hr>
+            </div>
+            <ul>
+                <li><a>A UESC</a></li>
+                <li><a>Graduação</a></li>
+                <li><a>Pos Graduação</a></li>
+                <li><a>Extensão</a></li>
+                <li><a>Estrutura Organizacional</a></li>
+                <li><a>Servidores</a></li>
+                <li><a>Fale Conosco</a></li>
+            </ul>
+        </div>
+        <div class="card" id="noticias">
+            <div class="header">
+                Notícias
+                <hr>
+            </div>
+            <div id="listaNoticias">
+            </div>
+        </div>
+        <div class="card" id="destaques">
+            <div class="header">
+                Destaques
+                <img src="c:\Users\user\Pictures\uescacontece.jpg">
+                <hr>
+            </div>
+            <div id="listaDestaques">
+            </div>
+        </div>
+        <div class="card" id="servicos">
+            <div class="header">
+                Serviços
+                <hr>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function carregarNoticias() {
+            const apiUrl = 'http://export.arxiv.org/api/query?search_query=all:electron&max_results=5';
+            console.log('Carregando notícias...');
+
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) {
+                    throw new Error('Erro ao recuperar os dados da API');
+                }
+
+                const contentType = response.headers.get('content-type');
+
+                // Verificar o tipo de conteúdo e agir de acordo
+                if (contentType.includes('application/json')) {
+                    const data = await response.json();
+                    exibirNoticias(data);
+                } else if (contentType.includes('application/atom+xml')) {
+                    const data = await response.text();
+                    exibirNoticias(data);
+                } else {
+                    throw new Error(`Tipo de conteúdo não suportado: ${contentType}`);
+                }
+            } catch (error) {
+                console.error('Erro na chamada da API:', error);
+            }
+        }
+
+        function exibirNoticias(data) {
+            const listaNoticias = document.getElementById('listaNoticias');
+
+            // Limpar a lista de notícias existente
+            listaNoticias.innerHTML = '';
+
+            // Exibir as notícias, assumindo que os dados têm uma estrutura específica
+            if (data && data.items) {
+                data.items.forEach(item => {
+                    const title = item.title;
+                    const summary = item.summary;
+                    const imgSrc = item.image;  // Certifique-se de que os dados da API contêm uma URL de imagem
+
+                    const noticiaHtml = `
+                        <div class="noticia">
+                            <h2>${title}</h2>
+                            ${imgSrc ? `<img src="${imgSrc}" alt="${title}">` : ''}
+                            <p>${summary}</p>
+                        </div>`;
+
+                    // Adicionar notícia à lista
+                    listaNoticias.innerHTML += noticiaHtml;
+                });
+            } else {
+                // Se os dados não estiverem no formato JSON esperado, tentar processar como XML
+                try {
+                    const parser = new DOMParser();
+                    const xmlDoc = parser.parseFromString(data, 'application/xml');
+                    const entries = xmlDoc.querySelectorAll('entry');
+
+                    entries.forEach(entry => {
+                        const title = entry.querySelector('title').textContent;
+                        const summary = entry.querySelector('summary').textContent;
+
+                        const noticiaHtml = `
+                            <div class="noticia">
+                                <h2>${title}</h2>
+                                <p>${summary}</p>
+                            </div>`;
+
+                        // Adicionar notícia à lista
+                        listaNoticias.innerHTML += noticiaHtml;
+                    });
+                } catch (error) {
+                    // Se não for possível processar como XML, exibir uma mensagem de erro
+                    console.error('Erro ao processar dados XML:', error);
+                    listaNoticias.innerHTML = '<p>Nenhuma notícia disponível</p>';
+                }
+            }
+        }
+
+        // Chamar a função ao carregar a página
+        window.onload = carregarNoticias;
+    </script>
+</body>
+
+</html>
