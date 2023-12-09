@@ -4,9 +4,21 @@
 <head>
     <title>Universidade Estadual de Santa Cruz</title>
     <link rel="stylesheet" href="siteUesc.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital@1&family=Smooch&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+    <style>
+        #listaDestaques {
+            width: 70%;
+            margin: auto;
+        }
+
+        #listaDestaques img {
+            width: 100%;
+            border-radius: 5px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="slick/slick.min.js"></script>
 </head>
 
 <body>
@@ -34,16 +46,20 @@
                 Notícias
                 <hr>
             </div>
-            <div id="listaNoticias">
+            <div class="listaNoticias noticia-container"> 
+                <!-- Notícias serão adicionadas dinamicamente aqui -->
             </div>
         </div>
         <div class="card" id="destaques">
             <div class="header">
                 Destaques
-                <img src="c:\Users\user\Pictures\uescacontece.jpg">
                 <hr>
             </div>
-            <div id="listaDestaques">
+            <div class="slick-carousel" id="listaDestaques">
+                <div><img src="https://www2.uesc.br/eventos/banner/uesc_acontece250.jpg/image/jpeg"></div>
+                <div><img src="https://www2.uesc.br/eventos/banner/eterapias.png/image/png"></div>
+                <div><img src="https://www2.uesc.br/eventos/banner/card-elsafred.png/image/png" alt="Destaque 2"></div>
+                <!-- Adicione mais destaques conforme necessário -->
             </div>
         </div>
         <div class="card" id="servicos">
@@ -56,7 +72,7 @@
 
     <script>
         async function carregarNoticias() {
-            const apiUrl = 'http://export.arxiv.org/api/query?search_query=all:electron&max_results=5';
+            const apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Fexport.arxiv.org%2Fapi%2Fquery%3Fsearch_query%3Dall%3Aelectron%26max_results%3D5';
             console.log('Carregando notícias...');
 
             try {
@@ -65,76 +81,58 @@
                     throw new Error('Erro ao recuperar os dados da API');
                 }
 
-                const contentType = response.headers.get('content-type');
-
-                // Verificar o tipo de conteúdo e agir de acordo
-                if (contentType.includes('application/json')) {
-                    const data = await response.json();
-                    exibirNoticias(data);
-                } else if (contentType.includes('application/atom+xml')) {
-                    const data = await response.text();
-                    exibirNoticias(data);
-                } else {
-                    throw new Error(`Tipo de conteúdo não suportado: ${contentType}`);
-                }
+                const data = await response.json();
+                exibirNoticias(data);
             } catch (error) {
                 console.error('Erro na chamada da API:', error);
             }
         }
 
         function exibirNoticias(data) {
-            const listaNoticias = document.getElementById('listaNoticias');
+            const listaNoticias = document.querySelector('.listaNoticias');
 
             // Limpar a lista de notícias existente
             listaNoticias.innerHTML = '';
 
-            // Exibir as notícias, assumindo que os dados têm uma estrutura específica
+            // Exibir as notícias
             if (data && data.items) {
                 data.items.forEach(item => {
                     const title = item.title;
-                    const summary = item.summary;
-                    const imgSrc = item.image;  // Certifique-se de que os dados da API contêm uma URL de imagem
+                    const summary = item.description;
+                    const imgSrc = item.enclosure?.link;
 
                     const noticiaHtml = `
                         <div class="noticia">
                             <h2>${title}</h2>
-                            ${imgSrc ? `<img src="${imgSrc}" alt="${title}">` : ''}
+                            ${imgSrc ? `<img src="${imgSrc}" alt="${title}" style="max-width: 100%;">` : ''}
                             <p>${summary}</p>
                         </div>`;
 
-                    // Adicionar notícia à lista
+                    // Adicionar notícia à lista de notícias
                     listaNoticias.innerHTML += noticiaHtml;
                 });
+
+                // Inicializar o Slick Carousel para o campo de destaques
+                $('#listaDestaques').slick({
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    autoplaySpeed: 3000, // Ajuste conforme necessário
+                    infinite: true,
+                    arrows: false,
+                    fade: true,
+                    cssEase: 'linear'
+                });
             } else {
-                // Se os dados não estiverem no formato JSON esperado, tentar processar como XML
-                try {
-                    const parser = new DOMParser();
-                    const xmlDoc = parser.parseFromString(data, 'application/xml');
-                    const entries = xmlDoc.querySelectorAll('entry');
-
-                    entries.forEach(entry => {
-                        const title = entry.querySelector('title').textContent;
-                        const summary = entry.querySelector('summary').textContent;
-
-                        const noticiaHtml = `
-                            <div class="noticia">
-                                <h2>${title}</h2>
-                                <p>${summary}</p>
-                            </div>`;
-
-                        // Adicionar notícia à lista
-                        listaNoticias.innerHTML += noticiaHtml;
-                    });
-                } catch (error) {
-                    // Se não for possível processar como XML, exibir uma mensagem de erro
-                    console.error('Erro ao processar dados XML:', error);
-                    listaNoticias.innerHTML = '<p>Nenhuma notícia disponível</p>';
-                }
+                // Se os dados não estiverem no formato JSON esperado
+                listaNoticias.innerHTML = '<p>Nenhuma notícia disponível</p>';
             }
         }
 
         // Chamar a função ao carregar a página
-        window.onload = carregarNoticias;
+        document.addEventListener('DOMContentLoaded', function () {
+            carregarNoticias();
+        });
     </script>
 </body>
 

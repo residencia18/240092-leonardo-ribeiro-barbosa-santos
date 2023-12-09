@@ -160,4 +160,7 @@ hr {
     margin: 20px;
 }
 
-
+.noticia-container {
+    width: 100%; /* ou defina a largura desejada */
+    margin: 0 auto; /* centralizar o carrossel se desejar */
+}
