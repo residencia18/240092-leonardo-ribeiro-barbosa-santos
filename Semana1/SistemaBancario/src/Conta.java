@@ -1,30 +1,28 @@
-import javax.xml.crypto.Data;
-
 public class Conta {
-	String titular;
-	int numeroConta;
-	String agencia;
-	double saldo;
-	Data dataAbertura;
+	//Conta com atributos privados
+	private String titular;
+	private double saldo;
+	private int cpf;
 	
 	
 	
-
+	//construtor para exigir titular e ja inicia a conta com valor 0
 	public Conta(String titular) {
         this.titular = titular;
-		this.saldo = 0.00;
+		this.saldo = 0;
         
     }
 
 
 
     // Metodos
-	public boolean sacar(Double valor) {
+	public boolean sacar(Double valor) throws
+	SaldoInvalidException {
 		if(this.saldo < valor) {
-            System.out.println("Valor insuficiente");
-			return true;
+		throw new SaldoInvalidException("Valor insuficiente");
 		}
 		else {
+			System.out.println("Transferência realizado com sucesso!");
             this.saldo = this.saldo - valor;
 			return false;
 		}
@@ -44,10 +42,10 @@ public class Conta {
 
 
 	public void verificarSaldo(){
-		System.out.println("Saldo da conta: " + this.saldo);
+		System.out.println("Saldo da conta: " + this.saldo + ", Titular: " +getTitular());
 	}
 
-	public boolean transferir(Conta destinatario, double valor){
+	public boolean transferir(Conta destinatario, double valor) throws SaldoInvalidException{
 		boolean retirar = this.sacar(valor);
 		if(retirar == true){
 			return true;
@@ -60,10 +58,12 @@ public class Conta {
 	
 	}
 
-	//gets e sets
+
+	// gets e sets
 	public String getTitular() {
 		return titular;
 	}
+
 
 
 	public void setTitular(String titular) {
@@ -71,29 +71,11 @@ public class Conta {
 	}
 
 
-	public int getNumeroConta() {
-		return numeroConta;
-	}
-
-
-	public void setNumeroConta(int numeroConta) {
-		this.numeroConta = numeroConta;
-	}
-
-
-	public String getAgencia() {
-		return agencia;
-	}
-
-
-	public void setAgencia(String agencia) {
-		this.agencia = agencia;
-	}
-
 
 	public double getSaldo() {
 		return saldo;
 	}
+
 
 
 	public void setSaldo(double saldo) {
@@ -101,15 +83,18 @@ public class Conta {
 	}
 
 
-	public Data getDataAbertura() {
-		return dataAbertura;
+
+	public int getCpf() {
+		return cpf;
 	}
 
 
-	public void setDataAbertura(Data dataAbertura) {
-		this.dataAbertura = dataAbertura;
+
+	public void setCpf(int cpf) {
+		this.cpf = cpf;
 	}
 
+	
 
 
 }
