@@ -8,14 +8,17 @@ public class Calc {
 
 
     public static void main(String[] args) {
+    while(true){
+       
         Calc m = new Calc();
         try {
-            float resultado = m.dividir(10, 5);
+            float resultado = m.dividir(10, 0);
             System.out.println("Resultado: " + resultado);
         } catch (DivisaoPorZeroException e) {
             System.err.println("Erro: " + e.getMessage());
         }
     }
+}
 }
 
 

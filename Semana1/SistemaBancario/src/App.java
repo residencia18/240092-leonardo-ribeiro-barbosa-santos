@@ -1,26 +1,29 @@
+
+
 public class App {
-  	Conta conta;
+  	
+    Conta conta;
 
 	
 	public static void main(String[] args) {
 		
-	Conta conta = new Conta();
+	Conta conta1 = new Conta("Leonardo");
     
-    conta.numeroConta = 432432432;
-    conta.agencia = "06952";
-    System.out.println("Saldo inicial");
-    conta.saldo = 100;
+    System.out.println();
+    conta1.depositar(10);
+    
+    conta1.verificarSaldo();
+    
 
-    System.out.println("Valor sacado");
-    conta.sacar(150.0);
 
-    System.out.println("Valor depositado");
-    conta.depositar(1000);
+    Conta conta2 = new Conta("João");
 
-    conta.calcularRendimento();
+    conta2.saldo = 0;
 
-    System.out.println("Saldo da conta: " + conta.saldo);
-  
+    conta1.transferir(conta2, 30);
+
+    conta2.verificarSaldo();
+    conta1.verificarSaldo();
 
 		
 		
