@@ -22,7 +22,7 @@ public class Conta {
 		throw new SaldoInvalidException("Valor insuficiente");
 		}
 		else {
-			System.out.println("Transferência realizado com sucesso!");
+			System.out.println("Procedimento realizado com sucesso!");
             this.saldo = this.saldo - valor;
 			return false;
 		}
@@ -33,7 +33,7 @@ public class Conta {
 		this.saldo = this.saldo + valor;
 		
 	}
-	
+	// para o futuro
 	public void calcularRendimento() {
         if(this.saldo > 0){
             this.saldo += this.saldo * 0.1;

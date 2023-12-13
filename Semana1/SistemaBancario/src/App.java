@@ -33,17 +33,14 @@ public class App {
    
     conta2.verificarSaldo();
     conta1.verificarSaldo();
+
+    System.out.println("Tentativa de saque...");
+    conta2.sacar(1.0);
+    conta2.verificarSaldo();
+
     }catch(Exception e){
             System.out.println("Erro! " + e.getMessage());
         }
-		
-		
-		
-		
-		
-		
-	
 
-		
 	}
 }
