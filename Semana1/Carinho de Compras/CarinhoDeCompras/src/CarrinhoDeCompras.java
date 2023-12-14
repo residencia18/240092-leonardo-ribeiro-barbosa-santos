@@ -63,7 +63,14 @@ public class CarrinhoDeCompras {
             
             }
         }
-    
+
+
+    public void CalcularTotalCompra(Itens item, int quantidade){
+        for(int i=0; i < quantidade; i++){
+            quantidade *= item
+
+        }
+    }
         
 
     
