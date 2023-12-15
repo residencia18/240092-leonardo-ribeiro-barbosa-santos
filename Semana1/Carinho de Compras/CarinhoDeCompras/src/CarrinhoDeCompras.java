@@ -29,7 +29,7 @@ public class CarrinhoDeCompras {
         if(!compraFechada){
             for(int i=0; i<item.getQuantidade(); i++){
                 this.itens.add(item);
-                System.out.println(item.getQuantidade() +" " + item.descricao + " >> Adicionado ao carrinho <<" + cliente.nome);
+                System.out.println(item.getQuantidade() +" " + item.descricao + " >> Adicionado ao carrinho <<" + cliente.getNome());
             }
         }
         else{
@@ -42,12 +42,12 @@ public class CarrinhoDeCompras {
     public void removerItem(Itens item)  
     throws ContaClosedException{
         if(!compraFechada){
-        for(int i = 0; i < item.getQuantidade(); i++){
-            this.itens.remove(item);
-            System.out.println( " "+ item.getDescricao()+ " >> Removido do carrinho <<" + cliente.nome);
-           
+        
+            this.itens.remove((item));
+            System.out.println( " "+ item.getDescricao()+ " >> Removido do carrinho <<" + cliente.getNome());
          }
-        }else{
+         
+        else{
          throw  new ContaClosedException("A conta já foi fechada");
         }
     }
@@ -68,12 +68,13 @@ public class CarrinhoDeCompras {
 
     public void CalcularTotalCompra(Itens item){
         double total = 0;
-        for (int i = 0; i < item.getQuantidade(); i++) {
-            total = item.getQuantidade() * item.getPreco()  ;
-              System.out.println("O valor da compra é: " + total );
+        for (int i = 0; i < itens.size(); i++) {
+            total +=  item.getPreco();
+            
+           
               
         }
-       
+       System.out.println("O valor da compra : " + total  + " <-" +cliente.getNome());
     }
         
     
@@ -87,20 +88,18 @@ public class CarrinhoDeCompras {
         System.out.println(carrinho.cliente.nome);
 
 
-        Itens item1 = new Itens("Jaqueta", 21, 122.30, 2);
-        Itens item2 = new Itens("sapato", 1, 10.20, 3);
+        Itens item1 = new Itens("Jaqueta", 21, 122.30, 3);
+      
         
         carrinho.adicionarItem(item1);
-
-        carrinho.removerItem(item1);
-       
         
-        carrinho.adicionarItem(item2);
+        
+        
+        carrinho.removerItem(item1);
 
         carrinho.CalcularTotalCompra(item1);
 
-        carrinho.removerItem(item2);
-
+        carrinho.adicionarItem(item1);
         
 
         carrinho.fecharCompra();
