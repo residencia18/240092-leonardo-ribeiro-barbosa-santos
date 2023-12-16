@@ -33,6 +33,9 @@ public class Calculadora3 {
     }
 
     public int dividir(int a, int b) {
+        if(b <= 0){
+            throw new ArithmeticException("Não é possível dividir por 0");
+        }
         return a / b;
     }
 
@@ -50,6 +53,9 @@ public class Calculadora3 {
         return a + b;
     }
     public float dividir(float a, float b) {
+        if(b <= 0){
+            throw new ArithmeticException("Não é possível dividir por 0");
+        }
         return a + b;
     }
 
@@ -83,10 +89,13 @@ public class Calculadora3 {
     }
 
     public ArrayList<Double> dividir(ArrayList<Double> lista1, ArrayList<Double> lista2){
+       
         ArrayList<Double> resultado = new ArrayList<>();
         for(int i = 0; i < lista1.size(); i++) {
             resultado.add(lista1.get(i) / lista2.get(i));   
-            
+             if(lista2.get(i) <= 0){
+            throw new ArithmeticException("Não é possível dividir por 0");
+        }
         }
         return resultado;
 
@@ -98,7 +107,7 @@ public class Calculadora3 {
 
     public static void main(String[] args) {
 
-
+    try{
         Calculadora3 c = new Calculadora3();
         
         ArrayList<Double> lista1 = new ArrayList<>();
@@ -111,7 +120,7 @@ public class Calculadora3 {
         lista2.add(5.10);
         lista2.add(5.10);
         lista2.add(10.0);
-        lista2.add(2.5);
+        lista2.add(0.5);
         
         //Sobrecarga  de metodos com listas
         System.out.println("A soma da listas1 + lista2 = " +c.somar(lista1,lista2 ));
@@ -123,9 +132,11 @@ public class Calculadora3 {
         System.out.println("A soma de a + b = " +c.somar(2.10f, 2.10f));
         System.out.println("A subtração de a - b = " +c.subtrair(5, 4));
         System.out.println("A multiplicação de a * b = " +c.multiplicar(1.5f, 3.0f));
-        System.out.println("A divisão de a / b = " +c.dividir(5, 4));
-
+        System.out.println("A divisão de a / b = " +c.dividir(5, 0));
+    }catch(ArithmeticException e){
+        System.out.println("Erro! " + e.getMessage());
 
     }
+}
 
 }
