@@ -1,0 +1,60 @@
+/* Estilos para telas maiores que 500px (estilo original) */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+#logo {
+   
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    color: #005493;
+    padding: 40px 0;
+    font-family:'Bebas Neue', sans-serif;
+    grid-column: span 3;
+}
+#listaNoticias, #listaServicos, #listaResultados {
+    padding: 20px;
+    font-family:'Josefin Sans', sans-serif;
+}
+
+#noticias, #servicos, #resultados {
+    background-color: #f8f9fa;
+}
+
+@media (max-width: 500px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+    #logo {
+        grid-column: span 1;
+    }
+
+    #menu, #noticias, #destaques {
+        width: 100%;
+    }
+
+    #destaques img {
+        border-radius: 0; /* Remover borda arredondada em imagens */
+    }
+}
+

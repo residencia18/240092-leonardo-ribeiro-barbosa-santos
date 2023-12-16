@@ -1,5 +1,5 @@
 {
-  "name": "site-uesc",
+  "name": "uesc-app",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
