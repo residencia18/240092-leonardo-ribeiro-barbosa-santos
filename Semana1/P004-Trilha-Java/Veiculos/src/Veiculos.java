@@ -1,11 +1,26 @@
+import java.util.ArrayList;
+
 public class Veiculos {
 
     private String modelo, ano, cor;
+    ArrayList<Garagem> garagem;
     private boolean eletrico = false;
 
 
 
 
+
+
+
+    
+
+
+    public Veiculos(String modelo, String ano, String cor, boolean eletrico) {
+        this.modelo = modelo;
+        this.ano = ano;
+        this.cor = cor;
+        this.eletrico = eletrico;
+    }
 
     public String getModelo() {
         return modelo;
@@ -31,10 +46,24 @@ public class Veiculos {
         this.cor = cor;
     }
 
-    
-    public void Dados(String modelo, String ano, String cor) {
-        System.out.println("Modelo: "+ modelo + " ano: "+ ano + " cor: "+ cor + "eletrico" + eletrico);
+    public ArrayList<Garagem> getGaragem() {
+        return garagem;
     }
+
+    public void setGaragem(ArrayList<Garagem> garagem) {
+        this.garagem = garagem;
+    }
+
+ public boolean isEletrico() {
+        return eletrico;
+    }
+
+    public void setEletrico(boolean eletrico) {
+        this.eletrico = eletrico;
+    }
+
+
+
 
 
     public void acelerar(){
@@ -47,16 +76,16 @@ public class Veiculos {
     }
 
     public void parar() {
-        System.out.println("Veiculo parado.");
+        System.out.println("Veiculo parando.");
     }
 
-    public void estacionar(){
-        
+     public void estacionar(Garagem  garage){
+        this.garagem = new ArrayList<>();
+        this.garagem.add(garage);
+        System.out.println("Veiculo estacionado" + getModelo() + "eletrico: " + eletrico);
+        if(isEletrico() == true && garage.isTomada() == true){
+            System.out.println("Veiculo Carregando");
+        }
     }
-
-
-
-
-
 
 }

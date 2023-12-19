@@ -1,24 +1,43 @@
 import java.util.ArrayList;
 
 public class Garagem {
+    
     ArrayList<Veiculos> veiculos;
+    boolean tomada = false;
+
+
+
+
+
+    public Garagem(boolean tomada) {
+        this.tomada = tomada;
+    }
+
+
+    public boolean isTomada() {
+        return tomada;
+    }
+
+
+    public void setTomada(boolean tomada) {
+        this.tomada = tomada;
+    }
+
+
+    public void estacionar(Veiculos veiculo){
+        this.veiculos = new ArrayList<>();
+        veiculos.add(veiculo);
+        System.out.println("veiculo estacionado" + veiculo.getModelo() + "tomada: " + veiculo.isEletrico());
+        if(veiculo.isEletrico() == true && tomada == true){
+            System.out.println("Veiculo Carregando");
+        }
+
+    }
     
 
 
 
-    public void estacionarVeiculo(Veiculos veiculos){
-        this.veiculos = new ArrayList<>();
-        
-    }
 
 
-
-
-
-
-
-    public static void main(String[] args) {
-       Garagem g = new Garagem();
-
-    }
+    
 }

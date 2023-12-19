@@ -1,12 +1,15 @@
+import java.util.ArrayList;
+
 public class Carro extends Veiculos {
    
 
 
-
-
-
-
-
+     
+   
+    public Carro(String modelo, String ano, String cor, boolean eletrico) {
+        super(modelo, ano, cor, eletrico);
+        
+    }
 
     public void acelerar(){
         System.out.println("Carro acelerando...");
@@ -17,24 +20,20 @@ public class Carro extends Veiculos {
     }
 
     public void parar() {
-        System.out.println("Carro parado");
+        System.out.println("Carro parado.");
     }
 
 
 
-    public static void main(String[] args) {
-    
-    Carro carro = new Carro();
-    
-    carro.Dados("HB20", "2017", "Prata");
-
-    carro.ligar();
-    carro.acelerar();
-    carro.parar();
-
-
-
+     public void estacionar(Garagem  garage){
+        this.garagem = new ArrayList<>();
+        this.garagem.add(garage);
+        System.out.println("Carro estacionado " + getModelo() + " eletrico: " + isEletrico());
+        if(isEletrico() == true && garage.isTomada() == true){
+            System.out.println("Carro Carregando");
+        }
 
     }
+
 
 }
