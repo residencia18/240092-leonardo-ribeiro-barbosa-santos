@@ -28,7 +28,7 @@ public class Moto extends Veiculos {
         this.garagem.add(garage);
         System.out.println("Moto estacionado " + getModelo() + " eletrico: " + isEletrico());
         if(isEletrico() == true && garage.isTomada() == true){
-            System.out.println("Moto Carregando");
+            System.out.println("Moto Carregando...");
         }
     }
     

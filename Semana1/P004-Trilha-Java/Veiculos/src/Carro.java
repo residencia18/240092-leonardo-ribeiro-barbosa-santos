@@ -30,7 +30,7 @@ public class Carro extends Veiculos {
         this.garagem.add(garage);
         System.out.println("Carro estacionado " + getModelo() + " eletrico: " + isEletrico());
         if(isEletrico() == true && garage.isTomada() == true){
-            System.out.println("Carro Carregando");
+            System.out.println("Carro Carregando...");
         }
 
     }

@@ -82,9 +82,9 @@ public class Veiculos {
      public void estacionar(Garagem  garage){
         this.garagem = new ArrayList<>();
         this.garagem.add(garage);
-        System.out.println("Veiculo estacionado" + getModelo() + "eletrico: " + eletrico);
+        System.out.println("Veiculo estacionado" + getModelo() + "eletrico: " + isEletrico());
         if(isEletrico() == true && garage.isTomada() == true){
-            System.out.println("Veiculo Carregando");
+            System.out.println("Veiculo Carregando...");
         }
     }
 

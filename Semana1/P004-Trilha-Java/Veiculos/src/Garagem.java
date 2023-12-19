@@ -28,7 +28,7 @@ public class Garagem {
         this.veiculos = new ArrayList<>();
         veiculos.add(veiculo);
         System.out.println("veiculo estacionado" + veiculo.getModelo() + "tomada: " + veiculo.isEletrico());
-        if(veiculo.isEletrico() == true && tomada == true){
+        if(veiculo.isEletrico() == true && isTomada() == true){
             System.out.println("Veiculo Carregando");
         }
 
