@@ -1,0 +1,59 @@
+#destaques {
+    text-align: center;
+    background-color: #005493;
+    color: #fff;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 0px;
+    width: 40%;
+    border: solid 1px #CCCCCC;
+    margin-top: 12px;
+    margin-right: 5px;
+    margin-bottom: 3px;
+    margin-left: 5px;
+    background-color: #FFFFFF;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 3px;
+    padding-left: 10px;
+    z-index: 80;
+    display: block;
+    line-height: 14px;
+    z-index: 80;
+
+}
+
+#destaques img {
+    width: 100%;
+    border-radius: 10px;
+   
+}
+
+#rodape {
+    text-align: center;
+    padding: 10px;
+    background-color: #005493;
+    color: #fff;
+}
+
+#menu, #noticias, #destaques {
+    flex: 1;
+}
+
+
+@media (max-width: 500px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+    #logo {
+        grid-column: span 1;
+    }
+
+    #menu, #noticias, #destaques {
+        width: 100%;
+    }
+
+    #destaques img {
+        border-radius: 0; /* Remover borda arredondada em imagens */
+    }
+}

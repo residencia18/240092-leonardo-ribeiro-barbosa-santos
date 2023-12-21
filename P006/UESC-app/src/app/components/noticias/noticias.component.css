@@ -1,0 +1,36 @@
+#noticias, #servicos, #resultados {
+    background-color: #f8f9fa;
+}
+
+#noticias .header, #servicos .header {
+    font-size: 24px;
+    font-weight: bold;
+    color: #005493;
+    padding: 10px;
+    font-family: 'Smooch', cursive;
+}
+
+#listaNoticias, #listaServicos, #listaResultados {
+    padding: 20px;
+    font-family:'Josefin Sans', sans-serif;
+}
+
+@media (max-width: 500px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+    #logo {
+        grid-column: span 1;
+    }
+
+    #menu, #noticias, #destaques {
+        width: 100%;
+    }
+
+    #destaques img {
+        border-radius: 0; /* Remover borda arredondada em imagens */
+    }
+}
+#menu, #noticias, #destaques {
+    flex: 1;
+}

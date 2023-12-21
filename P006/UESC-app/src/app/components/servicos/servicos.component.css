@@ -1,0 +1,22 @@
+#noticias, #servicos, #resultados {
+    background-color: #f8f9fa;
+}
+
+#noticias .header, #servicos .header {
+    font-size: 24px;
+    font-weight: bold;
+    color: #005493;
+    padding: 10px;
+    font-family: 'Smooch', cursive;
+}
+
+#listaNoticias, #listaServicos, #listaResultados {
+    padding: 20px;
+    font-family:'Josefin Sans', sans-serif;
+}
+#rodape {
+    text-align: center;
+    padding: 10px;
+    background-color: #005493;
+    color: #fff;
+}
