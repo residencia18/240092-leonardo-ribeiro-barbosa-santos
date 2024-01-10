@@ -10,8 +10,16 @@ public class Main {
 		
 		DadosEstaticos cidadesDoBrasil = new CidadesDoBrasil(cidades);
 		
-		//conserta o codigo para trazer as cidade em ordem alfabéticas
-		System.out.println("Cidade Ordem alfabética: "+ cidadesDoBrasil.maximo());
+		
+		System.out.println("Cidade com maior quantidade de letras: " + cidadesDoBrasil.maximo());
+		
+		System.out.println("Cidade com a menor quantidade de letras: " + cidadesDoBrasil.minimo());
+		System.out.println("Cidade com a menor quantidade de letras: " + cidadesDoBrasil);
+		cidadesDoBrasil.ordenar();
+		System.out.println("Cidade com a menor quantidade de letras: " + cidadesDoBrasil);
+		
+		
+		
 	}
 	
 }

@@ -7,5 +7,7 @@ public interface DadosEstaticos {
 	
 	void ordenar();
 	
-	boolean buscar();
+	boolean buscar(Object valor);
+
+	
 }

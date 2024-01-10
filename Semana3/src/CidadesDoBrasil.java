@@ -31,21 +31,23 @@ public class CidadesDoBrasil implements DadosEstaticos{
 
 	@Override
 	public Object minimo() {
-		// TODO Stub de método gerado automaticamente
-		return null;
+		return Collections.min(cidades);
 	}
 
 
 	@Override
 	public void ordenar() {
-		// TODO Stub de método gerado automaticamente
+		Collections.sort(cidades);
 		
 	}
 
 
 	@Override
-	public boolean buscar() {
-		// TODO Stub de método gerado automaticamente
+	public boolean buscar(Object valor) {
+		if (valor instanceof String) {
+			String stringValue = (String) valor;
+	        return cidades.contains(stringValue);
+	    }
 		return false;
 	}
 	
