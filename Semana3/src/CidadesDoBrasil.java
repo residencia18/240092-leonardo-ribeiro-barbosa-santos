@@ -1,3 +1,4 @@
+import java.util.Collections;
 import java.util.List;
 
 public class CidadesDoBrasil implements DadosEstaticos{
@@ -19,23 +20,21 @@ public class CidadesDoBrasil implements DadosEstaticos{
 	public void setCidades(List<String> cidades) {
 		this.cidades = cidades;
 	}
-	
-	
-	
-	
-	
+
 
 	@Override
-	public void maximo() {
-	
-	
-	}
-
-	@Override
-	public void minimo() {
-		// TODO Stub de método gerado automaticamente
+	public Object maximo() {
 		
+		return Collections.max(cidades);
 	}
+
+
+	@Override
+	public Object minimo() {
+		// TODO Stub de método gerado automaticamente
+		return null;
+	}
+
 
 	@Override
 	public void ordenar() {
@@ -43,10 +42,13 @@ public class CidadesDoBrasil implements DadosEstaticos{
 		
 	}
 
-	@Override
-	public void buscar() {
-		// TODO Stub de método gerado automaticamente
-		
-	}
 
+	@Override
+	public boolean buscar() {
+		// TODO Stub de método gerado automaticamente
+		return false;
+	}
+	
+	
+	
 }

@@ -1,3 +1,4 @@
+
 import java.util.List;
 
 public class Main {
@@ -9,8 +10,8 @@ public class Main {
 		
 		DadosEstaticos cidadesDoBrasil = new CidadesDoBrasil(cidades);
 		
-		cidadesDoBrasil.maximo();
-		
+		//conserta o codigo para trazer as cidade em ordem alfabéticas
+		System.out.println("Cidade Ordem alfabética: "+ cidadesDoBrasil.maximo());
 	}
 	
 }
