@@ -1,13 +1,13 @@
 
-public interface DadosEstaticos {
+public interface DadosEstaticos <T extends Comparable <T>> {
 
-	Object maximo();
+	T maximo();
 	
-	Object minimo();
+	T minimo();
 	
 	void ordenar();
 	
-	boolean buscar(Object valor);
+	boolean buscar(String valor);
 
 	
 }

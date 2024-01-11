@@ -1,25 +1,31 @@
 
-import java.util.List;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
 		
-		List<String> cidades = List.of("Itabuna", "Ilhéus", "Salvador", "Coaraci");
+		String[] cidades = {"Salvador", "Itabuna", "Vitoria Da Conquista", "Ilheus", "Coaraci"};
+
+		CidadesDoBrasil cidadeDoBrasil = new CidadesDoBrasil(cidades);
 		
-		DadosEstaticos cidadesDoBrasil = new CidadesDoBrasil(cidades);
+		//Cidades com o maior numero de letras
+		System.out.println(cidadeDoBrasil.maximo());
 		
-		
-		System.out.println("Cidade com maior quantidade de letras: " + cidadesDoBrasil.maximo());
-		
-		System.out.println("Cidade com a menor quantidade de letras: " + cidadesDoBrasil.minimo());
-		System.out.println("Cidade com a menor quantidade de letras: " + cidadesDoBrasil);
-		cidadesDoBrasil.ordenar();
-		System.out.println("Cidade com a menor quantidade de letras: " + cidadesDoBrasil);
+		//Cidades com o menor numero de letras
+		System.out.println(cidadeDoBrasil.minimo());
 		
 		
+		System.out.println(cidadeDoBrasil.toString());
 		
+		cidadeDoBrasil.ordenar();
+		
+		System.out.println(cidadeDoBrasil.toString());
+		
+		
+		System.out.println("busca: " + cidadeDoBrasil.buscar("Itabuna"));
+		
+
 	}
 	
 }

@@ -1,14 +1,14 @@
 
-public class DatasDeNascimento  implements DadosEstaticos{
+public class DatasDeNascimento  implements DadosEstaticos {
 
 	@Override
-	public Object maximo() {
+	public Comparable maximo() {
 		// TODO Stub de método gerado automaticamente
 		return null;
 	}
 
 	@Override
-	public Object minimo() {
+	public Comparable minimo() {
 		// TODO Stub de método gerado automaticamente
 		return null;
 	}
@@ -20,10 +20,12 @@ public class DatasDeNascimento  implements DadosEstaticos{
 	}
 
 	@Override
-	public boolean buscar() {
+	public boolean buscar(String valor) {
 		// TODO Stub de método gerado automaticamente
 		return false;
 	}
+
+
 
 	
 

@@ -1,55 +1,100 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class CidadesDoBrasil implements DadosEstaticos{
-	
-	private List<String> cidades;
+public class CidadesDoBrasil implements DadosEstaticos<String> {
 	
 	
 	
 	
-	public CidadesDoBrasil(List<String> cidades) {
-		
-		this.cidades = cidades;
+	
+	
+	public CidadesDoBrasil(String[] cidades) {
+		super();
+		this.cidades = Arrays.asList(cidades);
 	}
 
-	
+
+
 	public List<String> getCidades() {
 		return cidades;
 	}
+
+
+
 	public void setCidades(List<String> cidades) {
 		this.cidades = cidades;
 	}
 
 
+
+	private List<String> cidades;
+	
+	
+	
+	
+	public CidadesDoBrasil(ArrayList<String> cidades) {
+		
+		this.cidades = cidades;
+	}
+
+	
+
+	
+	
+	
+
+
 	@Override
-	public Object maximo() {
+	public String maximo() {
 		
 		return Collections.max(cidades);
 	}
 
 
 	@Override
-	public Object minimo() {
-		return Collections.min(cidades);
+	public String minimo() {
+		
+		 String menorCidade = cidades.get(0);
+	        for (String cidade : cidades) {
+	            if (cidade.length() < menorCidade.length()) {
+	                menorCidade = cidade;
+	            }
+	        }
+	        return menorCidade;
+
 	}
 
 
 	@Override
 	public void ordenar() {
-		Collections.sort(cidades);
+	
+		 Collections.sort(cidades);
+	}
+
+	@Override
+	public boolean buscar(String valor) {
+		if(cidades.equals(cidades)) {
+		return cidades.contains(valor);
+		}
+		else {
+		return false;
+		}
+		
 		
 	}
+	
 
 
 	@Override
-	public boolean buscar(Object valor) {
-		if (valor instanceof String) {
-			String stringValue = (String) valor;
-	        return cidades.contains(stringValue);
-	    }
-		return false;
+	public String toString() {
+		return "CidadesDoBrasil [cidades=" + cidades + "]";
 	}
+
+	
+
+	
 	
 	
 	
