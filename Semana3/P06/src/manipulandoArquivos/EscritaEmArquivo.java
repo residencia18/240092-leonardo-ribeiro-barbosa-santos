@@ -24,15 +24,15 @@ public class EscritaEmArquivo {
 				escritor.newLine(); 
 				System.out.println("Texto gravado: " + linha);
 			}
-				System.out.println("Linhas de texto foram gravadas em " + nomeArquivo);
-				
-			} catch (IOException e) {
-				System.err.println("Erro ao gravar no arquivo: " + e.getMessage());
+			System.out.println("Linhas de texto foram gravadas em " + nomeArquivo);
+
+		} catch (IOException e) {
+			System.err.println("Erro ao gravar no arquivo: " + e.getMessage());
 
 
-			}
 		}
 	}
+}
 
 
 
