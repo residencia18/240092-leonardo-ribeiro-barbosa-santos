@@ -4,7 +4,6 @@ public class Trajetos {
 
 	private int idTrajeto;
 	private String nomeTrajeto;
-	private Veiculos veiculos;
 	private Jornada jornada;
 	
 	
