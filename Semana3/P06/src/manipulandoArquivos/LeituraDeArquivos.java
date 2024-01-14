@@ -10,7 +10,7 @@ public class LeituraDeArquivos {
         String nomeArquivo = "C:\\Users\\user\\OneDrive\\Documents\\java\\entrada.txt";
 
         try (BufferedReader leitor = new BufferedReader(new FileReader("C:\\Users\\user\\OneDrive\\Documents\\java\\entrada.txt"))) {
-            System.out.println("entrada.txt");
+            System.out.println(nomeArquivo);
             
             String linha;
             while ((linha = leitor.readLine()) != null) {
