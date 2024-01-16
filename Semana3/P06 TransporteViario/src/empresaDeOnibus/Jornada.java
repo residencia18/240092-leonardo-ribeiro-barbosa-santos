@@ -12,7 +12,8 @@ public class Jornada {
 	private  List<Motoristas> listaMotoristas;
 	private List<Veiculos> listaVeiculos;
 	private int idJornada;
-	private LocalDateTime datahora;
+	private LocalDateTime inicio;
+	private LocalDateTime fim;
 	
 	
 	public Jornada() {
@@ -24,19 +25,6 @@ public class Jornada {
 	
 	
 	
-	
-	
-
-
-
-
-	
-
-
-
-
-
-
 
 
 
@@ -61,10 +49,46 @@ public class Jornada {
 	        listaVeiculos.add(novoVeiculo);
 	        System.out.println("Veículo cadastrado com sucesso!\nModelo do Veículo: " + novoVeiculo.getModelo() + "\nPlaca: " + novoVeiculo.getPlaca());
 	}
+	
+	public void cadastrarTrajetos() {
+		Trajetos novotrajeto = new Trajetos();
+		trajetos.add(novotrajeto);
+		System.out.println("Trajeto cadastrado com sucesso!\n" + "No: " + novotrajeto.getNomeTrajeto() + "\nId: " + novotrajeto.getIdTrajeto());
+	}
+
+	
 
 	
 	
+	public void registrarJornada(Trajetos trajeto, Motoristas motorista, Cobradores cobrador, Veiculos veiculo) {
+	    if (trajeto == null || motorista == null || veiculo == null) {
+	        System.out.println("Erro: Trajeto, motorista e veículo são obrigatórios para registrar uma jornada.");
+	        return;
+	    }
+
 	
+	    // Configura as listas da jornada existente
+	    this.getTrajetos().add(trajeto);
+	    this.getMotoristas().add(motorista);
+	    this.getVeiculos().add(veiculo);
+
+	    // Se o cobrador foi fornecido, adiciona à jornada existente
+	    if (cobrador != null) {
+	        this.getListaCobradores().add(cobrador);
+	    }
+
+	    // Exibe os dados associados à nova jornada
+	    System.out.println("\n\nNova Jornada registrada:");
+	    System.out.println("Trajeto: " + trajeto.getNomeTrajeto());
+	    System.out.println("Motorista: " + motorista.getNomeMotorista());
+	    System.out.println("Cobrador: " + (cobrador != null ? cobrador.getNomeCobrador() : "Não especificado"));
+	    System.out.println("Veículo: " + veiculo.getModelo());
+
+	    // Adicione a nova jornada à lista de jornadas, se necessário
+	    // this.listaJornadas.add(novaJornada);
+	}
+
+
 
 	
 	
@@ -157,17 +181,41 @@ public class Jornada {
 	}
 
 
-	public LocalDateTime getDatahora() {
-		return datahora;
+
+	public List<Veiculos> getListaVeiculos() {
+		return listaVeiculos;
 	}
 
 
-	public void setDatahora(LocalDateTime datahora) {
-		this.datahora = datahora;
+
+	public void setListaVeiculos(List<Veiculos> listaVeiculos) {
+		this.listaVeiculos = listaVeiculos;
 	}
-	
-	
-	
+
+
+
+	public LocalDateTime getInicio() {
+		return inicio;
+	}
+
+
+
+
+	public void setInicio(LocalDateTime inicio) {
+		this.inicio = inicio;
+	}
+
+
+	public LocalDateTime getFim() {
+		return fim;
+	}
+
+
+
+	public void setFim(LocalDateTime fim) {
+		this.fim = fim;
+	}
+
 	
 }
 

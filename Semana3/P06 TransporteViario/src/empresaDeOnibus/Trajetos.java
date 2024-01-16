@@ -1,9 +1,9 @@
 package empresaDeOnibus;
 
-import java.time.LocalDateTime;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+
 
 public class Trajetos {
 
@@ -11,7 +11,6 @@ public class Trajetos {
 	private String nomeTrajeto;
 	private ArrayList<Jornada> listaJornadas;
 	private List<Veiculos> veiculos;
-	private List<Trajetos> trajetos;
 	
 	
 	public Trajetos() {
@@ -19,9 +18,24 @@ public class Trajetos {
     }
 	
 	
-	public void novaJornada() {
-	      
-	    }
+	
+	public Trajetos(int idTrajeto, String nomeTrajeto) {
+		super();
+		this.idTrajeto = idTrajeto;
+		this.nomeTrajeto = nomeTrajeto;
+	}
+
+
+
+	public Trajetos(int idTrajeto, String nomeTrajeto, ArrayList<Jornada> listaJornadas, List<Veiculos> veiculos) {
+		this.idTrajeto = idTrajeto;
+		this.nomeTrajeto = nomeTrajeto;
+		this.listaJornadas = listaJornadas;
+		this.veiculos = veiculos;
+	}
+
+
+
 
 	   	
 	
@@ -35,9 +49,8 @@ public class Trajetos {
 	}
 	
 	
-	public void cadastrarTrajetos() {
-		
-	}
+	
+
 	
 	public void registrarTrechos() {
 		
@@ -52,24 +65,7 @@ public class Trajetos {
 	
 	
 
-	public ArrayList<Jornada> getListaJornadas() {
-		return listaJornadas;
-	}
 
-
-	public void setListaJornadas(ArrayList<Jornada> listaJornadas) {
-		this.listaJornadas = listaJornadas;
-	}
-
-
-	public List<Trajetos> getTrajetos() {
-		return trajetos;
-	}
-
-
-	public void setTrajetos(List<Trajetos> trajetos) {
-		this.trajetos = trajetos;
-	}
 
 
 	public int getIdTrajeto() {

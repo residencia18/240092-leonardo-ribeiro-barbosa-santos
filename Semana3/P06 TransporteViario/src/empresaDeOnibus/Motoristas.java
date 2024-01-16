@@ -1,6 +1,6 @@
 package empresaDeOnibus;
 
-import java.util.Scanner;
+
 
 public class Motoristas {
 	
@@ -9,6 +9,11 @@ public class Motoristas {
 	
 	
 
+
+
+
+	public Motoristas() {
+	}
 
 
 

@@ -16,7 +16,17 @@ public class Veiculos {
 
 	
 
+
+
+
+	public Veiculos() {
+
+	}
+
+
+
 	public Veiculos(String placa, String modelo) {
+
 		this.placa = placa;
 		this.modelo = modelo;
 	}

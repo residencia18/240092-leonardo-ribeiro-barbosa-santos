@@ -1,6 +1,5 @@
 package empresaDeOnibus;
 
-import java.util.Scanner;
 
 public class Cobradores {
 	private String nomeCobrador;
@@ -13,13 +12,19 @@ public class Cobradores {
 	
 	
 
+	public Cobradores() {
+	}
+
+
 	
 
-
 	public Cobradores(String nomeCobrador, int cpfCobrador) {
+		
 		this.nomeCobrador = nomeCobrador;
 		this.cpfCobrador = cpfCobrador;
 	}
+
+
 
 
 	public int getCpfCobrador() {

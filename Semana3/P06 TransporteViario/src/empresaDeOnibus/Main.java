@@ -1,22 +1,33 @@
 package empresaDeOnibus;
 
-import java.time.LocalDateTime;
+
 
 public class Main {
 	public static void main(String[] args) {
 		
 		Jornada jornada = new Jornada();
+		Trajetos trajeto = new Trajetos(1, "Ilhéus");
+		Motoristas motorista = new Motoristas("Léo", 4336);
+		Cobradores cobrador = new Cobradores("ju", 414);
+		Veiculos veiculo = new 	Veiculos("Paradiso G8 1600 LD", "R1432\n\n");
+		
+		
 		System.out.println("Cadastro de Motorista");
-		jornada.cadastrarMotorista("Léo", 436);
+		jornada.cadastrarMotorista("Léo", 4336);
 		
 		System.out.println("\nCadastro de Cobrador");
 		jornada.cadastrarCobrador("James", 414);
 		
 		System.out.println("\nCadastro do Veiculo");
-		jornada.cadastrarVeiculo("Paradiso G8 1600 LD", "R1432");
+		jornada.cadastrarVeiculo("Paradiso G8 1600 LD", "R1432\n\n");
+		
+		jornada.cadastrarTrajetos();
+		
+	
+		jornada.registrarJornada(trajeto, motorista, cobrador, veiculo);
 		
 		
-		Trajetos trajeto = new Trajetos();
-		trajeto.novaJornada(LocalDateTime.now(),LocalDateTime.now().plusHours(3));
+		
+		
 	}
 }
