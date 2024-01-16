@@ -4,26 +4,17 @@ import java.util.Scanner;
 
 public class Motoristas {
 	
-
-	private int cpfMotorista;
 	private String nomeMotorista;
+	private int cpfMotorista;
 	
 	
-	
-	
-	public void cadastrarMotorista() {
-		Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Nome do motorista: ");
-        this.nomeMotorista = scanner.nextLine();
 
-        System.out.print("CPF do motorista: ");
-        this.cpfMotorista = scanner.nextInt();
-        
-        System.out.println("Motorista cadastrado com sucesso!\n");
-        
-        
-        
+
+
+	public Motoristas(String nomeMotorista, int cpfMotorista) {
+		this.nomeMotorista = nomeMotorista;
+		this.cpfMotorista = cpfMotorista;
 	}
 
 

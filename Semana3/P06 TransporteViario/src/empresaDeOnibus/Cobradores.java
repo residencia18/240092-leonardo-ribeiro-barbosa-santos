@@ -3,24 +3,24 @@ package empresaDeOnibus;
 import java.util.Scanner;
 
 public class Cobradores {
-
-	private int cpfCobrador;
 	private String nomeCobrador;
+	private int cpfCobrador;
 	
 	
-	public void cadastrarCobrador() {
-		Scanner scanner = new Scanner(System.in);
+	
+	
 
-        System.out.print("Nome do cobrador: ");
-        this.nomeCobrador = scanner.nextLine();
+	
+	
 
-        System.out.print("CPF do cobrador: ");
-        this.cpfCobrador = scanner.nextInt();
-        System.out.println("Cobrador cadastrado com sucesso!\n");
+	
+
+
+	public Cobradores(String nomeCobrador, int cpfCobrador) {
+		this.nomeCobrador = nomeCobrador;
+		this.cpfCobrador = cpfCobrador;
 	}
 
-	
-	
 
 	public int getCpfCobrador() {
 		return cpfCobrador;

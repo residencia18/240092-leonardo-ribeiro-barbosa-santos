@@ -7,87 +7,143 @@ import java.util.Scanner;
 
 public class Jornada {
 
-	private List<Jornada> jornadas;
-	private List<Cobradores> cobradores;
-	private  List<Motoristas> motoristas;
-	private List<Veiculos> veiculos;
+	private List<Trajetos> trajetos;
+	private List<Cobradores> listaCobradores;
+	private  List<Motoristas> listaMotoristas;
+	private List<Veiculos> listaVeiculos;
 	private int idJornada;
 	private LocalDateTime datahora;
 	
 	
 	public Jornada() {
-		this.jornadas = new ArrayList<>();
-		this.motoristas = new ArrayList<>();
-		this.cobradores = new ArrayList<>();
-		this.veiculos = new ArrayList<>();
+		this.listaMotoristas = new ArrayList<>();
+		this.listaCobradores = new ArrayList<>();
+		this.listaVeiculos = new ArrayList<>();
+		this.trajetos = new ArrayList<>();
 	}
-
-
-	public void novaJornada() {
-		Scanner scanner = new Scanner(System.in);
-		
-		Jornada novaJornada = new Jornada();
-		
-		
-		 novaJornada.motoristas = getMotoristas();
-		 novaJornada.cobradores = getCobradores();
-		 novaJornada.veiculos = getVeiculos();
-		 
-		 Motoristas novoMotorista = new Motoristas();
-		 novoMotorista.cadastrarMotorista();
-		
-		 Cobradores novoCobrador = new Cobradores();
-		 novoCobrador.cadastrarCobrador();
-		 
-		 Veiculos novoVeiculo = new Veiculos();
-		 novoVeiculo.cadastrarVeiculo();
-		 
-		 System.out.println("Nova jornada adicionada com sucesso!" + "\n\nId: " + this.idJornada+ "\nMotorista: " + novoMotorista.getNomeMotorista() + "\nCobrador: " + novoCobrador.getNomeCobrador() + "\nVeiculo: " + novoVeiculo.getTipoVeiculo());
+	
+	
 	
 	
 	
 
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+	public void cadastrarMotorista(String nome, int cpf) {
+	    Motoristas novoMotorista = new Motoristas(nome, cpf);
+	    listaMotoristas.add(novoMotorista);
+	    System.out.println("Motorista cadastrado com sucesso!\n" + "Nome: "+ novoMotorista.getNomeMotorista() + "\nCPF: " + novoMotorista.getCpfMotorista());
+	    
 	}
 	
+	public void cadastrarCobrador(String nome, int cpf) {
+		Cobradores novoCobrador = new Cobradores(nome, cpf);
+		listaCobradores.add(novoCobrador);
+		System.out.println("Cobrador cadastrado com sucesso!\n" + "Nome: " + novoCobrador.getNomeCobrador() + "\nCPF: " + novoCobrador.getCpfCobrador());
+	}
+
+	
+	public void cadastrarVeiculo(String modelo, String placa) {
+		 Veiculos novoVeiculo = new Veiculos(modelo, placa); 
+	        listaVeiculos.add(novoVeiculo);
+	        System.out.println("Veículo cadastrado com sucesso!\nModelo do Veículo: " + novoVeiculo.getModelo() + "\nPlaca: " + novoVeiculo.getPlaca());
+	}
+
+	
+	
 	
 
-	public List<Jornada> getJornadas() {
-		return jornadas;
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public List<Trajetos> getTrajetos() {
+		return trajetos;
 	}
 
 
-	public void setJornadas(List<Jornada> jornadas) {
-		this.jornadas = jornadas;
+	public void setTrajetos(List<Trajetos> trajetos) {
+		this.trajetos = trajetos;
 	}
 
 
-	public List<Cobradores> getCobradores() {
-		return cobradores;
+	public void setMotoristas(List<Motoristas> motoristas) {
+		this.listaMotoristas = motoristas;
 	}
 
 
-	public void setCobradores(List<Cobradores> cobradores) {
-		this.cobradores = cobradores;
+	
+
+
+	public List<Cobradores> getListaCobradores() {
+		return listaCobradores;
 	}
+
+
+
+
+	public void setListaCobradores(List<Cobradores> listaCobradores) {
+		this.listaCobradores = listaCobradores;
+	}
+
+
+
+
+	public List<Motoristas> getListaMotoristas() {
+		return listaMotoristas;
+	}
+
+
+
+
+	public void setListaMotoristas(List<Motoristas> listaMotoristas) {
+		this.listaMotoristas = listaMotoristas;
+	}
+
+
 
 
 	public List<Motoristas> getMotoristas() {
-		return (List<Motoristas>) motoristas;
+		return (List<Motoristas>) listaMotoristas;
 	}
 
 
 	public void setMotoristas(Motoristas motoristas) {
-		this.motoristas = (List<Motoristas>) motoristas;
+		this.listaMotoristas = (List<Motoristas>) motoristas;
 	}
 
 
 	public List<Veiculos> getVeiculos() {
-		return veiculos;
+		return listaVeiculos;
 	}
 
 
 	public void setVeiculos(List<Veiculos> veiculos) {
-		this.veiculos = veiculos;
+		this.listaVeiculos = veiculos;
 	}
 
 
