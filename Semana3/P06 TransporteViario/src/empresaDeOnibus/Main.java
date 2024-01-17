@@ -6,10 +6,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		Jornada jornada = new Jornada();
-		Trajetos trajeto = new Trajetos(1, "Ilhéus");
-		Motoristas motorista = new Motoristas("Léo", 4336);
-		Cobradores cobrador = new Cobradores("ju", 414);
-		Veiculos veiculo = new 	Veiculos("Paradiso G8 1600 LD", "R1432\n\n");
+		Veiculos veiculos = new Veiculos();
 		
 		
 		System.out.println("Cadastro de Motorista");
@@ -21,10 +18,13 @@ public class Main {
 		System.out.println("\nCadastro do Veiculo");
 		jornada.cadastrarVeiculo("Paradiso G8 1600 LD", "R1432\n\n");
 		
-		jornada.cadastrarTrajetos();
+		jornada.cadastrarTrajetos("Ilheus", 0);
 		
 	
-		jornada.registrarJornada(trajeto, motorista, cobrador, veiculo);
+		jornada.registrarJornada();
+		
+		Trajetos trajeto = new Trajetos();
+		
 		
 		
 		

@@ -56,4 +56,10 @@ public class Veiculos {
 		this.placa = placa;
 	}
 	
+	 @Override
+	    public String toString() {
+	        return "Veículo: " + modelo + " (Placa: " + placa + ")";
+	    }
+	 
+	
 }

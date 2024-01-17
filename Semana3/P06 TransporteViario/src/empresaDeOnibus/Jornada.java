@@ -50,47 +50,61 @@ public class Jornada {
 	        System.out.println("Veículo cadastrado com sucesso!\nModelo do Veículo: " + novoVeiculo.getModelo() + "\nPlaca: " + novoVeiculo.getPlaca());
 	}
 	
-	public void cadastrarTrajetos() {
-		Trajetos novotrajeto = new Trajetos();
+	public void cadastrarTrajetos(String nome, int id) {
+		Trajetos novotrajeto = new Trajetos(nome, id);
 		trajetos.add(novotrajeto);
-		System.out.println("Trajeto cadastrado com sucesso!\n" + "No: " + novotrajeto.getNomeTrajeto() + "\nId: " + novotrajeto.getIdTrajeto());
+		System.out.println("Trajeto cadastrado com sucesso!\n" + "Nome: " + novotrajeto.getNomeTrajeto() + "\nId: " + novotrajeto.getIdTrajeto());
 	}
 
 	
 
 	
 	
-	public void registrarJornada(Trajetos trajeto, Motoristas motorista, Cobradores cobrador, Veiculos veiculo) {
-	    if (trajeto == null || motorista == null || veiculo == null) {
-	        System.out.println("Erro: Trajeto, motorista e veículo são obrigatórios para registrar uma jornada.");
+	public void registrarJornada() {
+	    if (listaMotoristas.isEmpty() || listaVeiculos.isEmpty() || trajetos.isEmpty()) {
+	        System.out.println("Erro: Necessário cadastrar motorista, veículo e trajeto antes de registrar uma jornada.");
 	        return;
 	    }
 
-	
-	    // Configura as listas da jornada existente
-	    this.getTrajetos().add(trajeto);
-	    this.getMotoristas().add(motorista);
-	    this.getVeiculos().add(veiculo);
+	    // Pega o primeiro motorista da lista
+	    Motoristas motorista = listaMotoristas.get(0);
+	    System.out.println("Lista de Veículos: " + listaVeiculos);
+	    // Pega o primeiro veículo da lista
+	    Veiculos veiculo = listaVeiculos.get(0);
 
-	    // Se o cobrador foi fornecido, adiciona à jornada existente
-	    if (cobrador != null) {
-	        this.getListaCobradores().add(cobrador);
-	    }
+	    // Pega todos os trajetos da lista
+	    Trajetos trajetosJornada = trajetos.get(0);
 
+	    // Pega o primeiro cobrador da lista ou define como null se a lista estiver vazia
+	    Cobradores cobrador = listaCobradores.isEmpty() ? null : listaCobradores.get(0);
+
+	    inicio = LocalDateTime.now();
+	    
 	    // Exibe os dados associados à nova jornada
-	    System.out.println("\n\nNova Jornada registrada:");
-	    System.out.println("Trajeto: " + trajeto.getNomeTrajeto());
+	    System.out.println("\nNova Jornada registrada:");
 	    System.out.println("Motorista: " + motorista.getNomeMotorista());
-	    System.out.println("Cobrador: " + (cobrador != null ? cobrador.getNomeCobrador() : "Não especificado"));
+	    System.out.println("Trajeto: " + trajetosJornada.getNomeTrajeto());
 	    System.out.println("Veículo: " + veiculo.getModelo());
+	    System.out.println("Cobrador: " + (cobrador != null ? cobrador.getNomeCobrador() : "Não especificado"));
+	    System.out.println("Data e Hora de Início: " + inicio);
+	    
+	    fim = LocalDateTime.now();
+        System.out.println("Data e Hora de Fim: " + fim);
+        
+        trajetosJornada.getListaJornadas().add(this);
+        trajetosJornada.registrarInicioTrajeto();
+	  
 
-	    // Adicione a nova jornada à lista de jornadas, se necessário
-	    // this.listaJornadas.add(novaJornada);
+	    // Limpa as listas após o registro da jornada
+	    listaMotoristas.clear();
+	    listaCobradores.clear();
+	    listaVeiculos.clear();
+	    trajetos.clear();
 	}
 
 
 
-	
+
 	
 	
 	
