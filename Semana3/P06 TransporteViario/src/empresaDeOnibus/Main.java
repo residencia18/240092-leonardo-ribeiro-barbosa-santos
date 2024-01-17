@@ -24,8 +24,15 @@ public class Main {
 		jornada.registrarJornada();
 		
 		Trajetos trajeto = new Trajetos();
+		Passageiros passageiros = new Passageiros("José", "434FDS");
 		
 		
+		PontoDeParada ponto = new PontoDeParada("Rodoviaria");
+		ponto.registrarEmbarqueComCartao(passageiros, "" );
+		
+		
+		CheckPoints check = new CheckPoints();
+		check.registrarChegada();
 		
 		
 		
