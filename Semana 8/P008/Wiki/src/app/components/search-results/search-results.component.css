@@ -1,0 +1,26 @@
+.search-results {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .result {
+    margin-bottom: 20px;
+  }
+  
+  h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  p {
+    font-size: 16px;
+  }
+  
+  a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 16px;
+    margin-top: 5px;
+    display: block;
+  }
+  

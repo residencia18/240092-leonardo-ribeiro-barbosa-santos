@@ -1,0 +1,14 @@
+<!-- app.component.html -->
+<div>
+  <input type="text" [(ngModel)]="searchTerm" placeholder="Pesquisar" />
+  <button (click)="onSearch(searchTerm)">Pesquisar</button>
+</div>
+
+<div *ngIf="searchResults.length > 0">
+  <h2>Resultados da Pesquisa:</h2>
+  <ul>
+    <li *ngFor="let result of searchResults">
+      {{ result.title }}
+    </li>
+  </ul>
+</div>
