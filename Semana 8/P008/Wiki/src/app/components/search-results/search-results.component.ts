@@ -7,5 +7,4 @@ import { Component, Input } from '@angular/core';
 })
 export class SearchResultsComponent {
   @Input() results: any[] = [];
-searchTerm: any;
 }

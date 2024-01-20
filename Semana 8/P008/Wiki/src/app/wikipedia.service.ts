@@ -6,18 +6,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class WikipediaService {
-  private apiUrl = 'https://en.wikipedia.org/w/api.php';
+  private apiUrl = 'http://localhost:3000/wikipedia-search';
 
   constructor(private http: HttpClient) {}
 
   search(term: string): Observable<any> {
-    const params = {
-      action: 'query',
-      format: 'json',
-      list: 'search',
-      srsearch: term,
-    };
-
-    return this.http.get<any>(this.apiUrl, { params });
+    // Agora, faça a chamada para o seu servidor local
+    return this.http.get<any>(`${this.apiUrl}?term=${term}`);
   }
 }
+

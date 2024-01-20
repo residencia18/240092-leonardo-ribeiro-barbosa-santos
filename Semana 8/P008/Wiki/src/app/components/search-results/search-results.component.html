@@ -1,10 +1,6 @@
-<div class="search-results">
-    <div *ngFor="let result of results" class="result">
-      <div *ngIf="searchTerm">
-        <h3 [innerHTML]="result.title | highlight: searchTerm"></h3>
-        <p [innerHTML]="result.snippet | highlight: searchTerm"></p>
-        <a [href]="'https://en.wikipedia.org/wiki/' + result.title" target="_blank">Ver mais</a>
-      </div>
-    </div>
+<!-- search-results.component.html -->
+<div *ngFor="let result of results">
+    <h3>{{ result.title }}</h3>
+    <p>{{ result.snippet }}</p>
   </div>
   
