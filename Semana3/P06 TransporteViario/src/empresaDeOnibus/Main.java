@@ -18,7 +18,7 @@ public class Main {
 		System.out.println("\nCadastro do Veiculo");
 		jornada.cadastrarVeiculo("Paradiso G8 1600 LD", "R1432\n\n");
 		
-		jornada.cadastrarTrajetos("Ilheus", 0);
+		jornada.cadastrarTrajetos("Ilheus", 2);
 		
 	
 		jornada.registrarJornada();
@@ -33,8 +33,26 @@ public class Main {
 		
 		CheckPoints check = new CheckPoints();
 		check.registrarChegada();
+		Motoristas m = new Motoristas();
+		m.salvarDados();
+		m.carregarDados();
+		
+		Cobradores c = new Cobradores();
+		c.salvarDados();
+		c.carregarDados();
+		
+		veiculos.salvarDados();
+		veiculos.carregarDados();
 		
 		
+		trajeto.salvarDados();
+		trajeto.carregarDados();
+		
+		check.salvarDados();
+		check.carregarDados();
+		
+		ponto.salvarDados();
+		ponto.carregarDados();
 		
 	}
 }

@@ -15,6 +15,8 @@ public class Jornada {
 	private LocalDateTime inicio;
 	private LocalDateTime fim;
 	
+	private static List<Jornada> listaJornadas = new ArrayList<>();
+	
 	
 	public Jornada() {
 		this.listaMotoristas = new ArrayList<>();
@@ -51,9 +53,12 @@ public class Jornada {
 	}
 	
 	public void cadastrarTrajetos(String nome, int id) {
-		Trajetos novotrajeto = new Trajetos(nome, id);
-		trajetos.add(novotrajeto);
-		System.out.println("Trajeto cadastrado com sucesso!\n" + "Nome: " + novotrajeto.getNomeTrajeto() + "\nId: " + novotrajeto.getIdTrajeto());
+	    Trajetos novotrajeto = new Trajetos(nome, id);
+	    Trajetos.getListaTrajetos().add(novotrajeto);
+	    System.out.println("Trajeto cadastrado com sucesso!\n" + "Nome: " + novotrajeto.getNomeTrajeto() + "\nId: " + novotrajeto.getIdTrajeto());
+
+	    // Salva os dados após cadastrar um novo trajeto
+	    Trajetos.salvarDados();
 	}
 
 	
