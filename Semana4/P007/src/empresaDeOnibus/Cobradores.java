@@ -1,60 +1,88 @@
 package empresaDeOnibus;
 
+
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cobradores {
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+public class Cobradores implements Persistencia {
 	private String nomeCobrador;
 	private int cpfCobrador;
-	
-	
-	
-	
+	private static List<Cobradores> listaCobradores = new ArrayList<>();
 
 	
 	
+	
+	
+	
+	public Cobradores() {
+	}
 
-	 private static List<Cobradores> listaCobradores = new ArrayList<>();
+	public Cobradores(String nomeCobrador, int cpfCobrador) {
+		this.nomeCobrador = nomeCobrador;
+		this.cpfCobrador = cpfCobrador;
+		listaCobradores.add(this);
+	}
 
-	    public Cobradores() {
-	    }
+	
+	
+	
+	
+	
+	public void salvarDados() {
+		try (FileWriter fileWriter = new FileWriter("dadosCobradores.json")) {
+			JSONArray cobradoresJSON = new JSONArray();
+			for (Cobradores cobrador : listaCobradores) {
+				cobradoresJSON.put(cobrador.toJSON());
+			}
 
-	    public Cobradores(String nomeCobrador, int cpfCobrador) {
-	        this.nomeCobrador = nomeCobrador;
-	        this.cpfCobrador = cpfCobrador;
-	        // Adiciona a instância atual à lista
-	        listaCobradores.add(this);
-	    }
+			fileWriter.write(cobradoresJSON.toString());
+			System.out.println("Dados dos cobradores foram salvos no arquivo 'dadosCobradores.json'.");
+		} catch (IOException e) {
+			System.out.println("Erro ao salvar dados dos cobradores: " + e.getMessage());
+			e.printStackTrace();
+		}
+	}
 
-	    public static void salvarDados() {
-	        try (BufferedWriter writer = new BufferedWriter(new FileWriter("dadosCobradores.txt"))) {
-	            for (Cobradores cobrador : listaCobradores) {
-	                writer.write(cobrador.nomeCobrador + "," + cobrador.cpfCobrador);
-	                writer.newLine();
-	            }
-	            System.out.println("Dados dos cobradores salvos com sucesso.");
-	        } catch (IOException e) {
-	            System.out.println("Erro ao salvar dados dos cobradores: " + e.getMessage());
-	        }
-	    }
 
-	    public static void carregarDados() {
-	        try (BufferedReader reader = new BufferedReader(new FileReader("dadosCobradores.txt"))) {
-	            String linha;
-	            while ((linha = reader.readLine()) != null) {
-	                String[] dados = linha.split(",");
-	                Cobradores cobrador = new Cobradores(dados[0], Integer.parseInt(dados[1]));
-	            }
-	            System.out.println("Dados dos cobradores carregados com sucesso.");
-	        } catch (IOException e) {
-	            System.out.println("Erro ao carregar dados dos cobradores: " + e.getMessage());
-	        }
-	    }
+	public JSONObject toJSON() {
+		JSONObject cobradoresJSON = new JSONObject();
+		cobradoresJSON.put("nome", nomeCobrador);
+		cobradoresJSON.put("cpf", cpfCobrador);
+		return cobradoresJSON;
+	}
+
+
+	public void carregarDados() {
+		try (BufferedReader reader = new BufferedReader(new FileReader("dadosCobradores.json"))) {
+			StringBuilder jsonContent = new StringBuilder();
+			String linha;
+			while ((linha = reader.readLine()) != null) {
+				jsonContent.append(linha);
+			}
+
+			JSONArray cobradoresJSON = new JSONArray(jsonContent.toString());
+
+			for (int i = 0; i <cobradoresJSON.length(); i++) {
+				JSONObject motoristaJSON = cobradoresJSON.getJSONObject(i);
+				String nome = motoristaJSON.getString("nome");
+				int cpf = motoristaJSON.getInt("cpf");
+				Cobradores cobrador = new Cobradores(nome, cpf);
+				listaCobradores.add(cobrador);
+			}
+
+			System.out.println("Dados dos cobradores carregados com sucesso.");
+		} catch (IOException e) {
+			System.out.println("Erro ao carregar dados dos cobradores: " + e.getMessage());
+			e.printStackTrace();
+		}
+	}
 
 
 
@@ -78,6 +106,6 @@ public class Cobradores {
 	public void setNomeCobrador(String nomeCobrador) {
 		this.nomeCobrador = nomeCobrador;
 	}
-	
-	
+
+
 }

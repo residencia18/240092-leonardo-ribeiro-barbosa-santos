@@ -8,10 +8,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 public class PontoDeParada {
 	private String nome;
 	private List<String> passageirosEmbarcados;
-	
+	private static List<PontoDeParada> listaPontos = new ArrayList<>();
 	
 	
 
@@ -32,37 +35,64 @@ public class PontoDeParada {
         System.out.println("Passageiro " + passageiro.getNome() + " embarcou com o cartão " + passageiro.getTipoCartao() +
                 " no ponto de parada " + this.nome);
         passageirosEmbarcados.add(passageiro.getNome() + "," + passageiro.getTipoCartao());
-        // Lógica para registrar o embarque com cartão, se necessário.
     }
+	
 	 public void imprimirDadosPontoDeParada() {
 	        for (String passageiro : passageirosEmbarcados) {
 	            System.out.println("Passageiro embarcou: " + passageiro);
 	        }
 	    }
-	
-	 public void salvarDados() {
-	        try (BufferedWriter writer = new BufferedWriter(new FileWriter("dadosPontoDeParada.txt", true))) {
-	            for (String passageiro : passageirosEmbarcados) {
-	                writer.write(passageiro);
-	                writer.newLine();
+	  public void salvarDados() {
+	        try (BufferedWriter writer = new BufferedWriter(new FileWriter("dadosPontosDeParada.json"))) {
+	            JSONArray pontosJSON = new JSONArray();
+	            for (PontoDeParada ponto : listaPontos) {
+	                pontosJSON.put(ponto.toJSON());
 	            }
-	            System.out.println("Dados do ponto de parada salvos com sucesso.");
+
+	            writer.write(pontosJSON.toString());
+	            System.out.println("Dados dos pontos de parada foram salvos no arquivo 'dadosPontosDeParada.json'.");
 	        } catch (IOException e) {
-	            System.out.println("Erro ao salvar dados do ponto de parada: " + e.getMessage());
+	            System.out.println("Erro ao salvar dados dos pontos de parada: " + e.getMessage());
+	            e.printStackTrace();
 	        }
 	    }
 
 	    public void carregarDados() {
-	        try (BufferedReader reader = new BufferedReader(new FileReader("dadosPontoDeParada.txt"))) {
+	        try (BufferedReader reader = new BufferedReader(new FileReader("dadosPontosDeParada.json"))) {
+	            StringBuilder jsonContent = new StringBuilder();
 	            String linha;
 	            while ((linha = reader.readLine()) != null) {
-	                System.out.println("Passageiro embarcou: " + linha);
+	                jsonContent.append(linha);
 	            }
-	            System.out.println("Dados do ponto de parada carregados com sucesso.");
+
+	            JSONArray pontosJSON = new JSONArray(jsonContent.toString());
+
+	            for (int i = 0; i < pontosJSON.length(); i++) {
+	                JSONObject pontoJSON = pontosJSON.getJSONObject(i);
+	                PontoDeParada ponto = PontoDeParada.fromJSON(pontoJSON);
+	                listaPontos.add(ponto);
+	            }
+
+	            System.out.println("Dados dos pontos de parada carregados com sucesso.");
 	        } catch (IOException e) {
-	            System.out.println("Erro ao carregar dados do ponto de parada: " + e.getMessage());
+	            System.out.println("Erro ao carregar dados dos pontos de parada: " + e.getMessage());
+	            e.printStackTrace();
 	        }
 	    }
+
+	    private JSONObject toJSON() {
+	        JSONObject pontoJSON = new JSONObject();
+	        pontoJSON.put("nomePonto", nome);
+	        // Adicionar outros atributos ao JSON conforme necessário
+	        return pontoJSON;
+	    }
+
+	    private static PontoDeParada fromJSON(JSONObject pontoJSON) {
+	        String nomePonto = pontoJSON.getString("nomePonto");
+	        // Recuperar outros atributos do JSON conforme necessário
+	        return new PontoDeParada(nomePonto);
+	    }
+	
 	
 
 

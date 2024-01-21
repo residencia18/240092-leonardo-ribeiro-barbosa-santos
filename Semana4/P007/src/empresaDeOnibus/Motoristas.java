@@ -14,23 +14,27 @@ import org.json.JSONObject;
 
 
 public class Motoristas implements Persistencia {
-
-
-
 	private String nomeMotorista;
 	private int cpfMotorista;
 	private static List<Motoristas> listaMotoristas = new ArrayList<>();
-
-	public Motoristas() {
-	}
+	
+	
+	
+	
+	public Motoristas() {}
 
 	public Motoristas(String nomeMotorista, int cpfMotorista) {
 		this.nomeMotorista = nomeMotorista;
 		this.cpfMotorista = cpfMotorista;
-		// Adiciona a instância atual à lista
 		listaMotoristas.add(this);
 	}
 
+	
+	
+	
+	
+	
+	
 	public void salvarDados() {
 		try (FileWriter fileWriter = new FileWriter("dadosMotoristas.json")) {
 			JSONArray motoristasJSON = new JSONArray();

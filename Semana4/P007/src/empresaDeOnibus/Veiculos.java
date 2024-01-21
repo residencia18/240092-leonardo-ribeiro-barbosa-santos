@@ -8,58 +8,89 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 
 public class Veiculos {
-	
+
 	private String placa;
 	private String modelo;
-	
-	
-	
-
 	private static List<Veiculos> listaVeiculos = new ArrayList<>();
 
-    public Veiculos() {
-    }
+	
+	
+	
+	
+	public Veiculos() {
+	}
 
-    public Veiculos(String placa, String modelo) {
-        this.placa = placa;
-        this.modelo = modelo;
-        // Adiciona a instância atual à lista
-        listaVeiculos.add(this);
-    }
+	public Veiculos(String placa, String modelo) {
+		this.placa = placa;
+		this.modelo = modelo;
+		listaVeiculos.add(this);
+	}
+	
+	
+	
+	
 
-    public static void salvarDados() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("dadosVeiculos.txt"))) {
-            for (Veiculos veiculo : listaVeiculos) {
-                writer.write(veiculo.modelo + "," + veiculo.placa);
-                writer.newLine();
-            }
-            System.out.println("Dados dos veículos salvos com sucesso.");
-        } catch (IOException e) {
-            System.out.println("Erro ao salvar dados dos veículos: " + e.getMessage());
-        }
-    }
+	public void salvarDados() {
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter("dadosVeiculos.json"))) {
+			JSONArray veiculosJSON = new JSONArray();
+			for (Veiculos veiculo : listaVeiculos) {
+				veiculosJSON.put(veiculo.toJSON());
+			}
 
-    public static void carregarDados() {
-        try (BufferedReader reader = new BufferedReader(new FileReader("dadosVeiculos.txt"))) {
-            String linha;
-            while ((linha = reader.readLine()) != null) {
-                String[] dados = linha.split(",");
-                if (dados.length >= 2) {
-                    Veiculos veiculo = new Veiculos(dados[0], dados[1]);
-                } else {
-                    System.out.println("Linha mal formatada no arquivo: " + linha);
-                }
-            }
-            System.out.println("Dados dos veículos carregados com sucesso.");
-        } catch (IOException e) {
-            System.out.println("Erro ao carregar dados dos veículos: " + e.getMessage());
-        }
-    }
+			writer.write(veiculosJSON.toString());
+			System.out.println("Dados dos veículos foram salvos no arquivo 'dadosVeiculos.json'.");
+		} catch (IOException e) {
+			System.out.println("Erro ao salvar dados dos veículos: " + e.getMessage());
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public JSONObject toJSON() {
+		JSONObject veiculoJSON = new JSONObject();
+		veiculoJSON.put("modelo", modelo);
+		veiculoJSON.put("placa", placa);
+		return veiculoJSON;
+	}
+
+	
+	
+	public void carregarDados() {
+		try (BufferedReader reader = new BufferedReader(new FileReader("dadosVeiculos.json"))) {
+			StringBuilder jsonContent = new StringBuilder();
+			String linha;
+			while ((linha = reader.readLine()) != null) {
+				jsonContent.append(linha);
+			}
+
+			JSONArray veiculosJSON = new JSONArray(jsonContent.toString());
+
+			for (int i = 0; i < veiculosJSON.length(); i++) {
+				JSONObject veiculoJSON = veiculosJSON.getJSONObject(i);
+				String modelo = veiculoJSON.getString("modelo");
+				String placa = veiculoJSON.getString("placa");
+				Veiculos veiculo = new Veiculos(modelo, placa);
+				listaVeiculos.add(veiculo);
+			}
+
+			System.out.println("Dados dos veículos carregados com sucesso.");
+		} catch (IOException e) {
+			System.out.println("Erro ao carregar dados dos veículos: " + e.getMessage());
+			e.printStackTrace();
+		}
+	}
 
 
 
+	
+	
+	
+	
 	public String getModelo() {
 		return modelo;
 	}
@@ -82,11 +113,11 @@ public class Veiculos {
 	public void setPlaca(String placa) {
 		this.placa = placa;
 	}
-	
-	 @Override
-	    public String toString() {
-	        return "Veículo: " + modelo + " (Placa: " + placa + ")";
-	    }
-	 
-	
+
+	@Override
+	public String toString() {
+		return "Veículo: " + modelo + " (Placa: " + placa + ")";
+	}
+
+
 }

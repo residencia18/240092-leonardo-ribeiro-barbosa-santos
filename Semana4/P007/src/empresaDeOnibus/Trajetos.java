@@ -11,33 +11,27 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class Trajetos {
+
+public class Trajetos implements Persistencia{
 	private String nomeTrajeto;
 	private int idTrajeto;
 	private ArrayList<Jornada> listaJornadas;
 	private List<Veiculos> veiculos;
 	private LocalDateTime inicio;
-	
-	
-	  private static List<Trajetos> listaTrajetos = new ArrayList<>();
+	private static List<Trajetos> listaTrajetos = new ArrayList<>();
 	
 	
 
-
-	public List<Jornada> getListaJornadas() {
-        return listaJornadas;
-    }
-	   	
 	
 	
-	public Trajetos() {
-	}
+	
+	
+	
+	public Trajetos() {}
 	  
-
-
-
-
 
 	public Trajetos(String nomeTrajeto, int idTrajeto) {
 		this.nomeTrajeto = nomeTrajeto;
@@ -50,34 +44,57 @@ public class Trajetos {
 
 
 
-	 public static void salvarDados() {
-	        try (BufferedWriter writer = new BufferedWriter(new FileWriter("dadosTrajetos.txt"))) {
-	            for (Trajetos trajeto : getListaTrajetos()) {
-	                writer.write(trajeto.getNomeTrajeto() + "," + trajeto.getIdTrajeto());
-	                writer.newLine();
-	            }
-	            System.out.println("Dados dos trajetos salvos com sucesso.");
-	        } catch (IOException e) {
-	            System.out.println("Erro ao salvar dados dos trajetos: " + e.getMessage());
-	        }
-	    }
-	 public static void carregarDados() {
-	        try (BufferedReader reader = new BufferedReader(new FileReader("dadosTrajetos.txt"))) {
-	            String linha;
-	            while ((linha = reader.readLine()) != null) {
-	                String[] dados = linha.split(",");
-	                if (dados.length >= 2) {
-	                    Trajetos trajeto = new Trajetos(dados[0], Integer.parseInt(dados[1]));
-	                    getListaTrajetos().add(trajeto);
-	                } else {
-	                    System.out.println("Linha mal formatada no arquivo de trajetos: " + linha);
-	                }
-	            }
-	            System.out.println("Dados dos trajetos carregados com sucesso.");
-	        } catch (IOException e) {
-	            System.out.println("Erro ao carregar dados dos trajetos: " + e.getMessage());
-	        }
-	    }
+	public void salvarDados() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("dadosTrajetos.json"))) {
+            JSONArray trajetosJSON = new JSONArray();
+            for (Trajetos trajeto : listaTrajetos) {
+                trajetosJSON.put(trajeto.toJSON());
+            }
+
+            writer.write(trajetosJSON.toString());
+            System.out.println("Dados dos trajetos foram salvos no arquivo 'dadosTrajetos.json'.");
+        } catch (IOException e) {
+            System.out.println("Erro ao salvar dados dos trajetos: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void carregarDados() {
+        try (BufferedReader reader = new BufferedReader(new FileReader("dadosTrajetos.json"))) {
+            StringBuilder jsonContent = new StringBuilder();
+            String linha;
+            while ((linha = reader.readLine()) != null) {
+                jsonContent.append(linha);
+            }
+
+            JSONArray trajetosJSON = new JSONArray(jsonContent.toString());
+
+            for (int i = 0; i < trajetosJSON.length(); i++) {
+                JSONObject trajetoJSON = trajetosJSON.getJSONObject(i);
+                Trajetos trajeto = Trajetos.fromJSON(trajetoJSON);
+                listaTrajetos.add(trajeto);
+            }
+
+            System.out.println("Dados dos trajetos carregados com sucesso.");
+        } catch (IOException e) {
+            System.out.println("Erro ao carregar dados dos trajetos: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private JSONObject toJSON() {
+        JSONObject trajetoJSON = new JSONObject();
+        trajetoJSON.put("nomeTrajeto", nomeTrajeto);
+        trajetoJSON.put("idTrajeto", idTrajeto);
+        return trajetoJSON;
+    }
+
+    private static Trajetos fromJSON(JSONObject trajetoJSON) {
+        String nome = trajetoJSON.getString("nomeTrajeto");
+        int id = trajetoJSON.getInt("idTrajeto");
+        return new Trajetos(nome, id);
+    }
 
 
 	
@@ -85,10 +102,9 @@ public class Trajetos {
 	
 
 	
-	public void registrarTrechos() {
-		
-		
-	}
+	 
+	 
+	public void registrarTrechos() {}
 	
 
 	
@@ -117,7 +133,9 @@ public class Trajetos {
 	
 
 
-
+	 public List<Jornada> getListaJornadas() {
+	        return listaJornadas;
+	    }
 
 	public int getIdTrajeto() {
 		return idTrajeto;
