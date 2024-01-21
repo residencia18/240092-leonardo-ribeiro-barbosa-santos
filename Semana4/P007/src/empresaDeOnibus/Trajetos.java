@@ -15,7 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 
-public class Trajetos implements Persistencia{
+public class Trajetos{
 	private String nomeTrajeto;
 	private int idTrajeto;
 	private ArrayList<Jornada> listaJornadas;
@@ -59,7 +59,7 @@ public class Trajetos implements Persistencia{
         }
     }
 
-    @Override
+   
     public void carregarDados() {
         try (BufferedReader reader = new BufferedReader(new FileReader("dadosTrajetos.json"))) {
             StringBuilder jsonContent = new StringBuilder();

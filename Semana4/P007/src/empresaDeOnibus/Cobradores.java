@@ -11,7 +11,7 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class Cobradores implements Persistencia {
+public class Cobradores {
 	private String nomeCobrador;
 	private int cpfCobrador;
 	private static List<Cobradores> listaCobradores = new ArrayList<>();

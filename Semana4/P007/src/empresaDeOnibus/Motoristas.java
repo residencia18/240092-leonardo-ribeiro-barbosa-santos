@@ -13,7 +13,7 @@ import org.json.JSONObject;
 
 
 
-public class Motoristas implements Persistencia {
+public class Motoristas  {
 	private String nomeMotorista;
 	private int cpfMotorista;
 	private static List<Motoristas> listaMotoristas = new ArrayList<>();
