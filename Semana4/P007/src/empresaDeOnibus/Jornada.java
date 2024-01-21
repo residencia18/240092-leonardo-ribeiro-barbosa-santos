@@ -3,7 +3,7 @@ package empresaDeOnibus;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+
 
 public class Jornada {
 
@@ -68,21 +68,20 @@ public class Jornada {
 	        return;
 	    }
 
-	    // Pega o primeiro motorista da lista
+
 	    Motoristas motorista = listaMotoristas.get(0);
 	    System.out.println("Lista de Veículos: " + listaVeiculos);
-	    // Pega o primeiro veículo da lista
+	 
 	    Veiculos veiculo = listaVeiculos.get(0);
 
-	    // Pega todos os trajetos da lista
+
 	    Trajetos trajetosJornada = trajetos.get(0);
 
-	    // Pega o primeiro cobrador da lista ou define como null se a lista estiver vazia
+	
 	    Cobradores cobrador = listaCobradores.isEmpty() ? null : listaCobradores.get(0);
 
 	    inicio = LocalDateTime.now();
 	    
-	    // Exibe os dados associados à nova jornada
 	    System.out.println("\nNova Jornada registrada:");
 	    System.out.println("Motorista: " + motorista.getNomeMotorista());
 	    System.out.println("Trajeto: " + trajetosJornada.getNomeTrajeto());
@@ -97,7 +96,7 @@ public class Jornada {
         trajetosJornada.registrarInicioTrajeto();
 	  
 
-	    // Limpa as listas após o registro da jornada
+
 	    listaMotoristas.clear();
 	    listaCobradores.clear();
 	    listaVeiculos.clear();
@@ -230,6 +229,28 @@ public class Jornada {
 
 	public void setFim(LocalDateTime fim) {
 		this.fim = fim;
+	}
+
+
+
+
+
+
+
+
+	public static List<Jornada> getListaJornadas() {
+		return listaJornadas;
+	}
+
+
+
+
+
+
+
+
+	public static void setListaJornadas(List<Jornada> listaJornadas) {
+		Jornada.listaJornadas = listaJornadas;
 	}
 
 	
