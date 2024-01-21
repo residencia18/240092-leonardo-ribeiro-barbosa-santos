@@ -36,7 +36,7 @@ public class Main {
 		Motoristas m = new Motoristas();
 		m.salvarDados();
 		m.carregarDados();
-		
+
 		Cobradores c = new Cobradores();
 		c.salvarDados();
 		c.carregarDados();

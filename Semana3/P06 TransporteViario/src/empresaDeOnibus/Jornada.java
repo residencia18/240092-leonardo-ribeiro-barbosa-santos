@@ -36,6 +36,7 @@ public class Jornada {
 	    Motoristas novoMotorista = new Motoristas(nome, cpf);
 	    listaMotoristas.add(novoMotorista);
 	    System.out.println("Motorista cadastrado com sucesso!\n" + "Nome: "+ novoMotorista.getNomeMotorista() + "\nCPF: " + novoMotorista.getCpfMotorista());
+	   
 	    
 	}
 	
