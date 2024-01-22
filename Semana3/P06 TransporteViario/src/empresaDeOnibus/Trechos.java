@@ -11,4 +11,9 @@ public class Trechos {
 		this.destino = destino;
 		this.intervaloEstimado = intervaloEstimado;
 	}
+	
+	public void registrarTrechos() {
+
+
+	}
 }

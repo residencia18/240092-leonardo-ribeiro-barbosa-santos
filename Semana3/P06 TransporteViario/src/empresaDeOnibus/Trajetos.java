@@ -85,10 +85,6 @@ public class Trajetos {
 	
 
 	
-	public void registrarTrechos() {
-		
-		
-	}
 	
 
 	
