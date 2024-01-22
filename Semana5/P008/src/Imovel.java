@@ -1,26 +1,35 @@
+import java.util.List;
 
 public class Imovel {
 	private int matricula;
-	private String endereço;
+	private String endereco;
 	private double ultimaLeitura;
 	private double penultimaFatura;
+	private List<Cliente> clientes;
 	
 	
 	
+	public Imovel(String endereco) {
+		this.endereco = endereco;
+	}
 	
+	public Imovel() {}
+
+
 	
+
+
 	public Imovel(int matricula, String endereço, double ultimaLeitura, double penultimaFatura) {
-		super();
 		this.matricula = matricula;
-		this.endereço = endereço;
+		this.endereco = endereço;
 		this.ultimaLeitura = ultimaLeitura;
 		this.penultimaFatura = penultimaFatura;
 	}
 
 	
 	
-	public void incluirImovel() {
-		
+	public void incluirCliente() {
+
 	}
 	
 	
@@ -60,11 +69,11 @@ public class Imovel {
 
 
 	public String getEndereço() {
-		return endereço;
+		return endereco;
 	}
 
 	public void setEndereço(String endereço) {
-		this.endereço = endereço;
+		this.endereco = endereço;
 	}
 
 
