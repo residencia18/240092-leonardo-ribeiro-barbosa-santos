@@ -36,20 +36,25 @@ public class Main {
 		Motoristas m = new Motoristas();
 		m.salvarDados();
 		m.carregarDados();
-
+		System.out.println("\n");
+		
 		Cobradores c = new Cobradores();
 		c.salvarDados();
 		c.carregarDados();
+		System.out.println("\n");
 		
 		veiculos.salvarDados();
 		veiculos.carregarDados();
 		
+		System.out.println("\n");
 		
 		trajeto.salvarDados();
 		trajeto.carregarDados();
+		System.out.println("\n");
 		
 		check.salvarDados();
 		check.carregarDados();
+		System.out.println("\n");
 		
 		ponto.salvarDados();
 		ponto.carregarDados();
