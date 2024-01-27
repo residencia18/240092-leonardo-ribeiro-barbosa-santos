@@ -7,7 +7,7 @@ public class Cliente {
 	private int cpf;
 	private String nome;
 	List<Imovel> imoveis;
-	
+	private List<Cliente> clientes = new ArrayList<>();
 
 
 	public Cliente(String nome, int cpf) {
@@ -22,53 +22,53 @@ public class Cliente {
 
 	
 
-	public void incluirImovel(Imovel imovel) {
-		imoveis.add(imovel);
-		System.out.println("Imóvel adicionado com sucesso ao cliente " + nome + "  Endereço do Imóvel: " + imovel.getEndereço());
-	}
+	public void incluirCliente(Cliente cliente) {
+        clientes.add(cliente);
+        System.out.println("Cliente adicionado com sucesso. Nome: " + cliente.getNome() + ", CPF: " + cliente.getCpf());
+    }
 
-	
-	 public Cliente consultarCliente(String nomeCliente) {
-	        if (this.nome.equalsIgnoreCase(nomeCliente)) {
-	        	System.out.println("Nome encontrado: " + this.nome);
-	            return this;
-	            
-	        }
-	        System.out.println("Nome não encontrado!");
-	        return null;
-	    }
-	
+    public void listarClientes() {
+        System.out.println("Lista de Clientes:");
+        for (Cliente cliente : clientes) {
+            System.out.println("CPF: " + cliente.getCpf());
+            System.out.println("Nome: " + cliente.getNome());
+            System.out.println();
+        }
+    }
 
+    public Cliente consultarCliente(String nomeCliente) {
+        for (Cliente cliente : clientes) {
+            if (cliente.getNome().equalsIgnoreCase(nomeCliente)) {
+                System.out.println("Nome encontrado: " + cliente.getNome());
+                return cliente;
+            }
+        }
+        System.out.println("Nome não encontrado!");
+        return null;
+    }
 
-	 public void listarImoveis() {
-		    if (imoveis.isEmpty()) {
-		        System.out.println("Este cliente não possui imóveis associados.");
-		    } else {
-		        System.out.println("Imóveis do cliente " + nome + ":");
-		        for (Imovel imovel : imoveis) {
-		            System.out.println("Endereço: " + imovel.getEndereço());
-		            // Adicione aqui outras informações do imóvel, se necessário
-		        }
-		    }
-	 }
+    public void excluirCliente(String nomeCliente) {
+        for (Cliente cliente : clientes) {
+            if (cliente.getNome().equalsIgnoreCase(nomeCliente)) {
+                clientes.remove(cliente);
+                System.out.println("Cliente removido com sucesso.");
+                return;
+            }
+        }
+        System.out.println("Cliente não encontrado.");
+    }
 
-
-
-	 public void excluirImovel() {
-		 if (imoveis != null) {
-			 System.out.println("Imóvel removido com sucesso do cliente " + nome);
-			 imoveis = null;
-		 } else {
-			 System.out.println("Este cliente não possui imóvel associado.");
-		 }
-	 }
-
-
-	 public void alterarCliente(String novoNome, int novoCpf) {
-		 setNome(novoNome);
-		 setCpf(novoCpf);
-		 System.out.println("Cliente alterado com sucesso. Novo nome: " + getNome());
-	 }
+    public void alterarCliente(String nomeCliente, String novoNome, int novoCpf) {
+        for (Cliente cliente : clientes) {
+            if (cliente.getNome().equalsIgnoreCase(nomeCliente)) {
+                cliente.setNome(novoNome);
+                cliente.setCpf(novoCpf);
+                System.out.println("Cliente alterado com sucesso. Novo nome: " + cliente.getNome());
+                return;
+            }
+        }
+        System.out.println("Cliente não encontrado.");
+    }
 
 
 

@@ -8,6 +8,7 @@ public class Imovel {
 	private double ultimaLeitura;
 	private double penultimaFatura;
 	private List<Cliente> clientes;
+	 private List<Imovel> imoveis = new ArrayList<>();
 	
 	
 	
@@ -18,7 +19,7 @@ public class Imovel {
 	
 
 	
-	public Imovel(String endereco) {
+	public Imovel(String endereco, Cliente proprietario) {
 
 		this.endereco = endereco;
 		this.clientes = new ArrayList<>() ;
@@ -28,41 +29,52 @@ public class Imovel {
 	
 	
 	
-	public void incluirCliente(Cliente cliente) {
-		clientes.add(cliente);
-		System.out.println("Cliente adicionado com sucesso ao imovel " + this.endereco + "Nome do cliente: " + cliente.getNome());
-	}
-	
-	
-	public Imovel consultarImovel(String enderecoImovel) {
-		if(this.endereco.equalsIgnoreCase(enderecoImovel)) {
-			System.out.println("Endereço encontrado: " + this.endereco);
-			return this;
-		}
-		System.out.println("Endereço não encontrado!");
-		return null;
-	}
-	
-	
-	public void listarImovel() {
-		System.out.println("\nEndereço: " + this.endereco);
-		System.out.println("Matricula: " + this.matricula);
-	}
-	
-	
-	public void excluirCliente() {
-		if (clientes != null) {
-			System.out.println("O cliente foi removido com sucesso do imovel " + this.endereco);
-			clientes = null;
-		}
-		else {
-		System.out.println("Este imovel não possui cliente associado!");
-		}
-	}
-	
-	public void alterarImovel() {
-		
-	}
+	  public void incluirImovel(Imovel imovel) {
+	        imoveis.add(imovel);
+	        System.out.println("Imóvel adicionado com sucesso. Endereço: " + imovel.getEndereço());
+	    }
+
+	    public void listarImoveis() {
+	        System.out.println("Lista de Imóveis:");
+	        for (Imovel imovel : imoveis) {
+	            System.out.println("Endereço: " + imovel.getEndereço());
+	    
+	            System.out.println(); 
+	        }
+	    }
+
+	    public Imovel consultarImovel(String endereço) {
+	        for (Imovel imovel : imoveis) {
+	            if (imovel.getEndereço().equalsIgnoreCase(endereço)) {
+	                System.out.println("Imóvel encontrado: " + imovel.getEndereço());
+	                return imovel;
+	            }
+	        }
+	        System.out.println("Imóvel não encontrado!");
+	        return null;
+	    }
+
+	    public void excluirImovel(String endereço) {
+	        for (Imovel imovel : imoveis) {
+	            if (imovel.getEndereço().equalsIgnoreCase(endereço)) {
+	                imoveis.remove(imovel);
+	                System.out.println("Imóvel removido com sucesso.");
+	                return;
+	            }
+	        }
+	        System.out.println("Imóvel não encontrado.");
+	    }
+
+	    public void alterarImovel(String endereço, String novoEndereco) {
+	        for (Imovel imovel : imoveis) {
+	            if (imovel.getEndereço().equalsIgnoreCase(endereço)) {
+	                imovel.setEndereço(novoEndereco);
+	                System.out.println("Imóvel alterado com sucesso. Novo endereço: " + imovel.getEndereço());
+	                return;
+	            }
+	        }
+	        System.out.println("Imóvel não encontrado.");
+	    }
 
 
 
