@@ -76,7 +76,11 @@ public class Imovel {
 	        System.out.println("Imóvel não encontrado.");
 	    }
 
-
+	    public void registraLeitura(double leituraAtual) {
+	        penultimaFatura = ultimaLeitura;
+	        ultimaLeitura = leituraAtual;
+	        
+	    }
 
 
 	
