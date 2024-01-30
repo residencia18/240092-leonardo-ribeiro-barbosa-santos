@@ -1,25 +1,37 @@
 package EmpresaEletrica;
 
+import java.util.Date;
+
 public class Facade {
 
 
 
 	public static void main(String[] args) {
-		
-		Cliente cliente1 = new Cliente("Joaquin", 687);
-		Cliente cliente2 = new Cliente("José", 543);
-		
-		Imovel imovel1 =  new Imovel ("Travessa Santa rita", cliente1);
-		Imovel imovel2 = new Imovel ("Felix Mendonça", cliente1);
-		
-		Fatura fatura = new Fatura(imovel1, 30.15, 40.20);
-		System.out.println("O valor da fatura é: R$" + fatura.getValorCalculado());
-		
-		
-		imovel1.registraLeitura(100);
+	
+	Date data = new Date();
+	Cliente cliente = new Cliente("jose", 32);
+	Cliente cliente2 = new Cliente("galo", 52);
+	
+	Imovel imovel = new Imovel(12, "rua", cliente);
 
+	Fatura novafatura = new Fatura(imovel, 20, 10, data);
+
+	
+	imovel.incluirImovel(imovel);
+	
+	imovel.registrarLeitura(5);
+	//imovel.registrarLeitura(15);	
+	novafatura.registrarLeitura(100);
+	novafatura.calcularValorFatura();
+	novafatura.registraPagamento(10.0);
+
+	
+	
 		
 	
+	
+	
+
 		
 		
 		
