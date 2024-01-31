@@ -6,21 +6,32 @@ import java.util.Date;
 
 import org.junit.jupiter.api.Test;
 
-public class TestPagamentos {
+class TestPagamentos {
+
+	@Test
+	void testRegistraPagamentoQuitada() {
+	    Date data = new Date();
+	    Cliente cliente = new Cliente("jose", 32);
+	    Imovel imovel = new Imovel(12, "rua", cliente);
+	    Fatura novafatura = new Fatura(imovel, 20, 10, data);
+
+	    novafatura.registrarLeitura(15);
+	    novafatura.registraPagamento(150); // Pagamento igual ao valor total da fatura
+
+	    assertTrue(novafatura.isQuitada());
+	}
 
     @Test
-    public void testRegistraPagamentoFaturaQuitada() {
-        // Criando uma fatura com um valor de 100
-        Imovel imovel = new Imovel(0, "Endereco", new Cliente("Nome", 123456));
-        Fatura fatura = new Fatura(imovel, 100, 200, new Date());
+    void testRegistraPagamentoValorRestante() {
+        Date data = new Date();
+        Cliente cliente = new Cliente("jose", 32);
+        Imovel imovel = new Imovel(12, "rua", cliente);
+        Fatura novafatura = new Fatura(imovel, 20, 10, data);
 
-        // Registrando um pagamento igual ao valor total da fatura
-        fatura.registraPagamento(100);
+        novafatura.registrarLeitura(15);
+        novafatura.registraPagamento(10); // Pagamento menor que o valor total da fatura
 
-        // Verificando se a fatura foi quitada corretamente
-        assertTrue(fatura.isQuitada());
-
-        // Verificando se a mensagem de pagamento e quitação da fatura foi exibida corretamente
-        assertEquals("Pagamento registrado com sucesso de 100.0 A fatura foi quitada.", fatura.getLeituraAtual());
+        assertFalse(novafatura.isQuitada());
+        assertEquals(10, novafatura.getValorPago(), 0.001); // Valor restante deve ser 10
     }
 }

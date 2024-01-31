@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Fatura {
-	private Imovel imovel;
+    private Imovel imovel;
     private double leituraAnterior;
     private double leituraAtual;
     private Date dataEmissao;
@@ -14,73 +14,67 @@ public class Fatura {
     private double valorPago;
     private List<Pagamento> pagamentos;
     private List<Reembolso> reembolsos;
-    
+    private double valorCalculadoFatura;
 
-    public Fatura(Imovel imovel, double leituraAnterior, double leituraAtual , Date dataEmissao) {
+    public Fatura(Imovel imovel, double leituraAnterior, double leituraAtual, Date dataEmissao) {
         this.imovel = imovel;
         this.leituraAnterior = leituraAnterior;
         this.leituraAtual = leituraAtual;
         this.dataEmissao = new Date();
         this.valorCalculado = calcularValorFatura();
         this.quitada = false;
-        this.setPagamentos(new ArrayList<>());
-        this.setReembolsos(new ArrayList<>());
+        this.pagamentos = new ArrayList<>();
+        this.reembolsos = new ArrayList<>();
+        this.valorPago = 0.0;
     }
 
     public double calcularValorFatura() {
-      
         double consumo = leituraAtual - leituraAnterior;
         double precoKwh = 10.0;
         return consumo * precoKwh;
     }
 
+    public void registrarLeitura(double leituraAtual) {
+        if (leituraAtual >= imovel.getUltimaLeitura()) {
+            imovel.setPenultimaLeitura(imovel.getUltimaLeitura());
+            imovel.setUltimaLeitura(leituraAtual);
+
+            Date dataEmissao = new Date();
+            double consumo = imovel.getUltimaLeitura() - imovel.getPenultimaLeitura();
+            this.valorCalculadoFatura = consumo * 10.0; // Definir o valor calculado da fatura
+
+            Fatura novaFatura = new Fatura(imovel, imovel.getPenultimaLeitura(), imovel.getUltimaLeitura(), dataEmissao);
+            novaFatura.setValorCalculado(this.valorCalculadoFatura); // Definir o valor calculado da fatura na nova fatura
+            imovel.getFaturas().add(novaFatura);
+
+            System.out.println("Leitura registrada com sucesso para o imóvel: " + imovel.getEndereco());
+            System.out.println("Leitura anterior: " + imovel.getPenultimaLeitura());
+            System.out.println("Leitura atual: " + imovel.getUltimaLeitura());
+            System.out.println("Data de emissão da fatura: " + dataEmissao);
+            System.out.println("Valor calculado da fatura: " + valorCalculadoFatura);
+        } else {
+            System.out.println("Erro ao registrar leitura: a leitura atual é menor que a última leitura.");
+        }
+    }
+
     public void registraPagamento(double valor) {
         if (!quitada) {
-            valorPago += valor;
-            if (valorPago == valorCalculado) {
+            if (Math.abs(valorPago + valor - valorCalculadoFatura) < 0.001) {
                 quitada = true;
-                valorCalculado = valorPago; // Garante que o valor pago não exceda o valor calculado
-                System.out.println("Pagamento registrado com sucesso de " + valorPago +" A fatura foi quitada.");
+                valorPago += valor;
+                System.out.println("Pagamento registrado com sucesso de " + valorPago + ". A fatura foi quitada.");
+            } else if (valorPago + valor <= valorCalculadoFatura) { 
+                valorPago += valor;
+                System.out.println("Pagamento registrado com sucesso. Valor restante da fatura: " + (valorCalculadoFatura - valorPago));
             } else {
-                System.out.println("Pagamento registrado com sucesso. Valor restante da fatura: " + (valorCalculado + valorPago));
-                quitada = false;
+                System.out.println("Erro: O valor pago excede o valor da fatura.");
             }
         } else {
             System.out.println("A fatura já está quitada. Não é possível registrar mais pagamentos.");
         }
     }
-    
-    public void registrarLeitura(double leituraAtual) {
-    	if (leituraAtual >= imovel.getUltimaLeitura()) {
-    	    imovel.setPenultimaLeitura(imovel.getUltimaLeitura());
-    	    imovel.setUltimaLeitura(leituraAtual); // Correção aqui
 
-    	    Date dataEmissao = new Date();
-    	    double consumo = imovel.getUltimaLeitura() - imovel.getPenultimaLeitura(); // Correção aqui
-    	    double valorCalculado = consumo * 10.0; // Custo de 10 reais por KWh
 
-    	    // Criar uma nova instância de Fatura
-    	    Fatura novaFatura = new Fatura(imovel, imovel.getPenultimaLeitura(), imovel.getUltimaLeitura(), dataEmissao);
-    	    
-    	    // Calcular o valor da fatura
-    	    double valorFatura = novaFatura.calcularValorFatura();
-    	    
-    	    // Definir o valor calculado na instância de Fatura
-    	    novaFatura.setValorCalculado(valorFatura);
-    	    
-    	    // Adicionar a nova fatura à lista de faturas do imóvel
-    	    imovel.getFaturas().add(novaFatura); // Correção aqui
-
-    	    System.out.println("Leitura registrada com sucesso para o imóvel: " + imovel.getEndereco());
-    	    System.out.println("Leitura anterior: " + imovel.getPenultimaLeitura()); // Correção aqui
-    	    System.out.println("Leitura atual: " + imovel.getUltimaLeitura()); // Correção aqui
-    	    System.out.println("Data de emissão da fatura: " + dataEmissao);
-    	    System.out.println("Valor calculado da fatura: " + valorCalculado);
-    	} else {
-    	    System.out.println("Erro ao registrar leitura: a leitura atual é menor que a última leitura.");
-    	}
-    }
-	    
     
     public void registrarReembolso(double valor) {
         if (quitada && valor > 0) {
