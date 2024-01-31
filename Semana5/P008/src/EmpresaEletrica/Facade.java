@@ -19,7 +19,11 @@ public class Facade {
 	        imovel.incluirImovel(imovel);
 
 	        novafatura.registrarLeitura(15);
-	        novafatura.registraPagamento(30);
+	        novafatura.registraPagamento(170);
+	        
+	        
+	        
+	        
 	        
 
 	

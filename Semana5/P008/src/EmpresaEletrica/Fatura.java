@@ -73,17 +73,13 @@ public class Fatura {
             System.out.println("A fatura já está quitada. Não é possível registrar mais pagamentos.");
         }
     }
+    
+   
+
 
 
     
-    public void registrarReembolso(double valor) {
-        if (quitada && valor > 0) {
-            reembolsos.add(new Reembolso(valor));
-            System.out.println("Reembolso de " + valor + " registrado com sucesso.");
-        } else {
-            System.out.println("Não é possível registrar reembolso. A fatura não está quitada ou o valor é inválido.");
-        }
-    }
+   
 
 
    

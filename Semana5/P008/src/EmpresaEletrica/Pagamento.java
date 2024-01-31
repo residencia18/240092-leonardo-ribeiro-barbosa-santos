@@ -10,6 +10,9 @@ public class Pagamento {
 	        this.valor = valor;
 	        this.data = new Date(); 
 	    }
+	    
+	   
+
 
 	
 	    public Date getData() {
