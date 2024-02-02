@@ -1,0 +1,124 @@
+.container-destinos {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap; /* Adicionando flex-wrap para permitir que os itens quebrem para a linha seguinte */
+}
+
+img {
+    width: 150px;
+    height: 150px;
+}
+
+.roteiros-viagens {
+    background-color: rgb(240, 186, 241);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 200px;
+    flex-grow: 1; /* Adicionando flex-grow para permitir que os itens cresçam horizontalmente */
+}
+
+.roteiro-comprar {
+    background-color: rgb(172, 253, 164);
+    color: white;
+    display: block;
+    border:cornsilk;
+    margin: auto;
+}
+
+.roteiro-destino {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: rgb(69, 6, 128);
+    flex-direction: column;
+   
+}
+
+.roteiro-preco {
+    text-align: center;
+    font-size: 25px;
+    color: rgb(82, 7, 151);
+    font-weight: bold;
+}
+
+
+.roteiro-obs {
+    text-align: center;
+    font-size: 10px;
+}
+
+.roteiro-parcelamento {
+    text-align: center;
+    font-size: 15px;
+}
+
+button:active {
+    transform: scale(095%);
+}
+button:hover {
+    box-shadow: 5px 5px 5px yellowgreen;
+    background-color: green;
+}
+
+
+
+
+/*formulario*/
+
+/* estilo.css */
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+}
+
+.container-principal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form {
+    background-color: #f5f5f5; /* Cor do formulário igual à do índice */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+}
+
+form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+form button {
+    background-color: #3498db; /* Cor do botão igual à do índice */
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #2980b9; /* Cor de destaque ao passar o mouse, semelhante à do índice */
+}
+
+
+@media screen and (max-width: 1200px) {
+    /* Aplica estilos quando a largura da tela for menor que 1200px */
+    .container-destinos {
+        flex-direction: column; /* Dispor os itens em coluna */
+        align-items: center; /* Centralizar os itens na tela */
+    }
+}

@@ -1,0 +1,22 @@
+<div class="carrinho-container">
+    <h2>Carrinho</h2>
+    <ul>
+        <link rel="stylesheet" href="veiculos.component.css">
+      <li *ngFor="let veiculo of veiculosSelecionados">{{ veiculo }}</li>
+    </ul>
+</div>
+
+<div class="classes-container">
+    <h2>Categorias</h2>
+    <button (click)="selecionarCategoria('Aviões')">Aviões</button>
+    <button (click)="selecionarCategoria('Carros')">Carros</button>
+    <button (click)="selecionarCategoria('Barcos')">Barcos</button>
+    <!-- Adicione mais botões conforme necessário -->
+</div>
+
+<div class="objetos-container">
+    <h2>Veículos</h2>
+    <div *ngFor="let veiculo of veiculos" class="veiculo-card">
+        {{ veiculo }}
+    </div>
+</div>

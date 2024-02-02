@@ -1,0 +1,95 @@
+/* app.component.css */
+
+/* Estilo para o container de busca */
+.search-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.search-input {
+  width: 70%;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.search-button {
+  background-color: #0073e6;
+  color: #ffffff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.search-results {
+  margin-top: 20px;
+}
+
+.search-result-item {
+  list-style: none;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  background-color: #f8f8f8;
+}
+
+.no-results {
+  color: #ff0000;
+  margin-top: 20px;
+}
+
+/* Estilo para as abas */
+.tabs-container {
+  display: flex;
+}
+
+.tab {
+  cursor: pointer;
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-bottom: none;
+  border-radius: 5px 5px 0 0;
+  margin-right: 10px;
+}
+
+.tab:hover {
+  background-color: #e0e0e0;
+}
+
+.tab.active {
+  background-color: #fff;
+  border-color: #ccc;
+  border-bottom: 1px solid #fff;
+}
+
+/* Estilo para o conteúdo das abas */
+.tab-content {
+  border: 1px solid #ccc;
+  border-radius: 0 0 5px 5px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+/* Estilo para o componente "Viagens" */
+.app-viagens {
+  display: none; /* Inicialmente oculto */
+}
+
+/* Estilo para mostrar o componente "Viagens" quando a aba é selecionada */
+.tab-content.active .app-viagens {
+  display: block;
+}
+
+/* Estilo para o componente "Site UESC" */
+.app-site-uesc {
+  display: none; /* Inicialmente oculto */
+}
+
+/* Estilo para mostrar o componente "Site UESC" quando a aba é selecionada */
+.tab-content.active .app-site-uesc {
+  display: block;
+}

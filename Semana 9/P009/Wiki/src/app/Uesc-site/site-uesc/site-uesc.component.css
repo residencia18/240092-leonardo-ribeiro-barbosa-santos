@@ -1,0 +1,70 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilizando a barra de navegação */
+header {
+    background-color: #005493;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Estilizando os cartões */
+.card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.card img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+/* Estilizando cabeçalhos */
+.header {
+    font-size: 24px;
+    font-weight: bold;
+    color: #005493;
+    padding: 10px;
+    font-family: 'Smooch', cursive;
+}
+
+/* Estilizando listas de itens */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    padding: 10px;
+}
+
+/* Estilizando rodapé */
+#rodape {
+    text-align: center;
+    padding: 10px;
+    background-color: #005493;
+    color: #fff;
+}

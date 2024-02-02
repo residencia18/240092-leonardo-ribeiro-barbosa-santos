@@ -1,0 +1,39 @@
+<div class="search-container" *ngIf="selectedTab === 'wiki'">
+  <h1>{{ title }}</h1>
+  <input type="text" [(ngModel)]="searchTerm" placeholder="Digite o termo de pesquisa" class="search-input" />
+  <button (click)="onSearch()" class="search-button">Pesquisar</button>
+
+  <div *ngIf="searchResults.length > 0" class="search-results">
+    <h2>Resultados da Pesquisa</h2>
+    <ul>
+      <li *ngFor="let result of searchResults" class="search-result-item">
+        {{ result.title }}
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="noResultsMessage !== ''" class="no-results">
+    {{ noResultsMessage }}
+  </div>
+</div>
+
+<div class="tabs-container">
+  <button class="tab" (click)="selectTab('wiki')" [class.active]="selectedTab === 'wiki'">Wiki</button>
+  <button class="tab" (click)="selectTab('viagens')" [class.active]="selectedTab === 'viagens'">Viagens</button>
+  <button class="tab" (click)="selectTab('siteUESC')" [class.active]="selectedTab === 'siteUESC'">Site UESC</button>
+  <button class="tab" (click)="selectTab('veiculos')" [class.active]="selectedTab === 'veiculos'">Veiculos</button> <!-- Adicione o botão para a aba de Veiculos -->
+</div>
+
+<div *ngIf="selectedTab === 'viagens'">
+  <app-viagens></app-viagens>
+</div>
+
+<div *ngIf="selectedTab === 'siteUESC'">
+  <app-site-uesc></app-site-uesc>
+</div>
+
+<div *ngIf="selectedTab === 'veiculos'">
+  <app-veiculos></app-veiculos> <!-- Adicione o componente VeiculosComponent -->
+</div>
+
+<router-outlet *ngIf="selectedTab !== 'wiki'"></router-outlet>

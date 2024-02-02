@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de inserçao de Pacotes Turisticos</title>
+    <link rel="stylesheet" href="index.html">
+    <link rel="stylesheet" href="estilo.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <form>
+        <div class="container-destinos">
+            <label for="Salvador">Destino</label>
+            <input type="class" id="Salvador" required>
+
+            <label for="salvador.jpg"></label>
+            </label type="text" id="salvador.jpg">
+
+            <label for="inclusos">Itens Inclusos:</label>
+            <textarea id="inclusos" rows="4" required></textarea>
+
+            <label for="preco">Preço:</label>
+            <input type="text" id="valor" required>
+
+            <button type="button" onclick="inserirPacote()">Inserir</button>
+
+            <div class="container-destinos">
+                <div class="roteiros-viagens">
+                    <img src="salvador.jpg" class="postal">
+                    <div class="roteiro-destino">Salvador</div>
+                    <ul class="roteiro-incluso">
+                        <li>Áereo ida e volta</li>
+                        <li>03 diárias</li>
+                        <li>Café da Manhã</li>
+                    </ul>
+                    <div class="roteiro-preco">R$670,00</div>
+                    <div class="roteiro-obs">Taxas Inclusas</div>
+                    <div class="roteiro-parcelamento">Em até 10x sem Juros</div>
+                </div>
+        
+        </div>
+        
+    </form>
+    <hr />
+    
+    <script>
+        function inserirPacote() {
+            var nomeDestino = document.getElementById('nomeDestino').value;
+            var nomeImagem = document.getElementById('urlImagem').value;
+            var inclusos = document.getElementById('inclusos').value.split('\n');
+            var preco = document.getElementById('preco').value;
+
+            var novoRoteiro = document.createElement('div');
+            novoRoteiro.classList.add('roteiros-viagens');
+
+            var imagem = document.createElement('img');
+            imagem.src = nomeImagem + "salvador.jpg";
+            imagem.classList.add('postal');
+            novoRoteiro.appendChild(imagem);
+
+            var destino = document.createElement('div');
+            destino.classList.add('roteiro-destino');
+            destino.textContent = nomeDestino;
+            novoRoteiro.appendChild(destino);
+
+            var listaInclusos = document.createElement('ul');
+            listaInclusos.classList.add('roteiro-incluso');
+            inclusos.forEach(function (itemTexto) {
+                var itemLista = document.createElement('li');
+                itemLista.textContent = itemTexto;
+                listaInclusos.appendChild(itemLista);
+            });
+            novoRoteiro.appendChild(listaInclusos);
+
+            var precoElemento = document.createElement('div');
+            precoElemento.classList.add('roteiro-preco');
+            precoElemento.textContent = preco;
+            novoRoteiro.appendChild(precoElemento);
+
+            document.querySelector('.container-destinos').appendChild(novoRoteiro);
+
+            document.getElementById('nomeDestino').value = '';
+            document.getElementById('urlImagem').value = '';
+            document.getElementById('inclusos').value = '';
+            document.getElementById('preco').value = ''; document.getElementById('nomeDestino').value = '';
+            document.getElementById('urlImagem').value = '';
+            document.getElementById('inclusos').value = '';
+            document.getElementById('preco').value = '';
+        }
+
+    </script>
+    
+</body>
+</html>
