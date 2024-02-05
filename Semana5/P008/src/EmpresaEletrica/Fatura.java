@@ -74,7 +74,26 @@ public class Fatura {
         }
     }
     
+    public void registrarReembolso() {
+        if (valorPago > valorCalculadoFatura) {
+            double valorExcedente = valorPago - valorCalculadoFatura;
+            Reembolso reembolso = new Reembolso(valorExcedente);
+            reembolsos.add(reembolso);
+            System.out.println("Reembolso de " + valorExcedente + " registrado com sucesso.");
+        } else {
+            System.out.println("Erro: O valor pago não excede o valor da fatura. Não é possível registrar reembolso.");
+        }
+    }
+
+    
+
+    
    
+    
+
+
+
+
 
 
 

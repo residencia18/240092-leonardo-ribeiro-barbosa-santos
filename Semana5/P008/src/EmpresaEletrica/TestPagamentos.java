@@ -29,9 +29,9 @@ class TestPagamentos {
         Fatura novafatura = new Fatura(imovel, 20, 10, data);
 
         novafatura.registrarLeitura(15);
-        novafatura.registraPagamento(10); // Pagamento menor que o valor total da fatura
+        novafatura.registraPagamento(10); 
 
         assertFalse(novafatura.isQuitada());
-        assertEquals(10, novafatura.getValorPago(), 0.001); // Valor restante deve ser 10
+        assertEquals(10, novafatura.getValorPago(), 0.001); 
     }
 }
