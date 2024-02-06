@@ -8,9 +8,12 @@ public class Facade {
 	
 public static void main(String[] args) {
 	 try {
-         Estudante e1 = new Estudante(null, "Tõe", "toe@tutu", "111111");
-         Estudante e2 = new Estudante(null, "Lia", "lia@tutu", "222222");
-         Estudante e3 = new Estudante(null, "tuca", "tuca@tutu", "3333333");
+		 
+		 Curso curso = new Curso(null, "Historia", 8);
+		 Estudante e1 = new Estudante(null,curso,"Tõe", "toe@tutu", "111111");
+		 Estudante e2 = new Estudante(null,curso,"Lia", "lia@tutu", "222222");
+		 Estudante e3 = new Estudante(null,curso,"tuca", "tuca@tutu", "3333333");
+         Estudante e4 = new Estudante(null,curso,"tuca", "tuca@tutu", "3333333");
          
          EntityManagerFactory emf =
                  Persistence.createEntityManagerFactory("academy");
@@ -20,6 +23,8 @@ public static void main(String[] args) {
          em.persist(e1);
          em.persist(e2);
          em.persist(e3);
+         em.persist(e4);
+         em.persist(curso);
          em.getTransaction().commit();
          em.close();
          emf.close();
