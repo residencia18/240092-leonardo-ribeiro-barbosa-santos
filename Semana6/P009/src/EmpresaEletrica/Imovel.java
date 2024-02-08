@@ -1,6 +1,5 @@
 package EmpresaEletrica;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Imovel {
@@ -16,17 +15,14 @@ public class Imovel {
 	
 	
 	
+	
+	
+	
+	
+	
 	public Imovel() {}
 
 
-	
-
-	
-	
-
-	
-	
-	
 	
 	  public Imovel(int matricula, String endereco, Cliente clientes) {
 		super();
@@ -48,7 +44,7 @@ public class Imovel {
 
 	public void incluirImovel(Imovel imovel) {
 	        imoveis.add(imovel);
-	        System.out.println("Imóvel adicionado com sucesso. Endereço: " + imovel.getEndereco() +" ao cliente: " + clientes.getNome() );
+	        System.out.println("Imóvel adicionado com sucesso. Endereço: " + imovel.getEndereco() +" ao cliente: " + clientes.getNome() + "\n");
 	    }
 
 	    public void listarImoveis() {
@@ -97,28 +93,8 @@ public class Imovel {
 	        System.out.println("Imóvel não encontrado.");
 	    }
 
-	    public void registrarLeitura(double leituraAtual) {
-	        if (leituraAtual >= ultimaLeitura) {
-	            penultimaLeitura = ultimaLeitura;
-	            ultimaLeitura = leituraAtual;
-
-	            Date dataEmissao = new Date();
-	            double consumo = ultimaLeitura - penultimaLeitura;
-	            double valorCalculado = consumo * 10.0; // Custo de 10 reais por KWh
-
-	            Fatura novaFatura = new Fatura(this, penultimaLeitura, ultimaLeitura, dataEmissao);
-	            faturas.add(novaFatura);
-
-	            System.out.println("Leitura registrada com sucesso para o imóvel: " + endereco);
-	            System.out.println("Leitura anterior: " + penultimaLeitura);
-	            System.out.println("Leitura atual: " + ultimaLeitura);
-	            System.out.println("Data de emissão da fatura: " + dataEmissao);
-	            System.out.println("Valor calculado da fatura: " + valorCalculado);
-	        } else {
-	            System.out.println("Erro ao registrar leitura: a leitura atual é menor que a última leitura.");
-	        }
-	    }
-
+	  
+	    
 
 
 
