@@ -2,18 +2,38 @@ package EmpresaEletrica;
 
 import java.util.Date;
 
+
 public class Pagamento {
 	  private Date data;
-	    private double valor;
-
-	    public Pagamento(double valor) {
+	  private double valor;
+	  private Fatura fatura;
+	  public Pagamento(Fatura fatura, double valor) {
+	    	  this.fatura = fatura;
 	        this.valor = valor;
 	        this.data = new Date(); 
 	    }
 	    
 	   
 
+	   
+	    public void registraPagamento() {
+	        if (!fatura.isQuitada()) {
+	            if (Math.abs(fatura.getValor() + valor - fatura.getValorCalculado()) < 0.001) {
+	                fatura.setQuitada(true);
+	                System.out.println("Pagamento registrado com sucesso de " + valor + ". A fatura foi quitada.");
+	            } else if (fatura.getValor() + valor <= fatura.getValorCalculado()) {
+	                fatura.setValor(fatura.getValor() + valor);
+	                System.out.println("Pagamento registrado com sucesso. Valor restante da fatura: " + (fatura.getValorCalculado() - fatura.getValor()));
+	            } else {
+	                System.out.println("Erro: O valor pago excede o valor da fatura de " +  fatura.getValorCalculado());
+	           
+	            }
+	        } else {
+	            System.out.println("A fatura já está quitada. Não é possível registrar mais pagamentos.");
+	        }
+	    }
 
+	    
 	
 	    public Date getData() {
 	        return data;
@@ -30,4 +50,31 @@ public class Pagamento {
 	    public void setValor(double valor) {
 	        this.valor = valor;
 	    }
+
+
+
+
+
+
+
+		public Fatura getFatura() {
+			return fatura;
+		}
+
+
+
+
+
+
+
+		public void setFatura(Fatura fatura) {
+			this.fatura = fatura;
+		}
+
+
+
+
+
+
+
 }

@@ -1,37 +1,56 @@
 package EmpresaEletrica;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.Date;
 
 import org.junit.jupiter.api.Test;
 
-class TestPagamentos {
+import static org.junit.jupiter.api.Assertions.*;
 
-	@Test
-	void testRegistraPagamentoQuitada() {
-	    Date data = new Date();
-	    Cliente cliente = new Cliente("jose", 32);
-	    Imovel imovel = new Imovel(12, "rua", cliente);
-	    Fatura novafatura = new Fatura(imovel, 20, 10, data);
-
-	    novafatura.registrarLeitura(15);
-	    novafatura.registraPagamento(150); // Pagamento igual ao valor total da fatura
-
-	    assertTrue(novafatura.isQuitada());
-	}
+class PagamentoTest {
 
     @Test
-    void testRegistraPagamentoValorRestante() {
-        Date data = new Date();
-        Cliente cliente = new Cliente("jose", 32);
-        Imovel imovel = new Imovel(12, "rua", cliente);
-        Fatura novafatura = new Fatura(imovel, 20, 10, data);
+    void testRegistraPagamentoFaturaQuitada() {
+        // Arrange
+        Fatura fatura = new Fatura(null, null);
+        fatura.setQuitada(true);
+        Pagamento pagamento = new Pagamento(fatura, 50.0);
 
-        novafatura.registrarLeitura(15);
-        novafatura.registraPagamento(10); 
+        // Act
+        Exception exception = assertThrows(IllegalStateException.class, pagamento::registraPagamento);
 
-        assertFalse(novafatura.isQuitada());
-        assertEquals(10, novafatura.getValorPago(), 0.001); 
+        // Assert
+        assertEquals("A fatura já está quitada. Não é possível registrar mais pagamentos.", exception.getMessage());
+    }
+
+    @Test
+    void testRegistraPagamentoExcedeValorFatura() {
+        // Arrange
+        Fatura fatura = new Fatura(null, null);
+        fatura.setValorCalculado(100.0);
+        fatura.setValor(50.0);
+        Pagamento pagamento = new Pagamento(fatura, 70.0);
+
+        // Act
+        Exception exception = assertThrows(IllegalStateException.class, pagamento::registraPagamento);
+
+        // Assert
+        assertEquals("Erro: O valor pago excede o valor da fatura de 100.0", exception.getMessage());
+    }
+
+    @Test
+    void testRegistraPagamentoSucesso() {
+        // Arrange
+        Fatura fatura = new Fatura(null, null);
+        fatura.setValorCalculado(100.0);
+        fatura.setValor(50.0);
+        Pagamento pagamento = new Pagamento(fatura, 50.0);
+
+        // Act
+        pagamento.registraPagamento();
+
+        // Assert
+        assertTrue(fatura.isQuitada());
+        assertEquals(100.0, fatura.getValor());
     }
 }
+
+

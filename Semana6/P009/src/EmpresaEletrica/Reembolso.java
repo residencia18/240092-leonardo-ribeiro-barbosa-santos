@@ -5,23 +5,29 @@ import java.util.Date;
 public class Reembolso {
 	 private Date data;
 	 private double valor;
-	 private Fatura fatura;
+	 private Pagamento pagamento;
+	 
 
-	    public Reembolso(double valor) {
-	        this.valor = valor;
-	        this.data = new Date(); 
+	 
+	 public Reembolso(Pagamento pagamento) {
+	        this.pagamento = pagamento;
+	        this.data = new Date();
 	    }
 	    
-	    
-	    
-	    
-	    public void registrarReembolso(double valorExcedente) {
-	        double valorReembolso = valorExcedente;
-	        Reembolso novoReembolso = new Reembolso(valorReembolso);
-	        // Adicionar o novo reembolso à lista de reembolsos da fatura
-	        fatura.getReembolsos().add(novoReembolso);
-	        System.out.println("Reembolso de " + valorExcedente + " registrado com sucesso.");
+	    public void registrarReembolso() {
+	        if (pagamento != null && pagamento.getFatura() != null) {
+	            if (pagamento.getValor() > pagamento.getFatura().getValorCalculado()) {
+	                double valorReembolso = pagamento.getValor() - pagamento.getFatura().getValorCalculado();
+	                System.out.println("Reembolso registrado com sucesso no valor de " + valorReembolso + ".");
+	                pagamento.getFatura().setQuitada(true);
+	            } else {
+	                System.out.println("Não há reembolso a ser feito.");
+	            }
+	        } else {
+	            System.out.println("Erro: Não é possível registrar um reembolso sem um pagamento associado.");
+	        }
 	    }
+	    
 
 	  
 	    public Date getData() {
