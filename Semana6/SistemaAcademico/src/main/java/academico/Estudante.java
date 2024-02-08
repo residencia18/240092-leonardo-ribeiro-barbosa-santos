@@ -2,6 +2,8 @@ package academico;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
@@ -12,21 +14,35 @@ public class Estudante {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer Id;
+	@ManyToOne
+	@JoinColumn(name = "idcurso")
+	private Curso cursos;
+	
 	private String Nome;
 	private String Email;
 	private String Matricula;
 	
 	
-	public Estudante(Integer id, String nome, String email, String matricula) {
+
 	
-		Id = null;
+	
+
+
+
+
+	public Estudante(Integer id, Curso cursos, String nome, String email, String matricula) {
+		super();
+		Id = id;
+		this.cursos = cursos;
 		Nome = nome;
 		Email = email;
 		Matricula = matricula;
 	}
+
 	
-
-
+	
+	
+	 
 
 	public Estudante() {
 	
