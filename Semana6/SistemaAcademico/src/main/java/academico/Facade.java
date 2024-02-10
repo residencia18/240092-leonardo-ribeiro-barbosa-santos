@@ -38,8 +38,7 @@ public static void main(String[] args) {
          em.persist(curso1);
          em.persist(curso2);
          
-         mostrarEstudantesPorCurso(em);
-         listarTodosEstudantes(em);
+        
          
          em.getTransaction().commit();
          em.close();
