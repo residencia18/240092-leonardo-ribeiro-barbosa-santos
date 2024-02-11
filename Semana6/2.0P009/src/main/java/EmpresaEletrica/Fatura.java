@@ -3,29 +3,65 @@ package EmpresaEletrica;
 import java.util.Date;
 import java.util.List;
 
-public class Fatura {
-    private Imovel imovel;
-    private double leituraAnterior;
-    private double leituraAtual;
-    private Date dataEmissao;
-    private double valor;
-    private boolean quitada;
-    private List<Pagamento> pagamentos;
-    private List<Reembolso> reembolsos;
-    private double valorCalculado;
-    private boolean leituraRegistrada; 
-  
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-    public Fatura(Imovel imovel, Date dataEmissao) {
-        this.imovel = imovel;
+@Entity
+@Table(name = "Fatura")
+public class Fatura {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
+    @ManyToOne
+    @JoinColumn(name = "imovel_id", nullable = false)
+    private Imovel imovel;
+
+    @Column(name = "leitura_anterior")
+    private double leituraAnterior;
+
+    @Column(name = "leitura_atual")
+    private double leituraAtual;
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "data_emissao", nullable = false)
+    private Date dataEmissao;
+
+    @Column(name = "valor")
+    private double valor;
+
+    @Column(name = "quitada")
+    private boolean quitada;
+
+    @OneToMany(mappedBy = "fatura", cascade = CascadeType.ALL)
+    private List<Pagamento> pagamentos;
+
+    @Column(name = "valor_calculado")
+    private double valorCalculado;
+
+    @Column(name = "leitura_registrada")
+    private boolean leituraRegistrada;
+
+    public Fatura() {
         this.dataEmissao = new Date();
         this.leituraRegistrada = false;
-    
     }
 
-   
-
-
+    public Fatura(Imovel imovel, Date dataEmissao) {
+        this.dataEmissao = dataEmissao;
+        this.imovel = imovel;
+    }
 
 
 
@@ -125,7 +161,7 @@ public class Fatura {
  
 
    
-
+    /*
 	public List<Reembolso> getReembolsos() {
 		return reembolsos;
 	}
@@ -134,6 +170,9 @@ public class Fatura {
 		this.reembolsos = reembolsos;
 	}
 
+	*/
+	
+	
 	public List<Pagamento> getPagamentos() {
 		return pagamentos;
 	}
