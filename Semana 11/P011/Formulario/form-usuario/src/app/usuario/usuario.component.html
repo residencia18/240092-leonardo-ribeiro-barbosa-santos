@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+</head>
+<body>
+    <form *ngIf="usuarioForm" [formGroup]="usuarioForm" (ngSubmit)="onSubmit()">
+        <div>
+          <label>Nome do usuário:</label>
+          <input type="text" formControlName="nomeUsuario">
+          <div *ngIf="usuarioForm?.get('nomeUsuario')?.invalid && (usuarioForm?.get('nomeUsuario')?.dirty || usuarioForm?.get('nomeUsuario')?.touched)">
+            <div *ngIf="usuarioForm?.get('nomeUsuario')?.errors?.['required']">Nome de usuário é obrigatório.</div>
+            <div *ngIf="usuarioForm?.get('nomeUsuario')?.errors?.['maxlength']">Nome de usuário deve ter no máximo 12 caracteres.</div>
+            <div *ngIf="usuarioForm.get('nomeUsuario')?.errors?.['noEspacos']">Nome de usuário não deve conter espaços apenas.</div>
+          </div>
+        </div>
+      
+        <div>
+          <label>Senha:</label>
+          <input type="password" formControlName="senha">
+          <div *ngIf="usuarioForm?.get('senha')?.invalid && (usuarioForm?.get('senha')?.dirty || usuarioForm?.get('senha')?.touched)">
+            <div *ngIf="usuarioForm?.get('senha')?.errors?.['required']">Senha é obrigatória.</div>
+            <div *ngIf="usuarioForm?.get('senha')?.errors?.['minlength']">Senha deve ter no mínimo 4 caracteres.</div>
+            <div *ngIf="usuarioForm?.get('senha')?.errors?.['senhaInvalida']">Senha inválida.</div>
+          </div>
+        </div>
+      
+        <div>
+          <label>Email:</label>
+          <input type="email" formControlName="email">
+          <div *ngIf="usuarioForm?.get('email')?.invalid && (usuarioForm?.get('email')?.dirty || usuarioForm?.get('email')?.touched)">
+            <div *ngIf="usuarioForm?.get('email')?.errors?.['required']">Email é obrigatório.</div>
+            <div *ngIf="usuarioForm?.get('email')?.errors?.['email']">Email inválido.</div>
+          </div>
+        </div>
+      
+        <div>
+          <label>Nome Completo:</label>
+          <input type="text" formControlName="nomeCompleto">
+          <div *ngIf="usuarioForm?.get('nomeCompleto')?.invalid && (usuarioForm?.get('nomeCompleto')?.dirty || usuarioForm?.get('nomeCompleto')?.touched)">
+            <div *ngIf="usuarioForm?.get('nomeCompleto')?.errors?.['required']">Nome completo é obrigatório.</div>
+          </div>
+        </div>
+      
+        <div>
+          <label>Telefone:</label>
+          <input type="text" formControlName="telefone">
+          <div *ngIf="usuarioForm?.get('telefone')?.invalid && (usuarioForm?.get('telefone')?.dirty || usuarioForm?.get('telefone')?.touched)">
+            <div *ngIf="usuarioForm?.get('telefone')?.errors?.['required']">Telefone é obrigatório.</div>
+            <div *ngIf="usuarioForm?.get('telefone')?.errors?.['telefoneInvalido']">Telefone inválido.</div>
+          </div>
+        </div>
+      
+        <div>
+          <label>Endereço:</label>
+          <input type="text" formControlName="endereco">
+          <div *ngIf="usuarioForm?.get('endereco')?.invalid && (usuarioForm?.get('endereco')?.dirty || usuarioForm?.get('endereco')?.touched)">
+            <div *ngIf="usuarioForm?.get('endereco')?.errors?.['required']">Endereço é obrigatório.</div>
+          </div>
+        </div>
+      
+        <div>
+          <label>Data de Nascimento:</label>
+          <input type="date" formControlName="dataNascimento">
+          <div *ngIf="usuarioForm?.get('dataNascimento')?.invalid && (usuarioForm?.get('dataNascimento')?.dirty || usuarioForm?.get('dataNascimento')?.touched)">
+            <div *ngIf="usuarioForm?.get('dataNascimento')?.errors?.['required']">Data de nascimento é obrigatória.</div>
+            <div *ngIf="usuarioForm?.get('dataNascimento')?.errors?.['dataNascimentoInvalida']">Data de nascimento inválida.</div>
+          </div>
+        </div>
+      
+        <div>
+          <label>Gênero:</label>
+          <select formControlName="genero">
+            <option value="" disabled selected>Selecione</option>
+            <option value="masculino">Masculino</option>
+            <option value="feminino">Feminino</option>
+            <option value="outro">Outro</option>
+          </select>
+          <div *ngIf="usuarioForm?.get('genero')?.invalid && (usuarioForm?.get('genero')?.dirty || usuarioForm?.get('genero')?.touched)">
+            <div *ngIf="usuarioForm?.get('genero')?.errors?.['required']">Gênero é obrigatório.</div>
+          </div>
+        </div>
+      
+        <div>
+          <label>Profissão:</label>
+          <select formControlName="profissao">
+            <option value="" disabled selected>Selecione</option>
+            <option value="Engenheiro">Engenheiro</option>
+            <option value="Professor">Professor</option>
+            <option value="Médico">Médico</option>
+            <option value="Advogado">Advogado</option>
+            <option value="Jornalista">Jornalista</option>
+            <option value="Analista de Redes">Analista de Redes</option>
+            <!-- Adicione outras opções conforme necessário -->
+          </select>
+          <div *ngIf="usuarioForm?.get('profissao')?.invalid && (usuarioForm?.get('profissao')?.dirty || usuarioForm?.get('profissao')?.touched)">
+            <div *ngIf="usuarioForm?.get('profissao')?.errors?.['required']">Profissão é obrigatória.</div>
+          </div>
+        </div>
+      
+        <button type="submit">Submit</button>
+      </form>
+      
+      
+</body>
+</html>
