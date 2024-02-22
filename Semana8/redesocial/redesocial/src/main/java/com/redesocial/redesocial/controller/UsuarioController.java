@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,19 +19,26 @@ public class UsuarioController {
     
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
-    	
-     @GetMapping
-     public List<UsuarioDTO> listaUsuarios(String nome){
-		 System.out.println(nome);
-    	 List<Usuario> listaUsuarios = (ArrayList<Usuario>) usuarioRepositorio.findByNome(nome);
-    	 List<UsuarioDTO> lista = new ArrayList<UsuarioDTO>();
-    	 for(Usuario usu: listaUsuarios) {
-    		 UsuarioDTO usuDTO = new UsuarioDTO(usu);
-    		 lista.add(usuDTO);
-    		
-    	 }
-    	 
-    	 return lista;
-     }
+    
+    
+    @GetMapping
+    public List<UsuarioDTO> listaUsuarios( String nome) {
+        List<Usuario> listaUsuarios;
+        
+        if (nome != null && !nome.isEmpty()) {
+            listaUsuarios = usuarioRepositorio.findByNome(nome);
+        } else {
+            listaUsuarios = usuarioRepositorio.findAll();
+        }
+        
+        List<UsuarioDTO> lista = new ArrayList<>();
+        for(Usuario usu: listaUsuarios) {
+            UsuarioDTO usuDTO = new UsuarioDTO(usu);
+            lista.add(usuDTO);
+        }
+        
+        return lista;
+    }
+
     
 }
