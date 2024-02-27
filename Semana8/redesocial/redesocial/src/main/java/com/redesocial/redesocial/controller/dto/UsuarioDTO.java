@@ -4,7 +4,7 @@ import com.redesocial.redesocial.modelo.Usuario;
 
 public class UsuarioDTO {
     
-    private long id;
+    private Integer id;
     private String nome, email;
     
     public UsuarioDTO(Usuario usuarios) {
@@ -14,7 +14,7 @@ public class UsuarioDTO {
     }
     
     
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
