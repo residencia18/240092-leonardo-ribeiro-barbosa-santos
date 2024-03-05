@@ -1,0 +1,13 @@
+<form (ngSubmit)="submitForm()">
+    <label for="petName">Nome do Pet:</label>
+    <input type="text" id="petName" name="petName" [(ngModel)]="novoAtendimento.petName" required>
+  
+    <label for="ownerName">Nome do Dono:</label>
+    <input type="text" id="ownerName" name="ownerName" [(ngModel)]="novoAtendimento.ownerName" required>
+  
+    <label for="date">Data:</label>
+    <input type="date" id="date" name="date" [(ngModel)]="novoAtendimento.date" required>
+  
+    <button type="submit">Cadastrar Atendimento</button>
+  </form>
+  
