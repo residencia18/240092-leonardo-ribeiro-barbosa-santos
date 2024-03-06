@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Suino } from '../suino.model';
-
+import { CalcularIdadeEmMesesPipe } from '../calcular-idade-em-meses.pipe';
 
 @Component({
   selector: 'app-listagem-suinos',
   templateUrl: './listagem-suinos.component.html',
-  styleUrls: ['./listagem-suinos.component.css']
+  styleUrls: ['./listagem-suinos.component.css'],
+  providers: [CalcularIdadeEmMesesPipe]
 })
 export class ListagemSuinosComponent implements OnInit {
   suinos: Suino[] = [];
+  suinosFiltrados: any[] = [];
 
   constructor() { }
 
@@ -21,13 +23,18 @@ export class ListagemSuinosComponent implements OnInit {
     ];
   }
 
-
-  filtrarSuinos() {
-
+  
+  
+  filtrarSuinos(sexoSelecionado: string) {
+      this.suinosFiltrados = this.suinos.filter(suino => suino.sexo === sexoSelecionado);
   }
+  
+
+  
+
 
   editarSuino(suino: Suino) {
-
+    
   }
 
    deletarSuino(suino: Suino) {

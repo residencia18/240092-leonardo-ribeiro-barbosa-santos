@@ -6,11 +6,13 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CadastroSuinoComponent } from './cadastro-suino/cadastro-suino.component';
 import { ControlePesoComponent } from './controle-peso/controle-peso.component';
+import { ListagemSuinosComponent } from './listagem-suinos/listagem-suinos.component';
 import { AutenticacaoComponent } from './autenticacao/autenticacao.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
+import { CalcularIdadeEmMesesPipe } from './calcular-idade-em-meses.pipe';
 
 @NgModule({
   declarations: [
@@ -19,9 +21,11 @@ import { HomeComponent } from './home/home.component';
     FooterComponent,
     CadastroSuinoComponent,
     ControlePesoComponent,
+    ListagemSuinosComponent,
     AutenticacaoComponent,
     MenuComponent,
-    HomeComponent
+    HomeComponent,
+    CalcularIdadeEmMesesPipe
   ],
   imports: [
     BrowserModule,

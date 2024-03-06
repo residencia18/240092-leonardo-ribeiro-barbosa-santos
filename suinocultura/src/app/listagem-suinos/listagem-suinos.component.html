@@ -1,10 +1,16 @@
 <div>
     <h2>Listagem de Suínos</h2>
-        
-    <form (ngSubmit)="filtrarSuinos()">
-
-      <button type="submit">Filtrar</button>
+          
+      <form (ngSubmit)="filtrarSuinos(sexo.value)">
+        <select #sexo>
+            <option value="M">Masculino</option>
+            <option value="F">Feminino</option>
+        </select>
+        <button type="submit">Filtrar</button>
     </form>
+    
+  
+    
   
       <table>
       <thead>
@@ -37,5 +43,6 @@
         </tr>
       </tbody>
     </table>
+    
   </div>
   
