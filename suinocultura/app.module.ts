@@ -14,6 +14,8 @@ import { HomeComponent } from './home/home.component';
 import { CommonModule } from '@angular/common';
 import { ListagemSuinosComponent } from './listagem-suinos/listagem-suinos.component';
 import { CalcularIdadeEmMesesPipe } from './listagem-suinos/calcular-idade-em-meses.pipe';
+import { CadastroPesoComponent } from './cadastro-peso/cadastro-peso.component';
+import { EdicaoPesoComponent } from './edicao-peso/edicao-peso.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { CalcularIdadeEmMesesPipe } from './listagem-suinos/calcular-idade-em-me
     MenuComponent,
     HomeComponent,
     ListagemSuinosComponent,
-    CalcularIdadeEmMesesPipe
+    CalcularIdadeEmMesesPipe,
+    CadastroPesoComponent,
+    EdicaoPesoComponent
   ],
   imports: [
     BrowserModule,
