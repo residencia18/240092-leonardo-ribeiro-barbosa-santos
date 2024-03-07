@@ -5,15 +5,19 @@ import { AutenticacaoComponent } from './autenticacao/autenticacao.component';
 import { CadastroSuinoComponent } from './cadastro-suino/cadastro-suino.component';
 import { ControlePesoComponent } from './controle-peso/controle-peso.component';
 import { ListagemSuinosComponent } from './listagem-suinos/listagem-suinos.component';
+import { CadastroPesoComponent } from './cadastro-peso/cadastro-peso.component';
+import { EdicaoPesoComponent } from './edicao-peso/edicao-peso.component';
 
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'autenticacao', component: AutenticacaoComponent },
+  { path: 'listagem-suinos', component: ListagemSuinosComponent },
   { path: 'cadastro-suino', component: CadastroSuinoComponent },
   { path: 'controle-peso', component: ControlePesoComponent },
-  { path: 'listagem-suinos', component:ListagemSuinosComponent}
- // { path: '', redirectTo: '/listagem-suinos', pathMatch: 'full' },
+  { path: 'cadastro-peso', component: CadastroPesoComponent},
+  { path: 'edicao-peso', component: EdicaoPesoComponent},
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 
 @NgModule({
