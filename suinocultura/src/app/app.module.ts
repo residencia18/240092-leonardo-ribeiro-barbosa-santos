@@ -13,6 +13,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
 import { CalcularIdadeEmMesesPipe } from './calcular-idade-em-meses.pipe';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -26,12 +29,15 @@ import { CalcularIdadeEmMesesPipe } from './calcular-idade-em-meses.pipe';
     MenuComponent,
     HomeComponent,
     CalcularIdadeEmMesesPipe
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
