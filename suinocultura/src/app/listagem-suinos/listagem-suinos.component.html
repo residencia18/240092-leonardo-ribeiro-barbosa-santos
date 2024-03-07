@@ -1,12 +1,17 @@
-<div>
-    <h2>Listagem de Suínos</h2>
-        
-    <form (ngSubmit)="filtrarSuinos()">
-
-      <button type="submit">Filtrar</button>
+  <div>
+    <h2>Filtrar Suínos</h2>
+    <form>
+      <label for="sexo">Sexo:</label>
+      <select id="sexo" [(ngModel)]="selectedSexo" name="selectedSexo">
+        <option value="">Todos</option>
+        <option *ngFor="let sexo of categories" [value]="sexo">{{ sexo }}</option>
+      </select>
+      <button type="button" (click)="filterSuinos()">Filtrar</button>
     </form>
-  
-      <table>
+
+    <h2>Listagem de Suínos</h2>
+
+    <table *ngIf="filteredSuinos.length > 0" class="table">
       <thead>
         <tr>
           <th>Brinco do Pai</th>
@@ -20,8 +25,8 @@
         </tr>
       </thead>
       <tbody>
-        <!-- Iterar sobre a lista de suínos e exibir cada suíno -->
-        <tr *ngFor="let suino of suinos">
+        <!-- Iterar sobre a lista de suínos filtrados e exibir cada suíno -->
+        <tr *ngFor="let suino of filteredSuinos" class="table-row">
           <td>{{ suino.brincoPai }}</td>
           <td>{{ suino.brincoMae }}</td>
           <td>{{ suino.dataNascimento | date }}</td>
@@ -32,10 +37,44 @@
           <td>
             <!-- Adicionar botões ou links de editar e deletar -->
             <button (click)="editarSuino(suino)">Editar</button>
-            <button (click)="deletarSuino(suino)">Deletar</button>
+            <button (click)="excluirSuinoSelecionado()">Excluir</button>
           </td>
         </tr>
       </tbody>
     </table>
+
+    <!-- Formulário de edição -->
+    <form *ngIf="editando" [formGroup]="suinoForm" (ngSubmit)="atualizarSuino()">
+      <label for="brincoPai">Brinco do Pai:</label>
+      <input type="text" id="brincoPai" formControlName="brincoPai">
+
+      <label for="brincoMae">Brinco da Mãe:</label>
+      <input type="text" id="brincoMae" formControlName="brincoMae">
+
+      <label for="dataNascimento">Data de Nascimento:</label>
+      <input type="date" id="dataNascimento" formControlName="dataNascimento">
+
+      <label for="dataSaida">Data de Saída:</label>
+      <input type="date" id="dataSaida" formControlName="dataSaida">
+
+      <label for="sexo">Sexo:</label>
+      <select id="sexo" formControlName="sexo">
+        <option value="M">Macho</option>
+        <option value="F">Fêmea</option>
+      </select>
+
+      <label for="status">Status:</label>
+      <select id="status" formControlName="status">
+        <option value="ativo">Ativo</option>
+        <option value="vendido">Vendido</option>
+      </select>
+
+      <button type="submit">Salvar</button>
+      <div *ngIf="suinoSalvo" class="sucesso-mensagem">
+        Dados salvos com sucesso!
+      </div>
+    </form>
   </div>
-  
+
+
+
