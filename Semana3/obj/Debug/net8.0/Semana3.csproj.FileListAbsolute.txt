@@ -1,0 +1,15 @@
+C:\Users\user\Documents\GitHub\Dotnet_Tic18\Semana3\obj\Debug\net8.0\Semana3.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Documents\GitHub\Dotnet_Tic18\Semana3\obj\Debug\net8.0\Semana3.AssemblyInfoInputs.cache
+C:\Users\user\Documents\GitHub\Dotnet_Tic18\Semana3\obj\Debug\net8.0\Semana3.AssemblyInfo.cs
+C:\Users\user\Documents\GitHub\Dotnet_Tic18\Semana3\obj\Debug\net8.0\Semana3.csproj.CoreCompileInputs.cache
+C:\Users\user\Documents\GitHub\Dotnet_Tic18\Semana3\obj\Debug\net8.0\Semana3.sourcelink.json
+C:\Users\user\Documents\GitHub\Dotnet_Tic18\Semana3\bin\Debug\net8.0\Semana3.exe
+C:\Users\user\Documents\GitHub\Dotnet_Tic18\Semana3\bin\Debug\net8.0\Semana3.deps.json
+C:\Users\user\Documents\GitHub\Dotnet_Tic18\Semana3\bin\Debug\net8.0\Semana3.runtimeconfig.json
+C:\Users\user\Documents\GitHub\Dotnet_Tic18\Semana3\bin\Debug\net8.0\Semana3.dll
+C:\Users\user\Documents\GitHub\Dotnet_Tic18\Semana3\bin\Debug\net8.0\Semana3.pdb
+C:\Users\user\Documents\GitHub\Dotnet_Tic18\Semana3\obj\Debug\net8.0\Semana3.dll
+C:\Users\user\Documents\GitHub\Dotnet_Tic18\Semana3\obj\Debug\net8.0\refint\Semana3.dll
+C:\Users\user\Documents\GitHub\Dotnet_Tic18\Semana3\obj\Debug\net8.0\Semana3.pdb
+C:\Users\user\Documents\GitHub\Dotnet_Tic18\Semana3\obj\Debug\net8.0\Semana3.genruntimeconfig.cache
+C:\Users\user\Documents\GitHub\Dotnet_Tic18\Semana3\obj\Debug\net8.0\ref\Semana3.dll
