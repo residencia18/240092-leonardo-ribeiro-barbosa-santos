@@ -1,13 +1,13 @@
-package com.leoanardo.Project1;
+package com.leo.cadastro;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Project1Application {
+public class CadastroApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Project1Application.class, args);
+		SpringApplication.run(CadastroApplication.class, args);
 	}
 
 }

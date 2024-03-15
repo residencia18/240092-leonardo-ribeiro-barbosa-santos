@@ -1,10 +1,10 @@
-package com.leoanardo.Project1;
+package com.daniel.cadastro;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Project1ApplicationTests {
+class CadastroApplicationTests {
 
 	@Test
 	void contextLoads() {
