@@ -1,0 +1,67 @@
+/* Estilos para o formulário */
+form {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="date"],
+input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos para a tabela */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Estilos para a tabela interna */
+table table {
+  width: 100%;
+}
+
+table table th,
+table table td {
+  border: none;
+  padding: 5px;
+}
+
+table table th {
+  background-color: #ddd;
+}

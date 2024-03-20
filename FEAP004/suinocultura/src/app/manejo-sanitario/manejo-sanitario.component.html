@@ -1,0 +1,57 @@
+  <form [formGroup]="formulario" (ngSubmit)="cadastrarSessao()">
+      <label>Data:</label>
+      <input type="date" formControlName="data">
+    
+      <label for="brincoAnimal">Brinco do Animal:</label>
+      <input type="number" id="brincoAnimal" formControlName="brincoAnimal" required>
+    
+      <label for="vacinaRaiva">Vacina de Raiva:</label>
+      <input type="text" id="vacinaRaiva" formControlName="vacinaRaiva" required>
+    
+      <label for="vacinaRinite">Vacina de Renite Atrófica:</label>
+      <input type="text" id="vacinaRinite" formControlName="vacinaRinite" required>
+    
+      <button type="submit">Cadastrar Sessão</button>
+  </form>
+    
+  <table>
+    <thead>
+      <tr>
+        <th>Data</th>
+        <th>Brico do Animal</th>
+        <th>Vacina de Raiva</th>
+        <th>Vacina de Rinite Atrófica</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sessao of sessoes">
+        <td>{{ sessao.data }}</td>
+        <td>{{ sessao.brincoAnimal }}</td>
+        <td>{{ sessao.vacinaRaiva }}</td>
+        <td>{{ sessao.vacinaRinite }}</td>
+        <td>
+          <table>
+            <thead>
+              <tr>
+                
+                
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let animal of sessao.animais">
+                <td>{{ animal.brinco }}</td>
+                <td>
+                  <input type="checkbox" [checked]="animal.vacinaRaiva">
+                </td>
+                <td>
+                  <input type="checkbox" [checked]="animal.vacinaRinite">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+    

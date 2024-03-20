@@ -1,0 +1,65 @@
+.table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .table th, .table td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  .table-row:hover {
+    background-color: #f2f2f2;
+  }
+  .container {
+    margin: 20px;
+  }
+  
+  h2 {
+    margin-bottom: 10px;
+  }
+  
+  form {
+    margin-bottom: 20px;
+  }
+  
+  select {
+    margin-right: 10px;
+  }
+  
+  .button-group {
+    margin-top: 10px;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th,
+  .table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .table th {
+    background-color: #f2f2f2;
+  }
+  
+  .table-row:hover {
+    background-color: #f2f2f2;
+  }
+  
+  .sucesso-mensagem {
+    color: green;
+    margin-top: 10px;
+  }
+  
+  .error-mensagem {
+    color: red;
+    margin-top: 10px;
+  }
+  
+  
