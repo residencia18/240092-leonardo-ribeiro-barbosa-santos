@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-# 240092-leonardo-ribeiro-barbosa-santos
-=======
-# FEB-P015
-
 # Controle de Suínos - Angular
 
 Este é um projeto Angular desenvolvido para controlar a criação de suínos em uma fazenda de suinocultura.
@@ -22,9 +17,8 @@ Este é um projeto Angular desenvolvido para controlar a criação de suínos em
 
 ## Colaboradores
 
-- Daniel Monteiro - [GitHub](https://github.com/residencia18/240016-daniel-monteiro-mota)
-- Leonardo Ribeiro - [GitHub](https://github.com/residencia18/240092-leonardo-ribeiro-barbosa-santos)
-- Renata Moreno - [GitHub](https://github.com/residencia18/240108-renata-chaves-de-oliveira-moreno)
+- [@usuario1] https://github.com/residencia18/240016-daniel-monteiro-mota
+- [@usuario2] https://github.com/residencia18/240092-leonardo-ribeiro-barbosa-santos
+- [@usuario3] https://github.com/residencia18/240108-renata-chaves-de-oliveira-moreno
 
 
->>>>>>> a0e062179ec96baccd9a50a3f5bd1e0ae59e260f
