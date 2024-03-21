@@ -1,4 +1,4 @@
-package com.renata.gerenciamento.funcionario;
+package com.leo.gerenciamento.funcionario;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

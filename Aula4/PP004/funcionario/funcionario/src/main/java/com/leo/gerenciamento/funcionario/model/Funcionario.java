@@ -1,11 +1,18 @@
 package com.leo.gerenciamento.funcionario.model;
 
+import javax.management.ConstructorParameters;
+
+
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Size;
 
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
 @Entity
 public class Funcionario {
 
@@ -18,6 +25,9 @@ public class Funcionario {
     
     
     private String cargo;
+    
+   
+    
   
 
 }
