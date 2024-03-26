@@ -7,6 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.leo.gerenciamento.funcionario.model.Funcionario;
 
+import lombok.extern.slf4j.XSlf4j;
+
+@XSlf4j
 @SpringBootApplication
 public class FuncionarioApplication {
 

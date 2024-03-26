@@ -1,0 +1,114 @@
+2024-03-26T18:08:50.531-03:00  WARN 2112 --- [faker] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-26T18:08:50.816-03:00  WARN 2112 --- [faker] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-26T18:17:44.244-03:00  WARN 2112 --- [faker] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-26T18:17:44.265-03:00  WARN 2112 --- [faker] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-26T18:18:49.094-03:00  WARN 2112 --- [faker] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-26T18:18:49.109-03:00  WARN 2112 --- [faker] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-26T18:20:53.820-03:00  WARN 2112 --- [faker] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-26T18:20:53.837-03:00  WARN 2112 --- [faker] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-26T18:24:48.472-03:00  WARN 2112 --- [faker] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-26T18:24:48.490-03:00  WARN 2112 --- [faker] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-26T18:25:06.447-03:00  WARN 2112 --- [faker] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-26T18:25:06.462-03:00  WARN 2112 --- [faker] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-26T18:30:51.169-03:00  WARN 2112 --- [faker] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-26T18:30:51.183-03:00  WARN 2112 --- [faker] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-26T18:31:50.555-03:00  WARN 2112 --- [faker] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-26T18:31:50.573-03:00  WARN 2112 --- [faker] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-26T18:32:59.340-03:00  WARN 2112 --- [faker] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-26T18:32:59.354-03:00  WARN 2112 --- [faker] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-26T18:33:35.805-03:00  WARN 2112 --- [faker] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-26T18:33:35.821-03:00  WARN 2112 --- [faker] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-26T18:35:38.898-03:00  WARN 2112 --- [faker] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-26T18:35:38.911-03:00  WARN 2112 --- [faker] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-26T18:36:08.013-03:00  WARN 2112 --- [faker] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-26T18:36:08.026-03:00  WARN 2112 --- [faker] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-26T18:36:18.742-03:00  WARN 11520 --- [faker] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-26T18:36:19.013-03:00  WARN 11520 --- [faker] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-26T18:36:19.303-03:00  WARN 11520 --- [faker] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2024-03-26T18:36:19.317-03:00  WARN 11520 --- [faker] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2024-03-26T18:36:19.349-03:00 ERROR 11520 --- [faker] [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8081 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8081 or configure this application to listen on another port.
+
+2024-03-26T18:36:32.556-03:00  WARN 13916 --- [faker] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-26T18:36:32.831-03:00  WARN 13916 --- [faker] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-26T18:36:33.122-03:00  WARN 13916 --- [faker] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2024-03-26T18:36:33.136-03:00  WARN 13916 --- [faker] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2024-03-26T18:36:33.273-03:00 ERROR 13916 --- [faker] [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8081 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8081 or configure this application to listen on another port.
+
+2024-03-26T18:36:47.592-03:00  WARN 9680 --- [faker] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-26T18:36:47.876-03:00  WARN 9680 --- [faker] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-26T18:40:32.427-03:00  INFO 9680 --- [faker] [restartedMain] com.leo.faker.FakerApplication           : Starting FakerApplication using Java 21.0.1 with PID 9680 (C:\Users\06781359592\Documents\240092-leonardo-ribeiro-barbosa-santos\Aula 8\faker\target\classes started by 06781359592 in C:\Users\06781359592\Documents\240092-leonardo-ribeiro-barbosa-santos\Aula 8\faker)
+2024-03-26T18:40:32.427-03:00  INFO 9680 --- [faker] [restartedMain] com.leo.faker.FakerApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-03-26T18:40:32.529-03:00  INFO 9680 --- [faker] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-26T18:40:32.531-03:00  INFO 9680 --- [faker] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2024-03-26T18:40:32.593-03:00  INFO 9680 --- [faker] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2024-03-26T18:40:32.594-03:00  INFO 9680 --- [faker] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-26T18:40:32.594-03:00  INFO 9680 --- [faker] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-03-26T18:40:32.608-03:00  INFO 9680 --- [faker] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-26T18:40:32.608-03:00  INFO 9680 --- [faker] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 179 ms
+2024-03-26T18:40:32.634-03:00  INFO 9680 --- [faker] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-03-26T18:40:32.636-03:00  INFO 9680 --- [faker] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-03-26T18:40:32.639-03:00  INFO 9680 --- [faker] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-03-26T18:40:32.639-03:00  INFO 9680 --- [faker] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2024-03-26T18:40:32.673-03:00  INFO 9680 --- [faker] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@457f5aba
+2024-03-26T18:40:32.673-03:00  INFO 9680 --- [faker] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2024-03-26T18:40:32.679-03:00  WARN 9680 --- [faker] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-26T18:40:32.690-03:00  INFO 9680 --- [faker] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-03-26T18:40:32.690-03:00  INFO 9680 --- [faker] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-03-26T18:40:32.702-03:00  WARN 9680 --- [faker] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-26T18:40:32.754-03:00  INFO 9680 --- [faker] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-03-26T18:40:32.758-03:00  INFO 9680 --- [faker] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path ''
+2024-03-26T18:40:32.761-03:00  INFO 9680 --- [faker] [restartedMain] com.leo.faker.FakerApplication           : Started FakerApplication in 0.352 seconds (process running for 227.347)
+2024-03-26T18:40:32.763-03:00  INFO 9680 --- [faker] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-03-26T18:40:32.764-03:00  INFO 9680 --- [faker] [restartedMain] com.leo.faker.FakerApplication           : ....................................Start.....................................
+2024-03-26T18:48:19.918-03:00  INFO 9680 --- [faker] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-03-26T18:48:19.927-03:00  INFO 9680 --- [faker] [Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-03-26T18:48:19.927-03:00  INFO 9680 --- [faker] [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2024-03-26T18:48:19.929-03:00  INFO 9680 --- [faker] [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2024-03-26T18:48:19.983-03:00  INFO 9680 --- [faker] [restartedMain] com.leo.faker.FakerApplication           : Starting FakerApplication using Java 21.0.1 with PID 9680 (C:\Users\06781359592\Documents\240092-leonardo-ribeiro-barbosa-santos\Aula 8\faker\target\classes started by 06781359592 in C:\Users\06781359592\Documents\240092-leonardo-ribeiro-barbosa-santos\Aula 8\faker)
+2024-03-26T18:48:19.983-03:00  INFO 9680 --- [faker] [restartedMain] com.leo.faker.FakerApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-03-26T18:48:20.063-03:00  INFO 9680 --- [faker] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-26T18:48:20.065-03:00  INFO 9680 --- [faker] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2024-03-26T18:48:20.117-03:00  INFO 9680 --- [faker] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2024-03-26T18:48:20.118-03:00  INFO 9680 --- [faker] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-26T18:48:20.118-03:00  INFO 9680 --- [faker] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-03-26T18:48:20.128-03:00  INFO 9680 --- [faker] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-26T18:48:20.128-03:00  INFO 9680 --- [faker] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 144 ms
+2024-03-26T18:48:20.145-03:00  INFO 9680 --- [faker] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-03-26T18:48:20.147-03:00  INFO 9680 --- [faker] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-03-26T18:48:20.150-03:00  INFO 9680 --- [faker] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-03-26T18:48:20.150-03:00  INFO 9680 --- [faker] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2024-03-26T18:48:20.182-03:00  INFO 9680 --- [faker] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection org.postgresql.jdbc.PgConnection@1dd1a120
+2024-03-26T18:48:20.183-03:00  INFO 9680 --- [faker] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2024-03-26T18:48:20.188-03:00  WARN 9680 --- [faker] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-26T18:48:20.198-03:00  INFO 9680 --- [faker] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-03-26T18:48:20.198-03:00  INFO 9680 --- [faker] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-03-26T18:48:20.210-03:00  WARN 9680 --- [faker] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-26T18:48:20.253-03:00  INFO 9680 --- [faker] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-03-26T18:48:20.257-03:00  INFO 9680 --- [faker] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path ''
+2024-03-26T18:48:20.259-03:00  INFO 9680 --- [faker] [restartedMain] com.leo.faker.FakerApplication           : Started FakerApplication in 0.291 seconds (process running for 694.845)
+2024-03-26T18:48:20.260-03:00  INFO 9680 --- [faker] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-03-26T18:48:20.260-03:00  INFO 9680 --- [faker] [restartedMain] com.leo.faker.FakerApplication           : ....................................Start.....................................
