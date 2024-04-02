@@ -4,14 +4,16 @@ package com.leo.mockito.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.leo.mockito.domain.User;
-import com.leo.mockito.repositories.UserRepositories;
+import com.leo.mockito.repositories.UserRepository;
+
+
 
 
 @Service	
 public class UserServiceImpl implements UserService {
 
 	@Autowired
-	private UserRepositories repository;
+	private UserRepository repository;
 	
 	
 	
