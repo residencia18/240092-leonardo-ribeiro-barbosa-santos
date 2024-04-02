@@ -1,10 +1,11 @@
-package com.leo.mockito.service;
+package com.leo.mockito.services;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.leo.mockito.domain.User;
 import com.leo.mockito.repositories.UserRepository;
+import com.leo.mockito.services.exceptions.ObjectNotFoundException;
 
 
 
@@ -20,7 +21,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User findById(Integer id) {
 		java.util.Optional<User> obj = repository.findById(id);
-		return obj.orElse(null);
+		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado."));
 	}
 
 }

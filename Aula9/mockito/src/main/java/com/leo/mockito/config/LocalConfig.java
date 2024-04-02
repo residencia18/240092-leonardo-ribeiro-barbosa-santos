@@ -23,6 +23,7 @@ public class LocalConfig {
 	public Object startDB() {
 	    Logger logger = Logger.getLogger(LocalConfig.class.getName());
 	    logger.info("Iniciando método startDB()...");
+	    
 		User u1 = new User(null, "Valdir", "valdir@gmail.com", "123");
 		User u2 = new User(null, "Leo", "leo@hotmail.com", "123");
 		

@@ -1,4 +1,4 @@
-package com.leo.mockito.service;
+package com.leo.mockito.services;
 
 import com.leo.mockito.domain.User;
 
