@@ -1,18 +1,17 @@
 import { Routes } from '@angular/router';
-import { PrimeiroComponent } from './primeiro/primeiro.component';
-import { TerceiroComponent } from './terceiro/terceiro.component';
-import { SegundoComponent } from './segundo/segundo.component';
 
-export const routes: Routes = [];
+
+export const routes: Routes = [
 {
     path: 'primeiro',
     loadComponent: () => import ('./primeiro/primeiro.component').then(comp => comp.PrimeiroComponent)
 },
 {
     path: 'segundo',
-    component: SegundoComponent
+    loadComponent: () => import ('./segundo/segundo.component').then(comp => comp.SegundoComponent)
 },
 {
     path: 'terceiro',
-    component: TerceiroComponent
+    loadComponent: () => import ('./terceiro/terceiro.component').then(comp => comp.TerceiroComponent)
 }
+];
