@@ -28,20 +28,17 @@ public class UserResource {
 	    return ResponseEntity.ok().body(userDTO);
 	}
 	
-	// feito em aula, se possivel corrigir em casa
+	
 	@GetMapping
 	public ResponseEntity<List<UserDTO>> findAll() {
-		List<User> list = service.findAll();
-		List<UserDTO> listDTO = list.stream().map(user -> {
-            UserDTO userDTO = new UserDTO();
-            userDTO.setId(user.getId());
-            userDTO.setName(user.getName());
-            userDTO.setEmail(user.getEmail());
-            return userDTO;
-        })
-				.collect(Collectors.toList());
-		return ResponseEntity.ok(listDTO);
+	    return ResponseEntity.ok(service.findAll().stream()
+	            .map(user -> new UserDTO(user.getId(), user.getName(), user.getEmail(), user.getPassword()))
+	            .collect(Collectors.toList()));
 	}
+
+	
+	
+	
 	
 	private UserDTO convertToDTO(User user) {
 	    UserDTO userDTO = new UserDTO();
