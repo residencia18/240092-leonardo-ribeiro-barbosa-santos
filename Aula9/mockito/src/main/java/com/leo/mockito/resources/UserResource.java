@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,10 +24,11 @@ import com.leo.mockito.services.UserService;
 @RequestMapping(value = "/user")
 public class UserResource {
 
+	private static final String ID = "/{id}";
 	@Autowired
 	private UserService service;
 
-	@GetMapping(value = "/{id}")
+	@GetMapping(value = UserResource.ID)
 	public ResponseEntity<UserDTO> findById(@PathVariable Integer id){
 		User user = service.findById(id);
 		UserDTO userDTO = convertToDTO(user); // Método para converter User para UserDTO
@@ -44,16 +46,23 @@ public class UserResource {
 	@PostMapping
 	public ResponseEntity<UserDTO> create(@RequestBody UserDTO obj) {
 		URI uri = ServletUriComponentsBuilder
-				.fromCurrentRequest().path("/{id}").buildAndExpand(service.create(obj).getId()).toUri();
+				.fromCurrentRequest().path(UserResource.ID).buildAndExpand(service.create(obj).getId()).toUri();
 		return ResponseEntity.created(uri).build();
 
 	}
 
-	 @PutMapping(value = "/{id}")
+	 @PutMapping(value = UserResource.ID)
 	    public ResponseEntity<UserDTO> update(@PathVariable Integer id, @RequestBody UserDTO obj) {
 	        obj.setId(id); // Define o ID do objeto com o ID passado na URL
-	        return ResponseEntity.ok(convertToDTO(service.update(obj))); // Chama o serviço para atualizar o usuário e retorna diretamente o ResponseEntity com o objeto UserDTO
+	        return ResponseEntity.ok(convertToDTO(service.update(obj))); 
+	     // Chama o serviço para atualizar o usuário e retorna diretamente o ResponseEntity com o objeto UserDTO
 	    }
+	 
+	 @DeleteMapping(value = UserResource.ID)
+	 public ResponseEntity<UserDTO> delete(@PathVariable Integer id) {
+		 service.delete(id);
+		 return ResponseEntity.noContent().build();
+	 }
 
 	private UserDTO convertToDTO(User user) {
 		UserDTO userDTO = new UserDTO();
