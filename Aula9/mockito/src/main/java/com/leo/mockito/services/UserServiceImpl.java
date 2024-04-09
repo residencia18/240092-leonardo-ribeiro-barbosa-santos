@@ -4,7 +4,6 @@ package com.leo.mockito.services;
 import java.util.List;
 import java.util.Optional;
 
-import org.apache.catalina.mapper.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.leo.mockito.domain.User;
@@ -45,12 +44,29 @@ public class UserServiceImpl implements UserService {
 	    return repository.save(user);
 	}
 	
+	
+	
+	@Override
+	public User update(UserDTO obj) {
+		User user = new User();
+	    user.setId(obj.getId());
+	    user.setName(obj.getName());
+	    user.setEmail(obj.getEmail());
+	    user.setPassword(obj.getPassword());
+	    findByEmail(obj);
+		return repository.save(user);
+	}
+	
+	
+	
 	private void findByEmail(UserDTO obj) {
 		Optional<User> user = repository.findByEmail(obj.getEmail());
-		if(user.isPresent()) {
+		if(user.isPresent() && !user.get().getId().equals(obj.getId())) {
 			throw new DataIntegratyViolationException("E-mail já cadastrado no sistema");
 		}
 	}
+
+	
 
 }
 	
