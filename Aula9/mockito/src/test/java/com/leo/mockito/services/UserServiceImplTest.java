@@ -1,6 +1,9 @@
 package com.leo.mockito.services;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.when;
+
 import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -14,6 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.leo.mockito.domain.User;
 import com.leo.mockito.dto.UserDTO;
 import com.leo.mockito.repositories.UserRepository;
+import com.leo.mockito.services.exceptions.ObjectNotFoundException;
 
 
 @SpringBootTest
@@ -43,9 +47,11 @@ class UserServiceImplTest {
 		MockitoAnnotations.openMocks(this);
 		startUser();
 	}
+	
 
+	
 	@Test
-	void testFindByIdThenReturnAnUserInstance() {
+	void testFindByIdEmSeguidaRetorneUmainstanciaUser() {
 		Mockito.when(repository.findById(Mockito.anyInt())).thenReturn(optionalUser);
 		
 		User response = service.findById(ID);
@@ -55,7 +61,19 @@ class UserServiceImplTest {
 		assertEquals(NAME, response.getName());
 		assertEquals(EMAIL, response.getEmail());
 	}
+	
+	@Test
+	void whenFindByIdEmSeguidaRetorneUmObjectNotFoundException() {
+		when(repository.findById(anyInt())).thenThrow(new ObjectNotFoundException("Objeto não encontrado"));
+		try {
+			service.findById(ID);
+		} catch (Exception ex) {
+			assertEquals(ObjectNotFoundException.class, ex.getClass());
+			assertEquals("Objeto não encontrado", ex.getMessage());
+		}
+	}
 
+	
 	@Test
 	void testFindAll() {
 		fail("Ainda não implementado");
