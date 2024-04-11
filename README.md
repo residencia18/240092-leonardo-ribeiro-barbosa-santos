@@ -6,15 +6,10 @@
 ##### Objetivo: criar uma conexão entre o back-end e o banco de dados, simulando um cenario real. #####
 
 ### Aula2 ###
-##### Objetivo:
-Criar um método no model;
-Criar uma validação para a regra do método criado;
-Criar um novo modelo com relação de One To Many (1 para muitos). #####
+##### Objetivo: Criar um método no model, Criar uma validação para a regra do método criado, Criar um novo modelo com relação de One To Many (1 para muitos). #####
 
 ### Aula3 ###
-##### Objetivo: Escreva Testes de Unidade e Integração
-Documente suas APIs (Swagger, Springfox, ou outro)
-Evolua seu projeto com habilidades praticadas no Módulo JAVA Básico (Não aborde Microservices, apenas até APIs nesse momento) #####
+##### Objetivo: Escreva Testes de Unidade e Integração, Documente suas APIs (Swagger, Springfox, ou outro), Evolua seu projeto com habilidades praticadas no Módulo JAVA Básico (Não aborde Microservices, apenas até APIs nesse momento) #####
 
 
 ### Aula4, 5, 6, 7 ###
