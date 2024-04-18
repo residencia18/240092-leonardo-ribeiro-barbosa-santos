@@ -87,7 +87,7 @@ class UserResourceTestV1 {
 	}
 
 	private void startUser() {
-		user = new User(ID, NAME, EMAIL, PASSWORD);
+		user = new User(ID, NAME, EMAIL, PASSWORD, null);
 		userDTO = new UserDTO(ID, NAME, EMAIL, PASSWORD);
 	}
 
