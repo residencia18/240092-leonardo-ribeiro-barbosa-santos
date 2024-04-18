@@ -69,6 +69,12 @@ public class UserResourceV2 {
 			 return ResponseEntity.noContent().build();
 		 }
 		 
+		 @DeleteMapping
+		 public ResponseEntity<List<UserDTO>> deleteAll() {
+			 service.deleteAll();
+			 return ResponseEntity.noContent().build();
+		 }
+
 		
 		private UserDTO convertToDTO(User user) {
 			UserDTO userDTO = new UserDTO();
