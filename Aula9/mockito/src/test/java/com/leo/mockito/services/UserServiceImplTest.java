@@ -1,12 +1,9 @@
 package com.leo.mockito.services;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -16,7 +13,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
-
 
 import com.leo.mockito.domain.User;
 import com.leo.mockito.dto.UserDTO;
@@ -80,11 +76,7 @@ class UserServiceImplTest {
 	
 	@Test
 	void testFindAll() {
-		when(repository.findAll()).thenReturn(new ArrayList<User>());
-		List<User> response = service.findAll();
-		
-		assertEquals(repository.findAll(), response);
-		
+		fail("Ainda não implementado");
 	}
 
 	@Test

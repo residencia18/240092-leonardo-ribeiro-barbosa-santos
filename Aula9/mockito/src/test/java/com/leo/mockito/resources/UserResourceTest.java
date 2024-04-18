@@ -61,36 +61,35 @@ class UserResourceTest {
 		convertToUser(userDTO);
 	}
 
-		@Test
-		void whenTestFindByIdEntaoRetorneSucesso() throws Exception {
-			when(service.findById(anyInt())).thenReturn(user);
-			ResponseEntity<UserDTO> response = resource.findById(ID);
-	
-	
-			MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/user/{id}", ID)
-					.contentType(MediaType.APPLICATION_JSON))
-					.andExpect(MockMvcResultMatchers.status().isOk())
-					.andReturn();
-	
-			String responseBody = mvcResult.getResponse().getContentAsString();
-			assertNotNull(responseBody);
-	
-			ObjectMapper objectMapper = new ObjectMapper();
-			UserDTO responseUserDTO = objectMapper.readValue(responseBody, UserDTO.class);
-			assertNotNull(responseUserDTO);
-			
-			verify(service).findById(ID);
-	
-	
-			assertNotNull(response);
-			assertNotNull(userDTO);
-	
-			assertEquals(ID, userDTO.getId());
-			assertEquals(NAME, userDTO.getName());
-			assertEquals(EMAIL, userDTO.getEmail());
-			assertEquals(PASSWORD, userDTO.getPassword());
-		}
+	@Test
+	void whenTestFindByIdEntaoRetorneSucesso() throws Exception {
+		when(service.findById(anyInt())).thenReturn(user);
+		ResponseEntity<UserDTO> response = resource.findById(ID);
 
+
+		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/user/{id}", ID)
+				.contentType(MediaType.APPLICATION_JSON))
+				.andExpect(MockMvcResultMatchers.status().isOk())
+				.andReturn();
+
+		String responseBody = mvcResult.getResponse().getContentAsString();
+		assertNotNull(responseBody);
+
+		ObjectMapper objectMapper = new ObjectMapper();
+		UserDTO responseUserDTO = objectMapper.readValue(responseBody, UserDTO.class);
+		assertNotNull(responseUserDTO);
+		
+		verify(service).findById(ID);
+
+
+		assertNotNull(response);
+		assertNotNull(userDTO);
+
+		assertEquals(ID, userDTO.getId());
+		assertEquals(NAME, userDTO.getName());
+		assertEquals(EMAIL, userDTO.getEmail());
+		assertEquals(PASSWORD, userDTO.getPassword());
+	}
 
 
 	@Test
