@@ -1,27 +1,26 @@
-package com.leo.mockito.services;
+package com.leo.mockito.resources;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
-
-import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
+
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.ResponseEntity;
 
 import com.leo.mockito.domain.User;
 import com.leo.mockito.dto.UserDTO;
-import com.leo.mockito.repositories.UserRepository;
-import com.leo.mockito.services.exceptions.ObjectNotFoundException;
+import com.leo.mockito.services.UserServiceV1;
 
 
 @SpringBootTest
-class UserServiceImplTest {
+class UserResourceTestV1 {
 
 	private static final String PASSWORD = "12345";
 
@@ -32,48 +31,41 @@ class UserServiceImplTest {
 	private static final Integer ID = 1;
 
 	@InjectMocks
-	private UserServiceImpl service;
-	
+	private UserResourceV1 resource;
+
 	@Mock
-	private UserRepository repository;
-	
+	private UserServiceV1 service;
+
 	private User user;
 	private UserDTO userDTO;
-	private Optional<User> optionalUser;
-	
-	
+
+
 	@BeforeEach
 	void setUp() throws Exception {
 		MockitoAnnotations.openMocks(this);
 		startUser();
 	}
-	
 
-	
 	@Test
-	void whenTestFindByIdEmSeguidaRetorneUmainstanciaUser() {
-		Mockito.when(repository.findById(Mockito.anyInt())).thenReturn(optionalUser);
-		
-		User response = service.findById(ID);
+	void whenTestFindByIdEntaoRetorneSucesso() {
+		when(service.findById(anyInt())).thenReturn(user);
+		ResponseEntity<UserDTO> response = resource.findById(ID);
+		userDTO = response.getBody();
+
 		assertNotNull(response);
-		assertEquals(User.class, response.getClass());
-		assertEquals(ID, response.getId());
-		assertEquals(NAME, response.getName());
-		assertEquals(EMAIL, response.getEmail());
-	}
-	
-	@Test
-	void whenFindByIdEmSeguidaRetorneUmObjectNotFoundException() {
-		when(repository.findById(anyInt())).thenThrow(new ObjectNotFoundException("Objeto não encontrado"));
-		try {
-			service.findById(ID);
-		} catch (Exception ex) {
-			assertEquals(ObjectNotFoundException.class, ex.getClass());
-			assertEquals("Objeto não encontrado", ex.getMessage());
-		}
+		assertNotNull(userDTO);
+		assertEquals(ResponseEntity.class, response.getClass());
+		assertEquals(UserDTO.class, response.getBody().getClass());
+
+
+		assertEquals(ID, userDTO.getId());
+		assertEquals(NAME, userDTO.getName());
+		assertEquals(EMAIL, userDTO.getEmail());
+		assertEquals(PASSWORD, userDTO.getPassword());
 	}
 
-	
+
+
 	@Test
 	void testFindAll() {
 		fail("Ainda não implementado");
@@ -93,12 +85,10 @@ class UserServiceImplTest {
 	void testDelete() {
 		fail("Ainda não implementado");
 	}
-	
-	
+
 	private void startUser() {
 		user = new User(ID, NAME, EMAIL, PASSWORD, null);
-		userDTO = new UserDTO(ID, NAME, EMAIL, PASSWORD);
-		optionalUser = Optional.of(new User(ID, NAME, EMAIL, PASSWORD, null));
+		userDTO = new UserDTO(ID, NAME, EMAIL, PASSWORD, null);
 	}
 
 }
