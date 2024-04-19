@@ -1,13 +1,19 @@
 package com.leo.mockito.services;
 
-import java.awt.print.Pageable;
 
-import org.hibernate.query.Page;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import com.leo.mockito.domain.Post;
+
 
 @Service
 public interface PostService {
 
-	Page ListAll(Pageable pageable);
+	 Page<Post> listAll(Pageable pageable);
+
+
 	
 }
