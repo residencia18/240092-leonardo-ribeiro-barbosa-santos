@@ -2,6 +2,8 @@ package com.leo.mockito.domain;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -37,11 +39,13 @@ public class User {
 	@Column(unique = true)
 	private String email;
 	
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	@NotEmpty
 	private String password;
 	
 
     // Relacionamento One-to-Many com a entidade Post
+	
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Post> post;
 	

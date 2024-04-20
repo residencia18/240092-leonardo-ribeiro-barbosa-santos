@@ -19,25 +19,34 @@ import com.leo.mockito.dto.PostDTO;
 import com.leo.mockito.services.PostService;
 
 @RestController
-@RequestMapping
+@RequestMapping(value = "/post")
 public class PostResource {
 	
 	@Autowired
 	private  PostService service;
 	
 	
-	 @GetMapping("/posts")
-	    public  ResponseEntity<PostDTO> listAll(
-	    		@RequestParam(defaultValue = "0") int page,
-	    		@RequestParam(defaultValue = "10")int size){
-		 Pageable pageable = PageRequest.of(page, size);
-		 Page<Post> post = service.listAll(pageable);
-		 
-		 if(post.isEmpty()) {
-			 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-		 }
-					return new ResponseEntity<PostDTO>((PostDTO) post.getContent(), HttpStatus.OK);
-		 
-	 }
+	@GetMapping("/user/{userId}/post")
+	public ResponseEntity<Page<PostDTO>> listAll(
+	        @RequestParam(defaultValue = "0") int page,
+	        @RequestParam(defaultValue = "10") int size) {
+	    Pageable pageable = PageRequest.of(page, size);
+	    Page<Post> postPage = service.listAll(pageable);
+
+	    if (postPage.isEmpty()) {
+	        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	    }
+
+	    Page<PostDTO> postDTOPage = postPage.map(post -> {
+	        PostDTO postDTO = new PostDTO();
+	        postDTO.setId(post.getId());
+	        postDTO.setContent(post.getContent());
+	        postDTO.setUser(post.getUser()); // Assuming user is already mapped in PostDTO
+	        return postDTO;
+	    });
+
+	    return new ResponseEntity<>(postDTOPage, HttpStatus.OK);
+	}
+
 	 
 }
