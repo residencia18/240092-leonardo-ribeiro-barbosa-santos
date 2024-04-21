@@ -1,0 +1,65 @@
+
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--background-color); /* Plano de fundo do container */
+    color: var(--text-color); /* Cor do texto no container */
+  }
+  
+  h2 {
+    color: #70b615; /* Cor do título */
+  }
+  
+  .subtotal-text {
+    font-size: 1.2rem;
+    font-weight: bold;  
+  }
+  
+  .subtotal-amount {
+    color: #aae81a; /* Cor do texto do subtotal */
+  }
+  
+  .custom-btn {
+    font-size: 0.7rem; /* Tamanho do texto do botão */
+    font-weight: bold;
+    border-radius: 0.3rem; /* Menos arredondamento nas bordas */
+    padding: 0.5rem 0.4rem; /* Reduz o padding para tamanhos menores */
+    height: 5.5rem; /* Altura específica para controlar o tamanho do botão */
+    background-color: #51dc35; /* Cor de fundo para botões */
+    color: #fff; /* Cor do texto do botão */
+  }
+  
+  .custom-btn:hover {
+    opacity: 0.8; /* Efeito de hover */
+    background-color: #0a5a14; /* Cor do fundo do botão no hover */
+  }
+  
+  .card {
+    background-color: var(--form-bg-color); /* Cor do fundo dos cartões */
+  }
+  
+  .form-control {
+    background-color: var(--form-bg-color); /* Cor do fundo para o formulário */
+    color: var(--text-color-secondary); /* Cor do texto para o formulário */
+  }
+
+  h4 {
+    color:rgb(2, 77, 58);
+  }
+
+  .btn-primary {
+    background-color: var(--add-to-cart-color); /* Cor personalizada */
+    color: #fff; /* Cor do texto do botão */
+    border: #aae81a;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem; /* Arredondamento suave nas bordas */
+  }
+  
+  .btn-primary:hover {
+    color: #aae81a;
+    background-color: #218838; /* Cor mais escura para o hover */
+    opacity: 0.9; /
+  }
+  

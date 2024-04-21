@@ -1,0 +1,39 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .subtotal-text {
+    font-size: 1.2rem;
+    color: #333; 
+    font-weight: bold;
+  }
+  
+  .subtotal-amount {
+    color: #09ff00; /* Cor de destaque (azul) */
+  }
+  
+  .custom-btn {
+    font-weight: bold;
+    border-radius: 0.5rem;
+  }
+  
+  .custom-btn:hover {
+    opacity: 0.8;
+  }
+  
+  body {
+    background-color: #000; /* Cor de fundo preto */
+    color: #1bb935; /* Cor do texto branco */
+  }
+  
+  h2 {
+    color: #000; /* Cor do texto preto */
+  }
+
+  .welcome-message {
+    color: #7ee81a;
+}
+
+
+
