@@ -72,15 +72,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-<<<<<<< HEAD
-	
-=======
+
 		<dependency>
     <groupId>javax.xml.bind</groupId>
     <artifactId>jaxb-api</artifactId>
     <version>2.3.0</version>
 </dependency>
->>>>>>> 27add53defc26c3d59054eef6a4c723de52654f3
 	</dependencies>
 <build>		<plugins>
 	
