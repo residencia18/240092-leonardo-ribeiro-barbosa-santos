@@ -15,6 +15,8 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
+		<database.username>root</database.username>        <!-- flyway.database.username -->
+        <database.password>12345</database.password> <!-- flyway.database.password -->
 	</properties>
 	<dependencies>
 				
@@ -29,6 +31,11 @@
 	      <artifactId>javafaker</artifactId>
 	      <version>1.0.2</version>
 	    </dependency>
+	    
+	    <dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+		</dependency>
 
 	
 
@@ -59,8 +66,9 @@
 		</dependency>
 		
 		<dependency>
-		    <groupId>org.postgresql</groupId>
-		    <artifactId>postgresql</artifactId>   
+	        <groupId>mysql</groupId>
+	        <artifactId>mysql-connector-java</artifactId>
+	        <version>8.0.28</version>     
 		</dependency>
 
 	
@@ -81,8 +89,9 @@
     <version>2.3.0</version>
 </dependency>
 	</dependencies>
-<build>		<plugins>
 	
+	<build>	
+		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -96,6 +105,30 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			
+			   <!-- Configuração do Maven Compiler Plugin -->
+			 <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>21</source>  
+                    <target>21</target>  
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+			
+			<plugin> <!-- flyway.database.config -->
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <configuration>
+                    <url>jdbc:mysql://localhost:3306/user</url>
+                    <user>${database.username}</user>
+                    <password>${database.password}</password>
+                    <locations>classpath:db/migration</locations>
+                </configuration>
+            </plugin>
 		</plugins>
 	</build>
 
