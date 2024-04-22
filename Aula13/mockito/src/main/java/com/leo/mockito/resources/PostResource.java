@@ -19,7 +19,7 @@ import com.leo.mockito.dto.PostDTO;
 import com.leo.mockito.services.PostService;
 
 @RestController
-@RequestMapping
+@RequestMapping(value = "/posts")
 public class PostResource {
 	
 	@Autowired
