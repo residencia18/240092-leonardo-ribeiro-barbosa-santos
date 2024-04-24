@@ -44,7 +44,7 @@ public class UserResourceV2 {
 		@GetMapping
 		public ResponseEntity<List<UserDTO>> findAll() {
 			return ResponseEntity.ok(service.findAll().stream()
-					.map(user -> new UserDTO(user.getId(), user.getName(), user.getEmail(), user.getPassword(), null))
+					.map(user -> new UserDTO(user.getId(), user.getUsername(), user.getEmail(), user.getPassword(), null))
 					.collect(Collectors.toList()));
 		}
 
@@ -79,7 +79,7 @@ public class UserResourceV2 {
 		private UserDTO convertToDTO(User user) {
 			UserDTO userDTO = new UserDTO();
 			userDTO.setId(user.getId());
-			userDTO.setName(user.getName());
+			userDTO.setName(user.getUsername());
 			userDTO.setEmail(user.getEmail());
 			userDTO.setPassword(user.getPassword());
 			return userDTO;

@@ -41,7 +41,7 @@ public class UserServiceImplV1 implements UserServiceV1 {
 	public User create(UserDTO obj) {
 	    User user = new User();
 	    user.setId(obj.getId());
-	    user.setName(obj.getName());
+	    user.setUsername(obj.getName());
 	    user.setEmail(obj.getEmail());
 	    user.setPassword(obj.getPassword());
 	    findByEmail(obj);
@@ -54,7 +54,7 @@ public class UserServiceImplV1 implements UserServiceV1 {
 	public User update(UserDTO obj) {
 		User user = new User();
 	    user.setId(obj.getId());
-	    user.setName(obj.getName());
+	    user.setUsername(obj.getName());
 	    user.setEmail(obj.getEmail());
 	    user.setPassword(obj.getPassword());
 	    findByEmail(obj);

@@ -27,7 +27,7 @@
 		    logger.info("Iniciando método startDB()...");
 		    
 			User u1 = new User(null, "Valdir", "valdir@gmail.com", "123", null  );
-			User u2 = new User(null, "Leo", "leo@hotmail.com", "123", null);
+			User u2 = new User(null, "Leonardo", "leo@hotmail.com", "123", null);
 			
 			Post post1 = new Post(null, "noticias", u1);
 			Post post2 = new Post(null, "Fofoca", u1);
