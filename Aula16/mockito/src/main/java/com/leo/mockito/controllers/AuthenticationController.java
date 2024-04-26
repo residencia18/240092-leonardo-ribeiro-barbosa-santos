@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.leo.mockito.domain.users.AuthenticationDTO;
+import com.leo.mockito.domain.users.LoginResponseDTO;
 import com.leo.mockito.domain.users.RegisterDTO;
 import com.leo.mockito.domain.users.Users;
+import com.leo.mockito.infra.security.TokenService;
 import com.leo.mockito.repositories.UsersRepository;
 
 import jakarta.validation.Valid;
@@ -28,12 +30,17 @@ public class AuthenticationController {
 	@Autowired
 	UsersRepository repository;
 	
+	@Autowired
+	TokenService tokenService;
+	
 	@PostMapping("/login")
 	public ResponseEntity login(@RequestBody @Valid AuthenticationDTO data) {
 		var usernamePassword = new UsernamePasswordAuthenticationToken(data.login(), data.password());
 		var auth = this.authenticationManager.authenticate(usernamePassword);
 		
-		return ResponseEntity.ok().build();
+		var token = tokenService.generateToken((Users)auth.getPrincipal());
+		
+		return ResponseEntity.ok(new LoginResponseDTO(token));
 	}
 	
 	@PostMapping("/register")
