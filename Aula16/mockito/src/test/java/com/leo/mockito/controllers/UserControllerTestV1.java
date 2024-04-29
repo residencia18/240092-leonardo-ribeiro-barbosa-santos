@@ -1,4 +1,4 @@
-package com.leo.mockito.resources;
+package com.leo.mockito.controllers;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,7 +21,7 @@ import com.leo.mockito.services.UserServiceV1;
 
 
 @SpringBootTest
-class UserResourceTestV1 {
+class UserControllerTestV1 {
 
 	private static final String PASSWORD = "12345";
 

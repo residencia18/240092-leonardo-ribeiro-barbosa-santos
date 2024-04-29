@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,15 +34,27 @@ public class AuthenticationController {
 	@Autowired
 	TokenService tokenService;
 	
-	@PostMapping("/login")
-	public ResponseEntity login(@RequestBody @Valid AuthenticationDTO data) {
-		var usernamePassword = new UsernamePasswordAuthenticationToken(data.login(), data.password());
-		var auth = this.authenticationManager.authenticate(usernamePassword);
-		
-		var token = tokenService.generateToken((Users)auth.getPrincipal());
-		
-		return ResponseEntity.ok(new LoginResponseDTO(token));
-	}
+		@PostMapping("/login")
+		public ResponseEntity<LoginResponseDTO> login(@RequestBody AuthenticationDTO data) {
+		    try {
+		        var usernamePassword = new UsernamePasswordAuthenticationToken(
+		            data.login(),
+		            data.password()
+		        );
+		        var auth = authenticationManager.authenticate(usernamePassword);
+	
+		        var token = tokenService.generateToken((Users) auth.getPrincipal());
+	
+		        return ResponseEntity.ok(new LoginResponseDTO(token)); // Retorno bem-sucedido
+		    } catch (AuthenticationException ex) {
+		        // Se a autenticação falhar, crie um LoginResponseDTO apropriado ou trate como necessário
+		        return ResponseEntity.status(401).body(new LoginResponseDTO(null));
+		    } catch (Exception ex) {
+		        // Se uma exceção inesperada ocorrer, trate adequadamente
+		        return ResponseEntity.status(500).body(new LoginResponseDTO(null));
+		    }
+		}
+
 	
 	@PostMapping("/register")
 	public ResponseEntity register(@RequestBody @Valid RegisterDTO data) {
