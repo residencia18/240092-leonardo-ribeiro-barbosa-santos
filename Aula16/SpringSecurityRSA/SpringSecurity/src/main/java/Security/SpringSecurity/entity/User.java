@@ -1,6 +1,7 @@
 package Security.SpringSecurity.entity;
 
-import br.com.Security.validation.ValidPassword;
+
+import Security.SpringSecurity.validation.ValidPassword;
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,7 +11,6 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
