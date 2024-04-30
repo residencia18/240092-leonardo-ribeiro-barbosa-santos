@@ -51,7 +51,7 @@ public class SecurityConfiguration {
 	                        .accessDeniedHandler(new BearerTokenAccessDeniedHandler()))
 	                .build();
 	    }
-
+	    
 	    @Bean
 	    public PasswordEncoder passwordEncoder() {
 	        return new BCryptPasswordEncoder();
