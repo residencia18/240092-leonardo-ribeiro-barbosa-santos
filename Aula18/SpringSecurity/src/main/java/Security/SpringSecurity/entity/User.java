@@ -1,22 +1,31 @@
 package Security.SpringSecurity.entity;
 
 
+import java.util.HashSet;
+import java.util.Set;
+
 import Security.SpringSecurity.validation.ValidPassword;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
 @Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -36,5 +45,14 @@ public class User {
     private String username;
     @ValidPassword
     private String password;
-    private String role;
+    
+    
+    
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+    		name =  "users_roles",
+    		joinColumns = @JoinColumn(name = "user_id"),
+    		inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles = new HashSet<>();
 }
