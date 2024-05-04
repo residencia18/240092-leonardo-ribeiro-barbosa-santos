@@ -7,9 +7,10 @@ CREATE SEQUENCE users_id_seq
 
 CREATE TABLE IF NOT EXISTS public.users
 (
-    id BIGINT NOT NULL DEFAULT NEXTVAL('users_id_seq'),
-    username VARCHAR(255),
-    password VARCHAR(255),
-    email VARCHAR(255),
-    role VARCHAR(255)
+    id BIGINT NOT NULL DEFAULT nextval('users_id_seq'::regclass),
+    username CHARACTER VARYING(255),
+    password CHARACTER VARYING(255),
+    email CHARACTER VARYING(255),
+    role CHARACTER VARYING(255),
+    PRIMARY KEY (id) -- Adiciona a chave primária à coluna 'id'
 );
