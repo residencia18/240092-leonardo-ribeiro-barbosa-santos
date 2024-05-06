@@ -4,6 +4,8 @@ package Security.SpringSecurity.entity;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.hibernate.annotations.ForeignKey;
+
 import Security.SpringSecurity.validation.ValidPassword;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -21,13 +23,12 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder

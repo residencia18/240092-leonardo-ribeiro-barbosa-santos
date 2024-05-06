@@ -1,10 +1,15 @@
 package Security.SpringSecurity.repository;
 
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -21,34 +26,30 @@ public class UserRepository {
 	private final JdbcClient jdbcClient;
 
 	@Transactional
-	public Long saveUser(User user) {
-		var insertQuery = """
-				INSERT INTO users(username, password, email) 
-				VALUES(?, ?, ?)
-				""";
-		KeyHolder keyHolder = new GeneratedKeyHolder();
-		jdbcClient.sql(insertQuery)
-		.param(1, user.getUsername())
-		.param(2, user.getPassword())
-		.param(3, user.getEmail())
-		.update(keyHolder);
+	public Long saveUser(User user, JdbcTemplate jdbcTemplate) {
+	    String insertQuery = "INSERT INTO users(username, password, email) VALUES (?, ?, ?)";
+	    KeyHolder keyHolder = new GeneratedKeyHolder();
 
-		// Obter o ID do usuário recém-criado
-		Long userId = keyHolder.getKeyAs(Long.class);
+	    jdbcTemplate.update(new PreparedStatementCreator() {
+	        @Override
+	        public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
+	            PreparedStatement ps = connection.prepareStatement(insertQuery, new String[] {"id"}); // retorna a chave
+	            ps.setString(1, user.getUsername());
+	            ps.setString(2, user.getPassword());
+	            ps.setString(3, user.getEmail());
+	            return ps;
+	        }
+	    }, keyHolder);
 
-		// Inserir os papéis do usuário na tabela de junção
-		for (Role role : user.getRoles()) {
-			var insertRoleQuery = """
-					INSERT INTO user_roles(user_id, role_id) 
-					VALUES(?, ?)
-					""";
-			jdbcClient.sql(insertRoleQuery)
-			.param(1, userId)
-			.param(2, role.getId()) // Você precisará do ID do papel
-			.update();
-		}
+	    Long userId = keyHolder.getKey().longValue();
 
-		return userId;
+	    // Inserir papéis (roles)
+	    for (Role role : user.getRoles()) {
+	        String insertRoleQuery = "INSERT INTO user_roles(user_id, role_id) VALUES (?, ?)";
+	        jdbcTemplate.update(insertRoleQuery, userId, role.getId());
+	    }
+
+	    return userId;
 	}
 
 	@Transactional(readOnly = true)

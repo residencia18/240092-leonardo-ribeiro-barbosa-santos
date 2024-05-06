@@ -1,5 +1,7 @@
 package Security.SpringSecurity.service;
 
+
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -24,11 +26,12 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
     private final JwtProvider jwtProvider;
     private final UserMapper userMapper;
+    private final JdbcTemplate jdbcTemplate;
 
     public void register(RegisterRequest registerRequest) {
         User user = userMapper.fromRegisterRequest(registerRequest);// Usando o UserMapper para criar o objeto User
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userRepository.saveUser(user);
+        userRepository.saveUser(user, jdbcTemplate);
     }
 
     public LoginResponse login(LoginRequest loginRequest) {

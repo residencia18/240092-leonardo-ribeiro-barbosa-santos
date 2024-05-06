@@ -16,7 +16,7 @@
 		<properties>
 			<java.version>17</java.version>
 			<database.username>root</database.username>        <!-- flyway.database.username -->
-	        <database.password>oioioi77</database.password> <!-- flyway.database.password -->
+	        <database.password>12345</database.password> <!-- flyway.database.password -->
 		</properties>
 		<dependencies>
 					
@@ -126,11 +126,7 @@
 				  <version>4.3.0</version>
 			</dependency>
 
-			<dependency>
-				<groupId>br.com.leo</groupId>
-				<artifactId>academicnet</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
-			</dependency>
+			
 		</dependencies>
 		
 		<build>	
