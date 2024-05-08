@@ -35,9 +35,15 @@ public class UserRepository {
 
     @Transactional(readOnly = true)
     public Optional<User> findByUsername(String username) {
-        var findQuery = "SELECT id, username, password, role, email FROM users WHERE username=:username";
-        return jdbcClient.sql(findQuery).param("username", username).query(User.class).optional();
+        try {
+            var findQuery = "SELECT id, username, password, role, email FROM users WHERE username = :username";
+            return jdbcClient.sql(findQuery).param("username", username).query(User.class).optional();
+        } catch (Exception e) {
+            // Logar ou tratar o erro
+            throw new RuntimeException("Erro ao buscar usuário por username", e);
+        }
     }
+
     
     
     @Transactional(readOnly = true)

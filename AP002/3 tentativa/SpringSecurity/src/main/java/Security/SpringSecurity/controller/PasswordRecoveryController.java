@@ -3,6 +3,8 @@ package Security.SpringSecurity.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import Security.SpringSecurity.service.EmailService;
@@ -26,7 +28,9 @@ public class PasswordRecoveryController {
 
 
     @PostMapping("/password-recovery")
-    public ResponseEntity<String> requestPasswordRecovery(@RequestParam String email) {
+    public ResponseEntity<String> requestPasswordRecovery(@RequestParam(value = "email",required = true) String email) {
+        Logger logger = LoggerFactory.getLogger(getClass());
+        logger.info("E-mail recebido: {}", email);
         var userOptional = userRepository.findByEmail(email);
         if (userOptional.isEmpty()) {
             return ResponseEntity.status(404).body("Usuário não encontrado com o e-mail especificado");
