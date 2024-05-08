@@ -3,6 +3,7 @@ package Security.SpringSecurity.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -31,49 +32,52 @@ import lombok.RequiredArgsConstructor;
 @EnableWebSecurity
 @Configuration
 @RequiredArgsConstructor
-public class SecurityConfiguration {
+public class SecurityConfiguration  {
 
-	 private final JwtConfigProperties jwtConfigProperties;
+	private final JwtConfigProperties jwtConfigProperties;
 
-	    @Bean
-	    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-	        return httpSecurity
-	                .cors(Customizer.withDefaults())
-	                .csrf(csrf -> csrf.disable())
-	                .authorizeHttpRequests(authorize -> authorize
-	                        .requestMatchers("/api/auth/**").permitAll()
-	                        .anyRequest().authenticated())
-	                .oauth2ResourceServer(oAuth2ResourceServerConfigurer
-	                        -> oAuth2ResourceServerConfigurer.jwt(Customizer.withDefaults()))
-	                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-	                .exceptionHandling(exception -> exception
-	                        .authenticationEntryPoint(new BearerTokenAuthenticationEntryPoint())
-	                        .accessDeniedHandler(new BearerTokenAccessDeniedHandler()))
-	                .build();
-	    }
-	    
-	    @Bean
-	    public PasswordEncoder passwordEncoder() {
-	        return new BCryptPasswordEncoder();
-	    }
+	@Bean
+	public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+		return httpSecurity
+				.cors(Customizer.withDefaults())
+				.csrf(csrf -> csrf.disable())
+				.authorizeHttpRequests(authorize -> authorize
+						.requestMatchers("/api/auth/**").permitAll()
+						.requestMatchers(HttpMethod.POST, "/api/password-recovery").permitAll()
+						.requestMatchers("/api/reset-password").permitAll()
+						.anyRequest().authenticated()) 
+				
+				.oauth2ResourceServer(oAuth2ResourceServerConfigurer
+						-> oAuth2ResourceServerConfigurer.jwt(Customizer.withDefaults()))
+				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+				.exceptionHandling(exception -> exception
+						.authenticationEntryPoint(new BearerTokenAuthenticationEntryPoint())
+						.accessDeniedHandler(new BearerTokenAccessDeniedHandler()))
+				.build();
+	}
 
-	    @Bean
-	    JwtDecoder jwtDecoder() {
-	        return NimbusJwtDecoder.withPublicKey(jwtConfigProperties.getPublicKey()).build();
-	    }
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 
-	    @Bean
-	    JwtEncoder jwtEncoder() {
-	        JWK jwk = new RSAKey.Builder(jwtConfigProperties.getPublicKey())
-	                .privateKey(jwtConfigProperties.getPrivateKey())
-	                .build();
-	        JWKSource<SecurityContext> jwks = new ImmutableJWKSet<>(new JWKSet(jwk));
-	        return new NimbusJwtEncoder(jwks);
-	    }
+	@Bean
+	JwtDecoder jwtDecoder() {
+		return NimbusJwtDecoder.withPublicKey(jwtConfigProperties.getPublicKey()).build();
+	}
 
-	    @Bean
-	    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
-	        return authenticationConfiguration.getAuthenticationManager();
-	    }
+	@Bean
+	JwtEncoder jwtEncoder() {
+		JWK jwk = new RSAKey.Builder(jwtConfigProperties.getPublicKey())
+				.privateKey(jwtConfigProperties.getPrivateKey())
+				.build();
+		JWKSource<SecurityContext> jwks = new ImmutableJWKSet<>(new JWKSet(jwk));
+		return new NimbusJwtEncoder(jwks);
+	}
+
+	@Bean
+	public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+		return authenticationConfiguration.getAuthenticationManager();
+	}
 
 }

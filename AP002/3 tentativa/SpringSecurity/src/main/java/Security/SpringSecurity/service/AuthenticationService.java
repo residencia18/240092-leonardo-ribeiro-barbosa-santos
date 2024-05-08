@@ -37,4 +37,6 @@ public class AuthenticationService {
         String token = jwtProvider.generateToken(authenticate);
         return new LoginResponse(token);
     }
+    
+    
 }
