@@ -9,6 +9,8 @@ import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 
 import Security.SpringSecurity.repository.UserRepository;
+import Security.SpringSecurity.service.BlacklistService;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.Instant;
@@ -20,12 +22,19 @@ public class ResetPasswordController {
     private final JwtDecoder jwtDecoder;
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final BlacklistService blacklistService;
 
     @Autowired
-    public ResetPasswordController(JwtDecoder jwtDecoder, UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public ResetPasswordController(
+        JwtDecoder jwtDecoder,
+        UserRepository userRepository,
+        PasswordEncoder passwordEncoder,
+        BlacklistService blacklistService // Certifique-se de injetar o BlacklistService no construtor
+    ) {
         this.jwtDecoder = jwtDecoder;
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.blacklistService = blacklistService; // Inicialize o campo final no construtor
     }
 
     @PostMapping("/reset-password")
@@ -45,22 +54,29 @@ public class ResetPasswordController {
                 return ResponseEntity.status(400).body("Token expirado");
             }
 
+            // Verificar se o token já está na lista negra
+            if (blacklistService.isTokenBlacklisted(token)) {
+                return ResponseEntity.status(400).body("Token inválido");
+            }
+
         } catch (Exception e) {
             return ResponseEntity.status(400).body("Token inválido");
         }
 
-        // Procura o usuário com base no e-mail extraído do token JWT
         var userOptional = userRepository.findByEmail(email);
         if (userOptional.isEmpty()) {
             return ResponseEntity.status(404).body("Usuário não encontrado");
         }
 
-        // Atualiza a senha do usuário
         var user = userOptional.get();
         var encodedPassword = passwordEncoder.encode(newPassword);
-        user.setPassword(encodedPassword); // Define a nova senha codificada
-        userRepository.save(user); // Usa o método save para atualizar o usuário
+        user.setPassword(encodedPassword);
+        userRepository.save(user);
+
+        // Colocar o token na lista negra após a redefinição da senha
+        blacklistService.blacklistToken(token);
 
         return ResponseEntity.ok("Senha redefinida com sucesso");
     }
+
 }
