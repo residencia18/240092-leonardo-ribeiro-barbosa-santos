@@ -26,9 +26,12 @@ public class AuthenticationService {
     private final UserMapper userMapper;
 
     public void register(RegisterRequest registerRequest) {
-        User user = userMapper.fromRegisterRequest(registerRequest);// Usando o UserMapper para criar o objeto User
+        // Usando o UserMapper para criar o objeto User
+        User user = userMapper.fromRegisterRequest(registerRequest);
+        // Codificando a senha antes de salvar
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userRepository.saveUser(user);
+        // Salvar o usuário usando o método save do JpaRepository
+        userRepository.save(user);
     }
 
     public LoginResponse login(LoginRequest loginRequest) {

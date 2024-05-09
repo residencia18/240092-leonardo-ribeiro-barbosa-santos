@@ -1,9 +1,8 @@
 package Security.SpringSecurity.controller;
 
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.time.Instant;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.jwt.Jwt;
@@ -11,6 +10,8 @@ import org.springframework.security.oauth2.jwt.JwtDecoder;
 
 import Security.SpringSecurity.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.time.Instant;
 
 @RestController
 @RequestMapping("/api")
@@ -54,16 +55,12 @@ public class ResetPasswordController {
             return ResponseEntity.status(404).body("Usuário não encontrado");
         }
 
-        // Atualiza a senha do usuário no banco de dados
+        // Atualiza a senha do usuário
         var user = userOptional.get();
         var encodedPassword = passwordEncoder.encode(newPassword);
-        userRepository.updatePassword(user.getId(), encodedPassword);
+        user.setPassword(encodedPassword); // Define a nova senha codificada
+        userRepository.save(user); // Usa o método save para atualizar o usuário
 
         return ResponseEntity.ok("Senha redefinida com sucesso");
     }
-
-
-
-
 }
-
