@@ -13,7 +13,6 @@ import com.github.javafaker.Faker;
 
 import Security.SpringSecurity.entity.BlacklistedToken;
 import Security.SpringSecurity.repository.BlacklistRepository;
-import Security.SpringSecurity.service.BlacklistService;
 
 @SpringBootTest
 class BlacklistServiceTest {

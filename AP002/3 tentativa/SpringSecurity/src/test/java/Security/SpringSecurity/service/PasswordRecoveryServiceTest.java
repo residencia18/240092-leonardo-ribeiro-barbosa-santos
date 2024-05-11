@@ -18,11 +18,6 @@ import Security.SpringSecurity.entity.User;
 import Security.SpringSecurity.exceptions.UserNotFoundException;
 import Security.SpringSecurity.repository.UserRepository;
 import Security.SpringSecurity.security.JwtProvider;
-import Security.SpringSecurity.service.BlacklistService;
-import Security.SpringSecurity.service.EmailService;
-import Security.SpringSecurity.service.PasswordRecoveryService;
-import Security.SpringSecurity.service.PasswordResetService;
-import Security.SpringSecurity.service.ResetPasswordService;
 
 import static org.mockito.Mockito.*;
 
@@ -86,17 +81,14 @@ public class PasswordRecoveryServiceTest {
 
     @Test
     public void testRequestPasswordRecovery_UserNotFound() {
-        // Criar uma requisição de recuperação de senha com um e-mail não existente
         String email = faker.internet().emailAddress();
         PasswordRecoveryRequest request = new PasswordRecoveryRequest(email);
 
-        // Mock do usuário não encontrado no repositório
+
         when(userRepository.findByEmail(email)).thenReturn(Optional.empty());
 
-        // Chamando o método a ser testado e verificando se a exceção é lançada
         assertThrows(UserNotFoundException.class, () -> passwordRecoveryService.requestPasswordRecovery(request));
 
-        // Verificar se o emailService.sendSimpleEmail não foi chamado
         verify(emailService, never()).sendSimpleEmail(any(), any(), any(), any());
     }
    

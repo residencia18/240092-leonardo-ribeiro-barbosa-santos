@@ -5,8 +5,6 @@ package Security.SpringSecurity.service;
 
 import com.github.javafaker.Faker;
 
-import Security.SpringSecurity.service.EmailService;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -52,13 +50,10 @@ public class EmailServiceTest {
         String subject = faker.lorem().sentence();
         String text = faker.lorem().paragraph();
 
-        // Simular uma exceção ao enviar e-mail configurando o mock para lançar uma exceção
         doThrow(new RuntimeException("Erro ao enviar e-mail")).when(mailSender).send(any(SimpleMailMessage.class));
 
-        // Testar se o serviço trata corretamente a exceção ao enviar e-mail
         Assertions.assertDoesNotThrow(() -> emailService.sendSimpleEmail(from, to, subject, text));
 
-        // Verificar se o método send foi chamado uma vez
         verify(mailSender, times(1)).send(any(SimpleMailMessage.class));
     }
 

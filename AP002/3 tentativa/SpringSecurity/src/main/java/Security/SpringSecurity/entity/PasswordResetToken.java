@@ -15,6 +15,11 @@ import lombok.Data;
 @Data
 @Entity
 public class PasswordResetToken {
+	
+	 public String getToken() {
+	        return token;
+	 }
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;	
