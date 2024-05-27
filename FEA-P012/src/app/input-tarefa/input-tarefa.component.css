@@ -1,0 +1,67 @@
+.task-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* Aumentar o espaço entre os elementos */
+  padding: 20px;
+  background-color: #2c3e50; /* Fundo mais escuro */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra mais pronunciada */
+  max-width: 600px; /* Limitar a largura máxima */
+  margin: auto; /* Centralizar horizontalmente */
+}
+
+.task-field {
+  padding: 15px; /* Aumentar o padding */
+  font-size: 1.2em; /* Aumentar o tamanho da fonte */
+  border: none;
+  border-radius: 5px;
+  background-color: #bce9f7; /* Fundo mais escuro */
+  color: #ecf0f1; /* Texto claro */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25); /* Sombra mais escura */
+  flex-grow: 1;
+  min-width: 250px; /* Largura mínima */
+}
+
+.task-button {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espaço entre ícone e texto */
+  padding: 15px 25px; /* Aumentar o padding */
+  font-size: 1.2em; /* Aumentar o tamanho da fonte */
+  color: #ecf0f1; /* Texto claro */
+  background-color: #238d9b; /* Fundo mais escuro */
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25); /* Sombra mais escura */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.task-button i {
+  font-size: 2.5em; /* Aumentar o tamanho do ícone */
+  color: #ecf0f1; /* Cor do ícone */
+}
+
+.task-button:hover i {
+  color: #ffeb3b; /* Alterar a cor do ícone no hover */
+}
+
+.task-button:active i {
+  transform: scale(1.2); /* Aumentar o ícone em 20% ao clicar */
+  transition: transform 0.1s ease-in-out;
+}
+
+.task-button i {
+  margin-right: 8px; 
+  transition: color 0.3s ease;
+}
+
+.fa-bell {
+  font-size: 24px; 
+}
+.fa-bell {
+  color: rgb(223, 105, 213);
+}
+

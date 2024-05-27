@@ -1,0 +1,71 @@
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .task-item {
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #fdcdff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    font-size: 1.2em;
+    color: #7050ff;
+    transition: all 0.3s ease;
+  }
+  
+  .task-item:hover {
+    background-color: #bab5ff;
+  }
+  
+  .task-item:active {
+    background-color: #ffdead;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.15);
+  }
+
+  .remove-button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    font-size: 0.8em;
+    color: #fff;
+    background-color: #6f00ff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+  }
+  
+  .remove-button:hover {
+    background-color: #cc0000;
+  }
+  
+  .remove-button:active {
+    background-color: #990000;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.15);
+  }
+
+  .altera-button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    font-size: 0.8em;
+    color: #fff;
+    background-color: #c74485;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+  }
+  
+  .altera-button:hover {
+    background-color:#857c2a;
+  }
+  
+  .altera-button:active {
+    background-color:#857c2a;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.15);
+  }
