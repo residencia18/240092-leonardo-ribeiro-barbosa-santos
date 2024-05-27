@@ -1,0 +1,17 @@
+<div [ngClass]="{'exibe': open, 'under': !open}">
+    <div class="modal">
+      <div class="modal-content">
+        <div class="close">
+  
+          <span (click)="closeModal()">X</span>
+        </div>
+        <div class="informacao">
+          <label for="alterar">Altere a descrição da tarefa</label>
+          <input type="text" [(ngModel)]="descricao" id="alterar"/>
+        </div>
+        <button (click)="setAlterarTarefa()" class="alterar-button">
+          Confirmar
+        </button>
+      </div>
+    </div>
+  </div>
