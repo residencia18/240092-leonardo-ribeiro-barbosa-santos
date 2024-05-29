@@ -16,6 +16,7 @@ public class DashboardController {
         if (authentication != null && authentication.isAuthenticated()) {
             username = authentication.getName();
         }
+        System.out.println("Authentication: " + authentication);
         return "Hello " + username;
     }
 }

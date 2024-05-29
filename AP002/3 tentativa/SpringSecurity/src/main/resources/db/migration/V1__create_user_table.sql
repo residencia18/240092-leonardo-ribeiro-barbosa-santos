@@ -7,9 +7,10 @@ CREATE SEQUENCE users_id_seq
 
 CREATE TABLE IF NOT EXISTS public.users
 (
-    id bigint NOT NULL DEFAULT nextval('users_id_seq'::regclass),
-    username character varying(255) COLLATE pg_catalog."default",
+    id bigint NOT NULL DEFAULT nextval('users_id_seq'::regclass), -- Chave primária
+    username character varying(255) COLLATE pg_catalog."default" NOT NULL, -- Campo não nulo
     password character varying(255) COLLATE pg_catalog."default",
-    email character varying(255) COLLATE pg_catalog."default",
-    role character varying(255) COLLATE pg_catalog."default" 
-)
+    email character varying(255) COLLATE pg_catalog."default" NOT NULL, -- Campo não nulo
+    role character varying(255) COLLATE pg_catalog."default",
+    PRIMARY KEY (id) -- Definindo a chave primária
+);

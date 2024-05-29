@@ -1,11 +1,17 @@
 package Security.SpringSecurity.entity;
 
 
+import java.util.List;
+
 import Security.SpringSecurity.validation.ValidPassword;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -15,6 +21,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Entity
+@Table(name = "users")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -37,4 +45,20 @@ public class User {
     @ValidPassword
     private String password;
     private String role;
+    
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true) // Relacionamento bidirecional
+    private List<PasswordResetToken> passwordResetTokens; 
+    
+ // Adicionando @Builder.Default para garantir que os valores padrão sejam mantidos
+    @Builder.Default
+    private boolean accountNonExpired = true; // Por padrão, não expira
+
+    @Builder.Default
+    private boolean accountNonLocked = true; // Por padrão, não bloqueado
+
+    @Builder.Default
+    private boolean credentialsNonExpired = true; // Por padrão, credenciais não expiram
+
+    @Builder.Default
+    private boolean enabled = true; // Por padrão, habilitado
 }
