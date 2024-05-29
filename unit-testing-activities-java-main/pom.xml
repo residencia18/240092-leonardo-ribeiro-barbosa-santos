@@ -1,4 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <properties>
+    <bom-scope>import</bom-scope>
+  </properties>
+
   <modelVersion>4.0.0</modelVersion>
   <groupId>unit-testing-activities-java</groupId>
   <artifactId>unit-testing-activities-java</artifactId>
@@ -22,6 +26,17 @@
 	    <version>4.12.0</version>
 	</dependency>
 	
+	<dependency>
+	    <groupId>com.h2database</groupId>
+	    <artifactId>h2</artifactId>
+	    <version>1.4.200</version> <!-- Versão atualizada do driver -->
+	</dependency>
+	<dependency>
+	    <groupId>mysql</groupId>
+	    <artifactId>mysql-connector-java</artifactId>
+	    <version>8.0.27</version> <!-- Versão mais recente do driver -->
+	</dependency>
+	
 	  <dependency>
         <groupId>org.mockito</groupId>
         <artifactId>mockito-core</artifactId>
@@ -41,19 +56,61 @@
         <version>1.0.2</version>
         <scope>test</scope>
     </dependency> 
+    
+
+    
+	<dependency>
+	    <groupId>org.junit.jupiter</groupId>
+	    <artifactId>junit-jupiter-engine</artifactId>
+	    <version>5.7.0</version>
+	    <scope>test</scope>
+	</dependency>
+	
+	  <dependency>
+		    <groupId>com.sun.mail</groupId>
+		    <artifactId>javax.mail</artifactId>
+		    <version>1.6.2</version>
+	</dependency>
+
+  
+
+  
+
+
     <dependency>
-        <groupId>org.junit.jupiter</groupId>
-        <artifactId>junit-jupiter-engine</artifactId>
-        <version>5.8.1</version>
-        <scope>test</scope>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+          <version>1.7.32</version>
+    </dependency>
+    
+	<dependency>
+        <groupId>software.amazon.awssdk</groupId>
+        <artifactId>rekognition</artifactId>
+    </dependency>
+	
+	<dependency>
+        <groupId>software.amazon.awssdk</groupId>
+        <artifactId>aws-sdk-java</artifactId>
+        <version>2.17.95</version> <!-- Versão atualizada da AWS SDK -->
     </dependency>
 
-      <dependency>
-      	<groupId>br.com.cepedi</groupId>
-      	<artifactId>ShoppingStore</artifactId>
-      	<version>0.0.1-SNAPSHOT</version>
-      </dependency>
   </dependencies>	
+  
+  <dependencyManagement>
+    <dependencies>
+        <!-- Import AWS SDK for Java BoM -->
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>bom</artifactId>
+            <version>2.17.95</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
+
+
+
   <build>
     <sourceDirectory>src/main/java/com/example/atividades</sourceDirectory>
     <testSourceDirectory>src/test/java/com/example/atividades</testSourceDirectory>
